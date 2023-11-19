@@ -1,0 +1,55 @@
+@import "theme/color.scss";
+@import "theme/light/app.scss";
+
+KitMessage{
+  border-radius: 4px;
+  #message_icon{
+    font-weight: 800;
+  }
+  #message_title{
+      font-weight: 800;
+  }
+}
+
+KitMessage[type="info"]{
+  background-color: lighten($info, 20%);
+  border: 1px solid darken($info, 20%);
+  #message_icon{
+    color: darken($info, 20%);
+  }
+  #message_title{
+    color: darken($info, 20%);
+  }
+}
+KitMessage[type="success"]{
+  background-color: lighten($success, 20%);
+  border: 1px solid darken($success, 20%);
+  #message_icon{
+    color: darken($success, 20%);
+  }
+  #message_title{
+    color: darken($success, 20%);
+  }
+}
+
+KitMessage[type="warning"]{
+  background-color: lighten($warning, 20%);
+  border: 1px solid darken($warning, 20%);
+  #message_icon{
+      color: darken($warning, 20%);
+  }
+  #message_title{
+      color: darken($warning, 20%);
+  }
+}
+
+KitMessage[type="danger"]{
+  background-color: lighten($danger, 20%);
+  border: 1px solid darken($danger, 20%);
+  #message_icon{
+      color: darken($danger, 20%);
+  }
+  #message_title{
+      color: darken($danger, 20%);
+  }
+}

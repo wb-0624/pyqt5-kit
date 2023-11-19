@@ -1,0 +1,83 @@
+@import "theme/color.scss";
+@import "theme/light/app.scss";
+
+
+TableHeader{
+  background-color: transparent;
+  border: none;
+}
+
+QTableWidget{
+  border: none;
+  background-color: transparent;
+}
+
+TableHeader TableCellWidget{
+  border-top: 2px solid $gray500;
+  border-bottom: 2px solid $gray500;
+  background-color: $gray300;
+  font-weight: 900;
+}
+
+TableBody{
+  border:none;
+  background-color: transparent;
+  outline: none;
+  &:item{
+    &:select{
+      border: none;
+    }
+  }
+}
+
+TableBody TableCellWidget{
+  background-color: $gray100;
+  border-bottom: 1px solid $gray300;
+}
+
+TableBody TableCellWidget[row='even']{
+  background-color: $gray100;
+}
+
+TableBody TableCellWidget[row='odd']{
+    background-color: $gray100;
+}
+
+TableBody TableCellWidget[row='current']{
+  background-color: $gray300;
+}
+
+TableBody TableCellWidget[row='hovered']{
+  background-color: $gray200;
+}
+
+#table_freeze{
+  border-right-width: 6px;
+  border-right-style: solid;
+  QScrollBar{
+    &:vertical {
+      width: 0px;
+    }
+  }
+}
+
+TablePagination{
+  background-color: transparent;
+  KitLineEdit{
+    border: 1px solid $gray300;
+  }
+  #page_icon{
+    border:none;
+    background-color: transparent;
+    &:hover{
+      background-color: $gray400;
+    }
+    &:pressed{
+      background-color: $gray500;
+    }
+  }
+}
+
+
+
+

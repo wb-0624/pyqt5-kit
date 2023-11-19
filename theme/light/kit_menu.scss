@@ -1,0 +1,20 @@
+@import "theme/theme.scss";
+@import "theme/color.scss";
+@import "theme/light/app.scss";
+
+QMenu{
+  background-color: $gray100;
+  border-radius: 4px;
+  border: 1px solid $gray200;
+  padding: 4px;
+  &:item{
+    background:transparent;
+    &:enabled{
+     &:selected{
+       background: transparentize($gray300, 0.1);
+       color:black;
+       border-radius: 4px;
+     }
+   }
+ }
+}

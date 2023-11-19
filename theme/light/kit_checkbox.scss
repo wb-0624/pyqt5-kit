@@ -1,0 +1,41 @@
+@import "theme/color.scss";
+
+CheckBoxIcon{
+  background-color: transparent;
+}
+
+CheckBoxIcon > KitIcon{
+  border:1px solid black;
+  color: white;
+  font-weight: 800;
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+CheckBoxIcon[state='unchecked'] > KitIcon{
+  background-color: white;
+}
+CheckBoxIcon[state='checked'] > KitIcon{
+  background-color: $blue600;
+}
+CheckBoxIcon[state='partial_checked'] > KitIcon{
+  background-color: $blue600;
+}
+
+
+KitCheckBox{
+    &:indicator{
+      width: 32px;
+      height: 32px;
+      border-radius: 16px;
+      background-color: transparent;
+      &:hover{
+        background-color: transparentize($stone900, 0.8);
+      }
+    &:pressed{
+      background-color: transparentize($stone900, 0.6);
+    }
+  }
+}
+
+

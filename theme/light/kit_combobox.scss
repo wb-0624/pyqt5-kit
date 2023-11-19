@@ -1,0 +1,45 @@
+@import "theme/theme.scss";
+@import "theme/color.scss";
+@import "theme/light/app.scss";
+
+KitComboBox{
+  background-color: $gray100;
+  border: 1px solid $info;
+  border-radius: $border-radius;
+  &:hover{
+    background-color: transparentize($blue200, 0.8);
+    border-color: $blue400;
+    border-radius: $border-radius;
+  }
+  &:disabled{
+    background-color: $disable;
+  }
+
+  QAbstractItemView {
+    outline: 0px;   /* 选定项的虚框 */
+    border: 1px solid $gray300;   /* 整个下拉窗体的边框 */
+    border-radius: 4px;
+    color: black;
+    background-color: $gray100;   /* 整个下拉窗体的背景色 */
+    &:item{
+      height: 32px;
+      margin:$margin;
+      border-radius: $border-radius;
+      color:black;
+      &:selected {
+        background-color: transparentize($gray300, 0.6);
+      }
+      &:hover{
+        background-color: transparentize($gray300, 0.6);
+      }
+    }
+  }
+
+  &:drop-down{
+    background:transparent;
+  }
+
+}
+#combobox_icon{
+  font-size: 16px;
+}

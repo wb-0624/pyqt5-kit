@@ -1,0 +1,11 @@
+@import "theme/color.scss";
+KitFileDropArea{
+  background-color: $gray200;
+  border: 2px dashed $gray400;
+  &:hover{
+    background-color: $gray300;
+  }
+  KitIcon{
+    font-size:50px;
+  }
+}

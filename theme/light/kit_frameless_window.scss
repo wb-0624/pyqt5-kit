@@ -1,0 +1,44 @@
+@import "theme/theme.scss";
+@import "theme/color.scss";
+
+/* window */
+
+WindowBody{
+    background-color: $gray200;
+    padding: 0px;
+    border-radius: 8px;
+}
+
+WindowBody[type='max']{
+    border:none;
+    border-radius: 0px;
+}
+
+TitleBar{
+    background-color: transparent;
+}
+TitleBar > #title_bar_handler{
+    background-color: transparentize(black, 0.5);
+    border-radius: 2px;
+}
+
+//TitleBarButton{
+TitleBar > #title_bar_button{
+    background-color: transparent;
+    &:hover{
+        background-color: transparentize($gray400, 0.8);
+    }
+    &:pressed{
+        background-color: transparentize($gray600, 0.6);
+    }
+}
+
+TitleBar > #title_bar_close_button{
+    background-color: transparent;
+    &:hover{
+        background-color: $red400;
+    }
+    &:pressed{
+        background-color: $red600;
+    }
+}

@@ -1,0 +1,26 @@
+//本主题特定样式
+@import "theme/theme.scss";
+@import "theme/color.scss";
+
+//背景
+$bg-color: $neutral50;
+$text_color:$neutral900;
+
+// 主要几种颜色
+$primary: $blue400;
+$info: $gray400;
+$warning: $amber400;
+$danger: $red500;
+$success: $green500;
+
+$disable: $gray300;
+
+
+
+// border
+$border-width: 1px;
+$border-radius: 4px;
+
+// layout
+$spacing: 8px;
+$margin: 4px;

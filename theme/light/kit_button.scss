@@ -1,0 +1,137 @@
+@import "theme/color.scss";
+@import "theme/theme.scss";
+@import "theme/light/app.scss";
+
+KitButton{
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid $gray500;
+  background-color: #f5f5f5;
+  &:hover{
+      background-color: darken(#f5f5f5, 10%);
+  }
+  &:pressed{
+      background-color: darken(#f5f5f5, 5%);
+  }
+  &:disabled{
+      background-color: lighten(#f5f5f5, 10%);
+  }
+}
+
+KitButton[shape='round']{
+  border-radius: 16px;
+}
+KitButton[shape='square']{
+  border-radius: 0px;
+}
+
+KitButton[type='primary']{
+  background-color: $primary;
+  border: none;
+  &:hover{
+      background-color: darken($primary, 10%);
+  }
+  &:pressed{
+      background-color: darken($primary, 5%);
+  }
+  &:disabled{
+      background-color: lighten($primary, 10%);
+  }
+}
+
+KitButton[type='success']{
+  background-color: $success;
+  border: none;
+  &:hover{
+      background-color: darken($success, 10%);
+  }
+  &:pressed{
+      background-color: darken($success, 5%);
+  }
+  &:disabled{
+      background-color: lighten($success, 10%);
+  }
+}
+
+
+KitButton[type='warning']{
+  background-color: $warning;
+  border: none;
+  &:hover{
+      background-color: darken($warning, 10%);
+  }
+  &:pressed{
+      background-color: darken($warning, 5%);
+  }
+  &:disabled{
+      background-color: lighten($warning, 10%);
+  }
+}
+
+KitButton[type='danger']{
+  background-color: $danger;
+  border: none;
+  &:hover{
+      background-color: darken($danger, 10%);
+  }
+  &:pressed{
+      background-color: darken($danger, 5%);
+  }
+  &:disabled{
+      background-color: lighten($danger, 10%);
+  }
+}
+
+
+
+KitButton[style='text']{
+  background-color: transparent;
+  border: none;
+  &:hover{
+    background-color: transparentize($zinc600, 0.8);
+  }
+  &:pressed{
+      background-color: transparentize(darken($zinc600, 5%), 0.6);
+  }
+}
+
+KitButton[style='text'][type='primary']{
+  color:$primary;
+}
+
+KitButton[style='text'][type='success']{
+  color:$success;
+}
+
+KitButton[style='text'][type='warning']{
+  color:$warning;
+}
+
+KitButton[style='text'][type='danger']{
+  color:$danger;
+}
+
+KitToolButton[state='unchecked']{
+  &:hover{
+      background-color: darken(#f5f5f5, 10%);
+  }
+  &:pressed{
+      background-color: darken(#f5f5f5, 5%);
+  }
+  &:disabled{
+      background-color: lighten(#f5f5f5, 10%);
+  }
+}
+
+KitToolButton[state='checked']{
+  background-color: $primary;
+  &:hover{
+      background-color: darken($primary, 10%);
+  }
+  &:pressed{
+      background-color: darken($primary, 5%);
+  }
+  &:disabled{
+      background-color: lighten($primary, 10%);
+  }
+}

@@ -1,0 +1,25 @@
+@import "theme/theme.scss";
+@import "theme/color.scss";
+@import "theme/light/app.scss";
+
+//有个很奇怪的现象，在某些时候，font-size 不会使icon变大，但是使其变清晰。
+//参考： kit_checkbox.scss  kit_combobox.scss
+
+KitIcon{
+  font-family: $icon;
+  font-size: 16px;
+  background-color: transparent;
+}
+
+KitIcon[type='primary']{
+  color: $primary;
+}
+KitIcon[type='success']{
+  color: $success;
+}
+KitIcon[type='warning']{
+  color: $warning;
+}
+KitIcon[type='danger']{
+  color: $danger;
+}

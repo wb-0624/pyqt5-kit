@@ -1,0 +1,48 @@
+@import "theme/color.scss";
+@import "theme/light/app.scss";
+
+KitSwitchIndicator{
+  border: none;
+  border-radius: 16px;
+  background-color: transparent;
+}
+
+
+
+KitSwitch{
+  border: 2px solid $zinc500;
+  border-radius: 16px;
+  background-color: white;
+  &:disabled{
+    background-color: $disable;
+    border-color: darken($disable, 10%);
+  }
+  #indicator-inner{
+    background-color: $zinc500;
+    border-radius: 12px;
+    #indicator-inner-icon{
+      color: $bg-color;
+    }
+  }
+  #indicator-inner{
+    &:disabled{
+      background-color: darken($disable, 10%);
+    }
+  }
+}
+
+KitSwitch[checked='true']{
+  background-color: $success;
+  &:disabled{
+    background-color: lighten($success, 10%);
+  }
+  #indicator-inner{
+    background-color: $bg-color;
+    #indicator-inner-icon{
+      color: black;
+    }
+    &:disabled{
+      background-color: lighten($disable, 10%);
+    }
+  }
+}

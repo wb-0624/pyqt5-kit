@@ -1,0 +1,4 @@
+
+#table_freeze {
+    border-right-color: qlineargradient(x1:0, x2:1, stop:0 rgba(0, 0, 0, 50), stop:1 transparent);
+}

@@ -1,0 +1,10 @@
+@import "theme/color.scss";
+
+KitModal{
+  background-color: $gray200;
+  border: 1px solid $gray500;
+  border-radius: 4px;
+  #modal_title{
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,9 @@
+// File: common.scss
+// 全局样式
+@import "theme/light/app.scss";
+
+*{
+    font-size: $font-size;
+    font-family: $font;
+}
+
