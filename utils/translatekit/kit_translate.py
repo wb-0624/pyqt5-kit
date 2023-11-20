@@ -3,7 +3,7 @@ import sys
 import xml.dom.minidom as minidom
 from feature.excelkit.excel import TableData, write_excel, read_excel
 from PyQt5.QtWidgets import QApplication
-from config import config
+from app_config import config
 
 # todo 做个UI界面独立出去做个小工具
 
@@ -22,7 +22,7 @@ lconvert_path = env_path + "Lib\\site-packages\\qt5_applications\\Qt\\bin\\lconv
 lrelease_path = env_path + "Lib\\site-packages\\qt5_applications\\Qt\\bin\\lrelease.exe"
 
 # 项目根目录
-root_path = config.root_path
+root_path = config.app_path
 
 # 翻译文件保存目录
 translate_path = root_path + "language\\"

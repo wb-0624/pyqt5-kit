@@ -4,8 +4,9 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFontDatabase
 from PyQt5.QtWidgets import QApplication
 
-from widget.component import KitFramelessWindow
 from config import config
+from pages.index import Index
+from widget.component.window.kit_frameless_window import KitFramelessWindow
 
 
 def main():
@@ -22,6 +23,8 @@ def main():
     QFontDatabase.addApplicationFont("assets/font/Ubuntu-Regular.ttf")
 
     window = KitFramelessWindow()
+    window.resize(800, 600)
+    window.setContentWidget(Index())
 
     window.show()
     sys.exit(app.exec_())

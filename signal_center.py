@@ -1,5 +1,7 @@
 from PyQt5.QtCore import QObject, pyqtSignal, QSize
 
+from app_config.kit_root import root
+
 
 # 全局信号中心
 class SignalCenter(QObject):
@@ -10,3 +12,4 @@ class SignalCenter(QObject):
 
 
 signal_center = SignalCenter()
+signal_center.mainWindowResized.connect(lambda size: root.main_window_resized_slot(size))

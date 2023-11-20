@@ -2,6 +2,7 @@ from PyQt5.QtCore import pyqtSignal, Qt, QEvent, QSize, QPropertyAnimation
 from PyQt5.QtGui import QPalette, QPainter, QBrush, QColor, QPen
 from PyQt5.QtWidgets import QWidget, QApplication, QGraphicsOpacityEffect
 
+from app_config.kit_root import root
 from widget.component.button import KitButton
 from utils.constant import ClosePolicy
 
@@ -79,14 +80,20 @@ class KitOverlay(QWidget):
         self.close_policy = policy
 
     def paintEvent(self, event):
-        if self._parent is not None:
-            self.resize(self._parent.size())
         painter = QPainter()
         painter.begin(self)
         painter.setRenderHint(QPainter.Antialiasing)
         painter.fillRect(event.rect(), QBrush(QColor(0, 0, 0, 127)))
         painter.setPen(QPen(Qt.NoPen))
         painter.end()
+
+    def __fresh_overlay(self):
+        if self._parent is not None:
+            if root.mainWindowSize is None:
+                self.resize(self._parent.size())
+            else:
+                self.resize(root.mainWindowSize)
+            self.move((self._parent.width() - self.width()) // 2, (self._parent.height() - self.height()) // 2)
 
     def eventFilter(self, obj, e):
         if e.type() == QEvent.MouseButtonPress:
@@ -99,6 +106,7 @@ class KitOverlay(QWidget):
 
     def show(self):
         self.__init_parent()
+        self.__fresh_overlay()
         self.raise_()
         super().show()
         self._show_animation.start()
