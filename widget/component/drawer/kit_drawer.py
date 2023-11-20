@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QGraphicsDropSha
 from widget.component.button import KitButton
 from widget.component.overlay.kit_overlay import KitOverlay
 from config import config
-from utils.constant import ClosePolicy, Position
+from app_config.constant import ClosePolicy, Position
 
 
 class KitDrawer(QWidget):

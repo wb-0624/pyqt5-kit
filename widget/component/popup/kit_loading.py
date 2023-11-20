@@ -6,7 +6,7 @@ from widget.component.button import KitButton
 from widget.component.button.kit_button import KitIconButton
 from widget.component.icon.kit_icon import KitIcon
 from widget.component.overlay.kit_overlay import KitOverlay
-from utils.constant import ClosePolicy, Icons, Button
+from app_config.constant import ClosePolicy, Icons, Button
 
 
 class KitLoading(KitOverlay):

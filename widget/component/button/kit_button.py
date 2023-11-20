@@ -3,7 +3,7 @@ from PyQt5.QtGui import QIcon, QColor
 from PyQt5.QtWidgets import QPushButton, QApplication, QWidget, QVBoxLayout, QGraphicsDropShadowEffect
 
 from widget.component.icon.kit_icon import KitIcon
-from utils.constant import Button, Icons
+from app_config.constant import Button, Icons
 
 
 class KitButton(QPushButton):

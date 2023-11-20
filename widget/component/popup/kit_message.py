@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QGraphicsOpacityEffect, QLabel, QVBoxLayout, QHBoxLa
 from widget.component.button import KitButton
 from widget.component.icon.kit_icon import KitIcon
 from widget.component.popup.kit_popup import KitPopup
-from utils.constant import Position, Icons
+from app_config.constant import Position, Icons
 
 
 class KitMessage(KitPopup):

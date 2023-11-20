@@ -1,8 +1,8 @@
 
-from PyQt5.QtCore import Qt, QSize, QPropertyAnimation, QAnimationGroup
-from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect, QApplication, QGraphicsOpacityEffect
+from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect, QApplication
 
-from utils.constant import Position
+from app_config.constant import Position
 
 
 class KitPopup(QWidget):

@@ -5,7 +5,7 @@ from PyQt5.QtGui import QFontDatabase, QMouseEvent
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QApplication, QLabel
 
 from widget.component.button.kit_button import KitIconButton
-from utils.constant import Button, Icons
+from app_config.constant import Button, Icons
 from widget.component.icon.kit_icon import KitIcon
 from config import config
 

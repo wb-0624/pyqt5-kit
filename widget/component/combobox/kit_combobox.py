@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QComboBox, QListView, QStyle, QStyleOptionComboBox
 
 from widget.component.button import KitButton
 from widget.component.icon.kit_icon import KitIcon
-from utils.constant import Icons
+from app_config.constant import Icons
 from utils.kit_property import KitNotifyProperty
 
 

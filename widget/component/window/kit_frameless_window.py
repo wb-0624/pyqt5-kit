@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
 from widget.component.window.window_body import WindowBody
 from config import config
-from utils.constant import Position, Window
+from app_config.constant import Position, Window
 
 
 class KitFramelessWindow(QWidget):

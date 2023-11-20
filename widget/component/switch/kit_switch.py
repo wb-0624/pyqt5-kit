@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QLabel
 
 from widget.component.icon.kit_icon import KitIcon
 from widget.component.window.kit_frameless_window import KitFramelessWindow
-from utils.constant import Icons
+from app_config.constant import Icons
 
 
 class KitSwitchIndicator(QWidget):

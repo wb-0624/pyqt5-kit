@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QLineEdit, QApplication, QWidget, QVBoxLayout
 
 from widget.component.icon.kit_icon import KitIcon
 from config import config
-from utils.constant import Icons
+from app_config.constant import Icons
 
 
 class KitLineEdit(QLineEdit):

@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QLabel
 
 from widget.component.icon.kit_icon import KitIcon
 from widget.component.popup.kit_modal import KitModal
-from utils.constant import Icons
+from app_config.constant import Icons
 
 
 class KitFileDropArea(QWidget):

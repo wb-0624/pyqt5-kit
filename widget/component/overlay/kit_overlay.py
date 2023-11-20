@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QWidget, QApplication, QGraphicsOpacityEffect
 
 from app_config.kit_root import root
 from widget.component.button import KitButton
-from utils.constant import ClosePolicy
+from app_config.constant import ClosePolicy
 
 
 class KitOverlay(QWidget):

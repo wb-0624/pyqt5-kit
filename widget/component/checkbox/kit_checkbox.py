@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QCheckBox, QVBoxLayout, QWidget, QApplication, QStyl
 
 from widget.component.icon.kit_icon import KitIcon
 from config import config
-from utils.constant import Icons
+from app_config.constant import Icons
 
 
 class CheckBoxIcon(QWidget):

@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QLabel, QPushButton, QTableWidget, QAbstractItemView
 from widget.component.button import KitButton
 from widget.component.checkbox.kit_checkbox import KitCheckBox
 from widget.component.table.table_page import TablePagination
-from utils.constant import Button
+from app_config.constant import Button
 
 
 class TableCellWidget(QLabel):

@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QSpinBox, QStyleOptionSpinBox, QStyle, QDoubleSpinBo
 
 from widget.component.icon.kit_icon import KitIcon
 from config import config
-from utils.constant import Icons
+from app_config.constant import Icons
 
 
 class KitSpinBox(QSpinBox):

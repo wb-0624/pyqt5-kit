@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QPushButton, QHB
 from widget.component.button.kit_button import KitIconButton
 from widget.component.input.kit_line_edit import KitLineEdit
 from config import config
-from utils.constant import Button, Icons
+from app_config.constant import Button, Icons
 
 
 class TablePagination(QWidget):
