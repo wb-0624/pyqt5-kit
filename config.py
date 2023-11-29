@@ -14,19 +14,19 @@ class Config(QObject):
     def __init__(self):
         super().__init__()
         # 工程根目录
-        self.root_path = ""
+        self.app_root_path = ""
         self.theme = Theme.LIGHT
-        self.getRootPath()
+        self.getAppRootPath()
 
-    def getRootPath(self):
+    def getAppRootPath(self):
         # 获取当前文件所在的绝对路径
         current_path = os.path.abspath(__file__)
         # 获取当前文件所在的目录
-        self.root_path = os.path.dirname(current_path)
+        self.app_root_path = os.path.dirname(current_path)
 
     def init_qss(self):
         current_theme = self.theme
-        theme_dir = self.root_path + "\\theme\\" + current_theme + "\\"
+        theme_dir = self.app_root_path + "\\theme\\" + current_theme + "\\"
         theme_list = os.listdir(theme_dir)
         css = ""
         qss = ""

@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QApplication, QVBoxLayout, QWidget, QGraphicsDropSha
 
 from widget.component.window.title_bar import TitleBar
 from config import config
-from signal_center import signal_center
+from app_config.signal_center import signal_center
 
 
 class WindowBody(QWidget):

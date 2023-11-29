@@ -15,6 +15,15 @@ $success: $green500;
 
 $disable: $gray300;
 
+$menu-hovered: transparentize($gray300, 0.5);
+$menu-checked: transparentize($gray300, 0.5);
+$menu-unchecked: transparent;
+
+$tab-hovered: transparentize($gray300, 0.5);
+$tab-checked: transparentize($gray300, 0.5);
+$tab-unchecked: transparent;
+
+$tab-bar-bg: transparent;
 
 
 // border

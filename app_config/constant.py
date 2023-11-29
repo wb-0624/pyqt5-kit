@@ -18,7 +18,7 @@ class Button:
 
 
 class Window:
-    resize_margin = 12   # 窗口缩放边界宽度
+    resize_margin = 12  # 窗口缩放边界宽度
 
 
 class ClosePolicy:
@@ -41,6 +41,19 @@ class Position:
     TopRight = 7
     BottomLeft = 8
     BottomRight = 9
+
+
+class Orientation:
+    Horizontal = 0
+    Vertical = 1
+
+
+class Alignment:
+    Left = 0
+    Top = 1
+    Right = 2
+    Bottom = 3
+    Center = 4
 
 
 class Icons:
@@ -2038,7 +2051,7 @@ class Icons:
     trip_origin = '\ue57b'
     trolley = '\uf86b'
     troubleshoot = '\ue1d2'
-    try_icon= '\uf07c'
+    try_icon = '\uf07c'
     tsunami = '\uebd8'
     tty = '\uf1aa'
     tune = '\ue429'

@@ -1,3 +1,28 @@
+@import "theme/color.scss";
+@import "theme/light/app.scss";
+
 KitTab{
-  background-color: red;
+  border-radius: 4px;
+  &:checked{
+    background-color: $tab-checked;
+  }
+  &:unchecked{
+    background-color: $tab-unchecked;
+  }
+  &:hover{
+    background-color: $tab-hovered;
+  }
+  #indicator{
+    background-color: $blue600;
+    border-radius: 2px;
+  }
+}
+
+KitTab::indicator{
+  image:none;
+}
+
+KitTabBar{
+  background-color: $tab-bar-bg;
+  border-radius: 4px;
 }
