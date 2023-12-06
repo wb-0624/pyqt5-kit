@@ -4,17 +4,17 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFontDatabase
 from PyQt5.QtWidgets import QApplication, QVBoxLayout, QWidget, QGraphicsDropShadowEffect
 
-from widget.component.window.title_bar import TitleBar
+from widget.component.window.title_bar import KitTitleBar
 from config import config
 from app_config.signal_center import signal_center
 
 
-class WindowBody(QWidget):
+class KitWindowBody(QWidget):
 
     def __init__(self, parent=None):
-        super(WindowBody, self).__init__(parent=parent)
+        super(KitWindowBody, self).__init__(parent=parent)
 
-        self.title_bar = TitleBar(self)
+        self.title_bar = KitTitleBar(self)
         self.main_content = QWidget(self)
         self.main_content.setMouseTracking(True)
         self.status_bar = QWidget(self)
@@ -57,14 +57,18 @@ class WindowBody(QWidget):
         self.setGraphicsEffect(shadow)
 
     def resizeEvent(self, a0) -> None:
-        self.title_bar.resizeEvent(a0)
+        if self.title_bar is not None:
+            self.title_bar.resizeEvent(a0)
         signal_center.mainWindowResized.emit(self.size())
         super().resizeEvent(a0)
 
-    def setTitleBar(self, bar: QWidget):
+    def setTitleBar(self, bar):
         origin_bar = self.title_bar
+        self.layout.removeWidget(origin_bar)
         origin_bar.deleteLater()
-        bar.setMouseTracking(True)
+        if isinstance(bar, QWidget):
+            bar.setMouseTracking(True)
+            self.layout.insertWidget(0, bar)
         self.title_bar = bar
         self.update()
 
@@ -81,7 +85,7 @@ if __name__ == "__main__":
     fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
     fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
 
-    window = WindowBody()
+    window = KitWindowBody()
     window.show()
 
     sys.exit(app.exec_())

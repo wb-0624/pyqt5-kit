@@ -3,27 +3,27 @@
 
 /* window */
 
-WindowBody{
+KitWindowBody{
     background-color: $gray200;
     padding: 0px;
     border-radius: 8px;
 }
 
-WindowBody[type='max']{
+KitWindowBody[type='max']{
     border:none;
     border-radius: 0px;
 }
 
-TitleBar{
+KitTitleBar{
     background-color: transparent;
 }
-TitleBar > #title_bar_handler{
+KitTitleBar > #title_bar_handler{
     background-color: transparentize(black, 0.5);
     border-radius: 2px;
 }
 
 //TitleBarButton{
-TitleBar > #title_bar_button{
+KitTitleBar > #title_bar_button{
     background-color: transparent;
     &:hover{
         background-color: transparentize($gray400, 0.8);
@@ -33,7 +33,7 @@ TitleBar > #title_bar_button{
     }
 }
 
-TitleBar > #title_bar_close_button{
+KitTitleBar > #title_bar_close_button{
     background-color: transparent;
     &:hover{
         background-color: $red400;

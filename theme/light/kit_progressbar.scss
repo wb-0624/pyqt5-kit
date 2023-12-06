@@ -1,0 +1,14 @@
+@import "theme/light/app.scss";
+
+KitProgressBar {
+  border: 1px solid $progress-border;
+  border-radius: 2px;
+  background-color: $progress-bg;
+  text-align: center;
+  font-size: 4px;
+  height: 4px;
+}
+KitProgressBar::chunk {
+  background-color: $progress-chunk;
+  border-radius: 2px;
+}

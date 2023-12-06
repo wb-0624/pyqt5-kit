@@ -6,15 +6,15 @@ KitButton{
   height: 32px;
   border-radius: 4px;
   border: 1px solid $gray500;
-  background-color: #f5f5f5;
+  background-color: $button-color;
   &:hover{
-      background-color: darken(#f5f5f5, 10%);
+      background-color: darken($button-color, 10%);
   }
   &:pressed{
-      background-color: darken(#f5f5f5, 5%);
+      background-color: darken($button-color, 5%);
   }
   &:disabled{
-      background-color: lighten(#f5f5f5, 10%);
+      background-color: lighten($button-color, 10%);
   }
 }
 
@@ -113,13 +113,13 @@ KitButton[style='text'][type='danger']{
 
 KitToolButton[state='unchecked']{
   &:hover{
-      background-color: darken(#f5f5f5, 10%);
+      background-color: darken($tool-button-color, 10%);
   }
   &:pressed{
-      background-color: darken(#f5f5f5, 5%);
+      background-color: darken($tool-button-color, 5%);
   }
   &:disabled{
-      background-color: lighten(#f5f5f5, 10%);
+      background-color: lighten($tool-button-color, 10%);
   }
 }
 

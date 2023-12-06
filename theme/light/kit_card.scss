@@ -1,6 +1,6 @@
-@import "theme/color.scss";
+@import "theme/light/app.scss";
 KitCard{
   border:1px solid transparent;
   border-radius: 4px;
-  background-color: $gray100;
+  background-color: $card-bg;
 }

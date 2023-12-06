@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QLabel, QWidget, QVBoxLayout, QApplication, QSizePol
 class KitTag(QLabel):
 
     def __init__(self, text=None, color=None, parent=None):
-        super(KitTag, self).__init__(text=text,parent=parent)
+        super(KitTag, self).__init__(text=text, parent=parent)
 
         self.color = color if color is not None else 'black'
         self.setColor(self.color)
@@ -35,13 +35,15 @@ class KitTag(QLabel):
         red = color.red()
         green = color.green()
         blue = color.blue()
-        self.setStyleSheet(self.styleSheet() + f"background-color: rgba({red}, {green}, {blue}, 100); border: 1px solid rgb({red}, {green}, {blue})")
+        self.setStyleSheet(
+            self.styleSheet() + f"background-color: rgba({red}, {green}, {blue}, 0.3); border: 1px solid rgb({red}, {green}, {blue})")
 
 
 if __name__ == "__main__":
     from PyQt5.QtGui import QFontDatabase, QColor
     from config import config
     import sys
+
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 

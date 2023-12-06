@@ -53,7 +53,9 @@ class Alignment:
     Top = 1
     Right = 2
     Bottom = 3
-    Center = 4
+    HCenter = 4
+    VCenter = 5
+    Center = 6
 
 
 class Icons:

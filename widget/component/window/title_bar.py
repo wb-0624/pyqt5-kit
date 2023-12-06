@@ -10,29 +10,29 @@ from widget.component.icon.kit_icon import KitIcon
 from config import config
 
 
-class TitleBarButton(KitIconButton):
+class KitTitleBarButton(KitIconButton):
 
     def __init__(self, icon_str=None, parent=None):
-        super(TitleBarButton, self).__init__(icon=icon_str, parent=parent)
+        super(KitTitleBarButton, self).__init__(icon=icon_str, parent=parent)
         self.setObjectName("title_bar_button")
         self.setShape(Button.Round)
         self.setStyle(Button.Text)
 
 
-class TitleBar(QWidget):
+class KitTitleBar(QWidget):
     """
     提供最小化，最大/正常，关闭三个默认按钮功能。
     """
 
     def __init__(self, parent):
-        super(TitleBar, self).__init__(parent=parent)
+        super(KitTitleBar, self).__init__(parent=parent)
 
         self.title_icon = KitIcon(Icons.star)
         self.title = QLabel('demo')
 
-        self.min_button = TitleBarButton(Icons.minimize)
-        self.change_size_button = TitleBarButton(Icons.crop_square)
-        self.close_button = TitleBarButton(Icons.close)
+        self.min_button = KitTitleBarButton(Icons.minimize)
+        self.change_size_button = KitTitleBarButton(Icons.crop_square)
+        self.close_button = KitTitleBarButton(Icons.close)
         self.close_button.setObjectName("title_bar_close_button")
 
         self._handler_show = False
@@ -113,7 +113,7 @@ class TitleBar(QWidget):
     def __show_close(self):
         self.window().close()
 
-    def addButton(self, add_button: TitleBarButton, add_index=3):
+    def addButton(self, add_button: KitTitleBarButton, add_index=3):
         """
         默认添加在按钮布局的最前面
         :param add_button: 标题按钮类
@@ -123,7 +123,7 @@ class TitleBar(QWidget):
         self.layout.insertWidget(add_index, add_button)
         self.update()
 
-    def removeButton(self, icon_btn: TitleBarButton):
+    def removeButton(self, icon_btn: KitTitleBarButton):
         self.layout.removeWidget(icon_btn)
         icon_btn.deleteLater()
         self.update()
@@ -178,7 +178,7 @@ if __name__ == "__main__":
     fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
     fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
 
-    main = TitleBar(None)
+    main = KitTitleBar(None)
     main.show()
 
     sys.exit(app.exec_())

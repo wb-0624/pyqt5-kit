@@ -12,20 +12,9 @@ $info: $gray400;
 $warning: $amber400;
 $danger: $red500;
 $success: $green500;
-
 $disable: $gray300;
 
-$menu-hovered: transparentize($gray300, 0.5);
-$menu-checked: transparentize($gray300, 0.5);
-$menu-unchecked: transparent;
-
-$tab-hovered: transparentize($gray300, 0.5);
-$tab-checked: transparentize($gray300, 0.5);
-$tab-unchecked: transparent;
-
-$tab-bar-bg: transparent;
-
-
+// 通用边距，间距等
 // border
 $border-width: 1px;
 $border-radius: 4px;
@@ -33,3 +22,30 @@ $border-radius: 4px;
 // layout
 $spacing: 8px;
 $margin: 4px;
+
+// 组件样式
+// 按钮
+$button-color: #f5f5f5;
+$tool-button-color: #f5f5f5;
+// 菜单样式
+$menu-hovered: transparentize($gray300, 0.5);
+$menu-checked: transparentize($gray300, 0.5);
+$menu-unchecked: transparent;
+
+// tab样式
+$tab-hovered: transparentize($gray300, 0.5);
+$tab-checked: transparentize($gray300, 0.5);
+$tab-unchecked: transparent;
+
+$tab-bar-bg: transparent;
+
+// progressbar
+$progress-bg: $gray300;
+$progress-chunk: $green700;
+$progress-border: transparent;
+
+// splashscreen
+$splash-screen-bg: $gray200;
+
+//card
+$card-bg: $gray100;

@@ -1,10 +1,10 @@
 import sys
 
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QFontDatabase
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
-from widget.component.window.window_body import WindowBody
+from widget.component.window.window_body import KitWindowBody
 from config import config
 from app_config.constant import Position, Window
 
@@ -16,6 +16,7 @@ class KitFramelessWindow(QWidget):
 
         self.window_body = None
         self.title_bar = None
+        self.resizeable = True
 
         self.__drag_resize = None
         self.resize_margin = Window.resize_margin
@@ -27,7 +28,7 @@ class KitFramelessWindow(QWidget):
         self.setMouseTracking(True)
         self.setContentsMargins(0, 0, 0, 0)
 
-        self.window_body = WindowBody()
+        self.window_body = KitWindowBody()
         self.title_bar = self.window_body.title_bar
 
         self.layout = QVBoxLayout()
@@ -35,8 +36,6 @@ class KitFramelessWindow(QWidget):
         self.layout.setSpacing(0)
         self.setLayout(self.layout)
         self.layout.addWidget(self.window_body, stretch=1)
-
-        self.resize(800, 600)
 
     def __init_slot(self):
         self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
@@ -47,6 +46,12 @@ class KitFramelessWindow(QWidget):
 
     def setTitle(self, title):
         self.title_bar.setTitle(title)
+
+    def setTitleBar(self, title_bar):
+        self.window_body.setTitleBar(title_bar)
+
+    def setResizeable(self, resizeable:bool):
+        self.resizeable = resizeable
 
     def mouseMoveEvent(self, a0) -> None:
         mouse_pos = a0.pos()
@@ -59,16 +64,16 @@ class KitFramelessWindow(QWidget):
         if self.isMaximized() or self.isFullScreen():
             return
 
-        if 0 < mouse_pos.x() < mouse_resize_margin:
+        if 0 < mouse_pos.x() < mouse_resize_margin and self.resizeable:
             self.setCursor(Qt.SizeHorCursor)
             self.__drag_resize = Position.Left
-        elif self.width() - mouse_resize_margin < mouse_pos.x() < self.width():
+        elif self.width() - mouse_resize_margin < mouse_pos.x() < self.width() and self.resizeable:
             self.setCursor(Qt.SizeHorCursor)
             self.__drag_resize = Position.Right
-        elif 0 < mouse_pos.y() < mouse_resize_margin:
+        elif 0 < mouse_pos.y() < mouse_resize_margin and self.resizeable:
             self.setCursor(Qt.SizeVerCursor)
             self.__drag_resize = Position.Top
-        elif self.height() - mouse_resize_margin < mouse_pos.y() < self.height():
+        elif self.height() - mouse_resize_margin < mouse_pos.y() < self.height() and self.resizeable:
             self.setCursor(Qt.SizeVerCursor)
             self.__drag_resize = Position.Bottom
         else:
@@ -96,6 +101,9 @@ class KitFramelessWindow(QWidget):
             a0.accept()
         else:
             a0.ignore()
+
+    def sizeHint(self):
+        return QSize(800, 600)
 
 
 if __name__ == "__main__":
