@@ -99,7 +99,7 @@ if __name__ == "__main__":
     layout.addWidget(file_drop)
     file_drop.dropped.connect(lambda l1, l2: KitModal.notice('info', '接受文件' + ','.join(l1)+'\n拒绝文件' + '.'.join(l2)))
     # layout.addWidget(btn)
-    window.setContentWidget(main)
+    window.setCentralWidget(main)
     # main.show()
     window.show()
     sys.exit(app.exec_())

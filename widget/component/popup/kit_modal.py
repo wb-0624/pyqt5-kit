@@ -5,6 +5,7 @@ from widget.component.button.kit_button import KitIconButton, KitButton
 from widget.component.overlay.kit_overlay import KitOverlay
 from widget.component.popup.kit_popup import KitPopup
 from app_config.constant import ClosePolicy, Icons, Button
+from widget.component.window.kit_window import KitWindow
 
 
 class KitModal(KitPopup):
@@ -133,6 +134,8 @@ if __name__ == "__main__":
     fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
     fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
 
+    window = KitWindow()
+
     main = QWidget()
     layout = QVBoxLayout()
     main.setLayout(layout)
@@ -150,5 +153,8 @@ if __name__ == "__main__":
     btn.clicked.connect(lambda: KitModal.notice("title", content1))
     btn2.clicked.connect(lambda: KitModal.dialog('123', '456', lambda: print('confirm')))
 
-    main.show()
+    window.setCentralWidget(main)
+    window.show()
+
+    # main.show()
     sys.exit(app.exec_())

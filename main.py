@@ -24,7 +24,7 @@ def main():
 
     window = KitFramelessWindow()
     window.resize(800, 600)
-    window.setContentWidget(Index())
+    window.setCentralWidget(Index())
 
     window.show()
     sys.exit(app.exec_())

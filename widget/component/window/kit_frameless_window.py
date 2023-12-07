@@ -41,8 +41,8 @@ class KitFramelessWindow(QWidget):
         self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
 
-    def setContentWidget(self, widget: QWidget):
-        self.window_body.setContentWidget(widget)
+    def setCentralWidget(self, widget: QWidget):
+        self.window_body.setCentralWidget(widget)
 
     def setTitle(self, title):
         self.title_bar.setTitle(title)

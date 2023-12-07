@@ -37,7 +37,7 @@ class KitWindowBody(QWidget):
 
         self.setStatusBar(False)
 
-    def setContentWidget(self, widget: QWidget):
+    def setCentralWidget(self, widget: QWidget):
         self.layout.removeWidget(self.main_content)
         self.main_content.deleteLater()
         widget.setMouseTracking(True)

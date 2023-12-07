@@ -57,7 +57,7 @@ if __name__ == "__main__":
     btn.clicked.connect(lambda: progress.setValue(progress.value()+5))
     layout.addWidget(btn)
 
-    window.setContentWidget(main)
+    window.setCentralWidget(main)
     window.show()
 
     sys.exit(app.exec_())

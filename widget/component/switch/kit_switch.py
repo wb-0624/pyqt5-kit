@@ -150,6 +150,6 @@ if __name__ == "__main__":
 
     layout.addStretch(1)
     # main.show()
-    window.setContentWidget(main)
+    window.setCentralWidget(main)
     window.show()
     sys.exit(app.exec_())
