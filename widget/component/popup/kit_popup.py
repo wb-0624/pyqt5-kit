@@ -59,11 +59,15 @@ class KitPopup(QWidget):
                       window_size.height() - self.height() - self.offset)
 
     def init_parent(self):
-        self.focusWidget()
         # 用于获取当前应用的最上层的组件，可以理解为主窗口
-        widget = QApplication.activeWindow()
+        widget = None
+        try:
+            widget = QApplication.activeWindow()
+        except Exception as e:
+            print(e)
         if widget is None:
-            widget = self.window()
+            raise Exception(
+                "No active window found, please use `QApplication.setActiveWindow(self)` in where you want to show popup.")
         if self._parent == widget:
             return
         self._parent = widget

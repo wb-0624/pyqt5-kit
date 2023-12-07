@@ -24,3 +24,16 @@ Icons.close
 # script
 
 自己写的一些脚本，用于快速生成一些文件。
+
+
+# component
+
+关于 KitPopup, KitLoading, KitModal, KitMessage, KitOverlay 的使用说明：
+由于它们不需要指定父控件，而是根据 QApplication.activeWindow() 来创建的。所以在使用这些组件前必须确保当前窗口是被激活的。
+如果无法控制用户的操作，需要在执行相关组件前，先调用以下函数来激活窗口。
+
+``` python 
+QApplication.setActiveWindow(self)
+```
+
+这里的self必须是在当前窗口中的一个控件，否则无法激活窗口

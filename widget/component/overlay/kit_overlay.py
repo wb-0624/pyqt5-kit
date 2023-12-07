@@ -63,18 +63,14 @@ class KitOverlay(QWidget):
         self._close_animation.finished.connect(lambda: self.hide())
 
     def __init_parent(self):
-        self.focusWidget()
         # 用于获取当前应用的最上层的组件，可以理解为主窗口
         widget = None
         try:
             widget = QApplication.activeWindow()
         except Exception as e:
             print(e)
-
         if widget is None:
-            widget = self.window()
-        if self._parent == widget:
-            return
+            raise Exception("No active window found, please use `QApplication.setActiveWindow(self)` in where you want to show overlay.")
         self._parent = widget
         self.setParent(self._parent)
 
