@@ -1,20 +1,24 @@
 from PyQt5.QtCore import Qt, QSize, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QLabel
 
+from widget.component.button import KitButton
 from widget.component.icon.kit_icon import KitIcon
 from widget.component.popup.kit_modal import KitModal
 from app_config.constant import Icons
+from widget.component.window.kit_frameless_window import KitFramelessWindow
 
 
 class KitFileDropArea(QWidget):
-    filePathsChanged = pyqtSignal(list)
+    dropped = pyqtSignal(list, list)
 
     def __init__(self, file_match: list = None, parent=None):
         super(KitFileDropArea, self).__init__(parent=parent)
         if file_match is None:
             file_match = []
         self.file_match = file_match
-        self.file_paths = []
+        self.drop_file_paths = []
+        self.accepted_file_paths = []
+        self.rejected_file_paths = []
 
         self.__init_widget()
         self.__init_slot()
@@ -40,32 +44,35 @@ class KitFileDropArea(QWidget):
     def __init_qss(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
 
-    def addFilePaths(self, file_path: str, file_match: list):
+    def validFile(self, file_paths: [str], file_match: list):
+        self.accepted_file_paths.clear()
+        self.rejected_file_paths.clear()
         if len(file_match) == 0:
-            self.file_paths.append(file_path)
+            self.accepted_file_paths = file_paths
 
-        for match in file_match:
-            if match in file_path:
-                self.file_paths.append(file_path)
-                return
-
-        KitModal.notice("类型错误", "仅支持 " + str(file_match) + " 文件")
+        for file_path in file_paths:
+            if file_path.endswith(tuple(file_match)):
+                self.accepted_file_paths.append(file_path)
+            else:
+                self.rejected_file_paths.append(file_path)
 
     def sizeHint(self):
         return QSize(100, 40)
 
     def dragEnterEvent(self, ev):
+        self.focusWidget()
         if ev.mimeData().hasUrls():
             ev.accept()
         else:
             ev.ignore()
 
     def dropEvent(self, a0) -> None:
-        self.file_paths.clear()
+        self.drop_file_paths.clear()
         for url in a0.mimeData().urls():
             file_path = url.toLocalFile()
-            self.addFilePaths(file_path, self.file_match)
-        self.filePathsChanged.emit(self.file_paths)
+            self.drop_file_paths.append(file_path)
+        self.validFile(self.drop_file_paths, self.file_match)
+        self.dropped.emit(self.accepted_file_paths, self.rejected_file_paths)
 
 
 if __name__ == "__main__":
@@ -83,10 +90,16 @@ if __name__ == "__main__":
     qss = config.init_qss()
     app.setStyleSheet(qss)
 
+    window = KitFramelessWindow()
+
     main = QWidget()
     layout = QVBoxLayout()
     main.setLayout(layout)
     file_drop = KitFileDropArea([".png", ".jpg", ".jpeg"])
     layout.addWidget(file_drop)
-    main.show()
+    file_drop.dropped.connect(lambda l1, l2: KitModal.notice('info', '接受文件' + ','.join(l1)+'\n拒绝文件' + '.'.join(l2)))
+    # layout.addWidget(btn)
+    window.setContentWidget(main)
+    # main.show()
+    window.show()
     sys.exit(app.exec_())

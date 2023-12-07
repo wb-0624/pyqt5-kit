@@ -3,6 +3,7 @@ from PyQt5.QtGui import QPalette, QPainter, QBrush, QColor, QPen
 from PyQt5.QtWidgets import QWidget, QApplication, QGraphicsOpacityEffect
 
 from app_config.kit_root import root
+from app_config.signal_center import signal_center
 from widget.component.button import KitButton
 from app_config.constant import ClosePolicy
 
@@ -42,6 +43,7 @@ class KitOverlay(QWidget):
 
     def __init_slot(self):
         self.clicked.connect(lambda: self.close() if self.close_policy == ClosePolicy.CloseOnClicked else None)
+        signal_center.mainWindowResized.connect(lambda: self.__fresh_overlay())
 
     def __init_qss(self):
         palette = QPalette(self.palette())

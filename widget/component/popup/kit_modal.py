@@ -35,7 +35,9 @@ class KitModal(KitPopup):
         if isinstance(content, QWidget):
             self.content.addWidget(content)
         elif isinstance(content, str):
-            self.content.addWidget(QLabel(content))
+            label = QLabel(content)
+            label.setWordWrap(True)
+            self.content.addWidget(label)
 
         self.__init_widget()
         self.__init_slot()
