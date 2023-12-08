@@ -1,8 +1,7 @@
 from typing import List
 
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QApplication, QHBoxLayout, QAbstractButton, QRadioButton, \
-    QSizePolicy, QStackedWidget
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QHBoxLayout, QRadioButton, QStackedWidget
 
 from app_config.constant import Icons, Orientation
 from widget.component.button import KitButton

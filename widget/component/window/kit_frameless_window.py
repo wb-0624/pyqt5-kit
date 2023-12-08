@@ -2,14 +2,14 @@ import sys
 
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QFontDatabase
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
 
 from widget.component.window.window_body import KitWindowBody
 from config import config
 from app_config.constant import Position, Window
 
 
-class KitFramelessWindow(QWidget):
+class KitFramelessWindow(QMainWindow):
 
     def __init__(self):
         super(KitFramelessWindow, self).__init__()
@@ -26,16 +26,12 @@ class KitFramelessWindow(QWidget):
 
     def __init_widget(self):
         self.setMouseTracking(True)
-        self.setContentsMargins(0, 0, 0, 0)
+        self.setContentsMargins(self.resize_margin, self.resize_margin, self.resize_margin, self.resize_margin)
 
         self.window_body = KitWindowBody()
         self.title_bar = self.window_body.title_bar
 
-        self.layout = QVBoxLayout()
-        self.layout.setContentsMargins(self.resize_margin, self.resize_margin, self.resize_margin, self.resize_margin)
-        self.layout.setSpacing(0)
-        self.setLayout(self.layout)
-        self.layout.addWidget(self.window_body, stretch=1)
+        self.setWindowBody(self.window_body)
 
     def __init_slot(self):
         self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
@@ -50,6 +46,10 @@ class KitFramelessWindow(QWidget):
     def setTitleBar(self, title_bar):
         self.window_body.setTitleBar(title_bar)
 
+    def setWindowBody(self, window_body):
+        self.window_body = window_body
+        super().setCentralWidget(window_body)
+
     def setResizeable(self, resizeable:bool):
         self.resizeable = resizeable
 
@@ -61,19 +61,19 @@ class KitFramelessWindow(QWidget):
         # 就会导致临界值时，反而依然会导致拉伸功能生效。
         # 所以这里 减2 可以使得在底层上，就判断出临界。当然减几都行。
         mouse_resize_margin = self.resize_margin - 2
-        if self.isMaximized() or self.isFullScreen():
+        if self.isMaximized() or self.isFullScreen() or self.resizeable is False:
             return
 
-        if 0 < mouse_pos.x() < mouse_resize_margin and self.resizeable:
+        if 0 < mouse_pos.x() < mouse_resize_margin:
             self.setCursor(Qt.SizeHorCursor)
             self.__drag_resize = Position.Left
-        elif self.width() - mouse_resize_margin < mouse_pos.x() < self.width() and self.resizeable:
+        elif self.width() - mouse_resize_margin < mouse_pos.x() < self.width():
             self.setCursor(Qt.SizeHorCursor)
             self.__drag_resize = Position.Right
-        elif 0 < mouse_pos.y() < mouse_resize_margin and self.resizeable:
+        elif 0 < mouse_pos.y() < mouse_resize_margin:
             self.setCursor(Qt.SizeVerCursor)
             self.__drag_resize = Position.Top
-        elif self.height() - mouse_resize_margin < mouse_pos.y() < self.height() and self.resizeable:
+        elif self.height() - mouse_resize_margin < mouse_pos.y() < self.height():
             self.setCursor(Qt.SizeVerCursor)
             self.__drag_resize = Position.Bottom
         else:
@@ -117,5 +117,6 @@ if __name__ == "__main__":
 
     window = KitFramelessWindow()
     window.show()
+
 
     sys.exit(app.exec_())

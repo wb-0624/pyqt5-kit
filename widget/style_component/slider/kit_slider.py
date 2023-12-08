@@ -2,8 +2,11 @@ import sys
 
 from PyQt5 import QtCore
 from PyQt5.QtCore import QSize, Qt, QRectF
-from PyQt5.QtGui import QColor, QPainter
-from PyQt5.QtWidgets import QProxyStyle, QStyle, QWidget, QStyleOptionSlider, QSlider, QApplication
+from PyQt5.QtGui import QColor, QPainter, QFontDatabase
+from PyQt5.QtWidgets import QProxyStyle, QStyle, QWidget, QStyleOptionSlider, QSlider, QApplication, QVBoxLayout
+
+from config import config
+from widget.component.window.kit_frameless_window import KitFramelessWindow
 
 
 class KitSliderStyle(QProxyStyle):
@@ -120,13 +123,19 @@ class Demo(QWidget):
         self.resize(300, 150)
         self.setStyleSheet("Demo{background: rgb(184, 106, 106)}")
 
-        self.slider = KitSlider(Qt.Horizontal, self)
-        slider2 = QSlider(Qt.Horizontal, self)
-        slider2.move(100, 100)
+        self.slider = KitSlider(Qt.Horizontal)
+        self.layout = QVBoxLayout(self)
+        self.layout.addWidget(self.slider)
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    qss = config.init_qss()
+    app.setStyleSheet(qss)
+    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
+    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
+    window = KitFramelessWindow()
     demo = Demo()
-    demo.show()
+    window.setCentralWidget(demo)
+    window.show()
     sys.exit(app.exec_())

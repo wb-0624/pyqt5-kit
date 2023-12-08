@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFontDatabase
 from PyQt5.QtWidgets import QApplication, QVBoxLayout, QWidget, QGraphicsDropShadowEffect
 
+from widget.component.window.status_bar import KitStatusBar
 from widget.component.window.title_bar import KitTitleBar
 from config import config
 from app_config.signal_center import signal_center
@@ -17,7 +18,7 @@ class KitWindowBody(QWidget):
         self.title_bar = KitTitleBar(self)
         self.main_content = QWidget(self)
         self.main_content.setMouseTracking(True)
-        self.status_bar = QWidget(self)
+        self.status_bar = KitStatusBar(self)
         self.layout = QVBoxLayout()
 
         self.__init_widget()
@@ -34,8 +35,6 @@ class KitWindowBody(QWidget):
         self.layout.addWidget(self.title_bar)
         self.layout.addWidget(self.main_content, 1)
         self.layout.addWidget(self.status_bar)
-
-        self.setStatusBar(False)
 
     def setCentralWidget(self, widget: QWidget):
         self.layout.removeWidget(self.main_content)
@@ -72,8 +71,14 @@ class KitWindowBody(QWidget):
         self.title_bar = bar
         self.update()
 
-    def setStatusBar(self, show: bool):
-        self.status_bar.setVisible(show)
+    def setStatusBar(self, status_bar):
+        origin_bar = self.status_bar
+        self.layout.removeWidget(origin_bar)
+        origin_bar.deleteLater()
+        if isinstance(status_bar, QWidget):
+            self.layout.insertWidget(0, status_bar)
+        self.status_bar = status_bar
+        self.update()
 
 
 if __name__ == "__main__":

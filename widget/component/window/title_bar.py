@@ -85,7 +85,7 @@ class KitTitleBar(QWidget):
 
     def __show_max(self):
         self.change_size_button.setIcon(Icons.filter_none)
-        self.window().layout.setContentsMargins(0, 0, 0, 0)
+        self.window().setContentsMargins(0, 0, 0, 0)
         self.parent().setProperty('type', 'max')
         self.window().showMaximized()
         self.parent().style().polish(self.parent())
@@ -93,7 +93,7 @@ class KitTitleBar(QWidget):
 
     def __show_normal(self):
         self.change_size_button.setIcon(Icons.crop_square)
-        self.window().layout.setContentsMargins(self.window().resize_margin, self.window().resize_margin,
+        self.window().setContentsMargins(self.window().resize_margin, self.window().resize_margin,
                                                 self.window().resize_margin, self.window().resize_margin)
         self.parent().setProperty('type', 'normal')
         self.window().showNormal()
