@@ -6,10 +6,18 @@
 
 ## 1. 为什么会出现这个问题
 
-暂时还未排查出。使用 pyqtgraph 或者 QtChart 均会出现。
+[Borderless Window Flickering while resizing | Qt Forum](https://forum.qt.io/topic/122103/borderless-window-flickering-while-resizing/4)
 
-但是两者都是基于 QGraphicsView 的，所以猜测是 QGraphicsView 的问题。
+找到问题原因了，为了实现无边框窗口，对底层的Widget设置了透明。
 
-但是自己写的 QGraphicsView 没有出现这个问题。
+``` python
+self.setAttribute(Qt.WA_TranslucentBackground)
+```
 
-怀疑是缺少了原生的 WindowTitle 后，部分事件没有处理，导致的问题。
+是这个设置造成的。
+
+最后在官方找到一个设置可以避免这个问题。但无法确定是否对其他功能有影响。但至少目前对于无边框透明窗口的闪烁效果有极好的效果。
+
+``` python
+QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
+```

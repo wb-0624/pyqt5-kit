@@ -96,6 +96,7 @@ if __name__ == "__main__":
     import sys
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
+    QApplication.setAttribute(Qt.AA_NativeWindows)
 
     app = QApplication(sys.argv)
     qss = config.init_qss()
