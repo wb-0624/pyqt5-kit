@@ -21,3 +21,6 @@ self.setAttribute(Qt.WA_TranslucentBackground)
 ``` python
 QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 ```
+
+需要自定义 pyqtgraph 图的画，要继承 KitGraphWidget 类，然后重写 fresh_chart() 方法。
+

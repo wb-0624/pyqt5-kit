@@ -58,6 +58,14 @@ class Alignment:
     Center = 6
 
 
+class Graph:
+    Histogram = 0
+    Line = 1
+    Pie = 2
+    Scatter = 3
+    Polar = 4
+
+
 class Icons:
     abc = '\ueb94'
     ac_unit = '\ueb3b'
