@@ -75,6 +75,8 @@ class KitGraph(QWidget):
             return KitLineGraph(self.chart_data)
         elif self.chart_type == Graph.Polar:
             return KitPolarGraph(self.chart_data)
+        elif self.chart_type == Graph.Scatter:
+            return KitScatterGraph(self.chart_data)
         elif self.chart_type == Graph.Pie:
             return KitPieGraph(self.chart_data)
         else:
@@ -115,8 +117,8 @@ class KitHistogramGraph(KitGraphWidget):
         self.values = [item.get('value', '0') for item in self.chart_data]
         self.colors = [item.get('color', 'b') for item in self.chart_data]
 
-        self.setXRange(-1, len(self.names)+1)
-        self.setYRange(0, max(self.values)+1)
+        self.setXRange(-1, len(self.names) + 1)
+        self.setYRange(0, max(self.values) + 1)
 
         # 创建柱状图项
         for i in range(len(self.chart_data)):
@@ -174,8 +176,8 @@ class KitLineGraph(KitGraphWidget):
         x_arr = np.array(self.x_lists)
         y_arr = np.array(self.y_lists)
         # 获取二维数组的最大值
-        self.setXRange(-1, np.amax(x_arr)+2)
-        self.setYRange(-1, np.amax(y_arr)+2)
+        self.setXRange(-1, np.amax(x_arr) + 2)
+        self.setYRange(-1, np.amax(y_arr) + 2)
 
         # 创建柱状图项
         for i in range(len(self.chart_data)):
@@ -325,7 +327,7 @@ class KitPieGraph(KitGraphWidget):
         self.setAntialiasing(True)
         self.plotItem.getAxis('left').hide()
         self.plotItem.getAxis('bottom').hide()
-        self.fresh_chart()
+        self.fresh_graph()
 
     def __init_slot(self):
         pass
@@ -333,7 +335,7 @@ class KitPieGraph(KitGraphWidget):
     def __init_qss(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
 
-    def fresh_chart(self):
+    def fresh_graph(self):
         self.clear()
         self.names = [item.get('label', '') for item in self.chart_data]
         self.values = [item.get('value', 0) for item in self.chart_data]
@@ -352,19 +354,68 @@ class KitPieGraph(KitGraphWidget):
             span_angle = self.values[i] / values_sum * 360
             pie_item.setSpanAngle(int(span_angle) * 16)
 
-            label = pg.TextItem(str(round(self.values[i]/values_sum*100, 2))+'%', color='black')
+            label = pg.TextItem(str(round(self.values[i] / values_sum * 100, 2)) + '%', color='black')
             label.setParentItem(pie_item)
             label.setFont(QFont('Arial', self.chart_text_size))
-            label_x, label_y = convertPolarToCartesian((start_angle+span_angle/2)*np.pi/180, 2.5)
-            label.setPos(self._chart_size/2+label_x, self._chart_size/2-label_y)
-            self.addItem(pg.PlotDataItem([label.pos().x()], [label.pos().y()], pen=pg.mkPen(color, width=1), antialias=True, name=self.names[i]))
+            label_x, label_y = convertPolarToCartesian((start_angle + span_angle / 2) * np.pi / 180, 2.5)
+            label.setPos(self._chart_size / 2 + label_x, self._chart_size / 2 - label_y)
+            self.addItem(
+                pg.PlotDataItem([label.pos().x()], [label.pos().y()], pen=pg.mkPen(color, width=1), antialias=True,
+                                name=self.names[i]))
             label.setAnchor((0.5, 0.5))
 
             if float(self.offsets[i]) > 0:
-                offset_x, offset_y = convertPolarToCartesian((start_angle+span_angle/2) * np.pi / 180, self.offsets[i])
+                offset_x, offset_y = convertPolarToCartesian((start_angle + span_angle / 2) * np.pi / 180,
+                                                             self.offsets[i])
                 pie_item.moveBy(offset_x, -offset_y)
             start_angle += span_angle
             self.addItem(pie_item)
+
+
+class KitScatterGraph(KitGraphWidget):
+    """
+    散点图
+    @:param chart_data: 图表数据 [{name:'', x:'', y:'', symbol:{color,size,shape}}]
+    """
+
+    def __init__(self, chart_data: List = None, parent=None):
+        super(KitScatterGraph, self).__init__(chart_data=chart_data, parent=parent)
+        self.x_lists = []
+        self.y_lists = []
+        self.names = []
+
+        self.__init_widget()
+        self.__init_slot()
+        self.__init_qss()
+
+    def __init_widget(self):
+        self.fresh_graph()
+
+    def __init_slot(self):
+        pass
+
+    def __init_qss(self):
+        self.setAttribute(Qt.WA_StyledBackground, True)
+
+    def fresh_graph(self):
+        self.clear()
+        self.x_lists = [item.get('x', []) for item in self.chart_data]
+        self.y_lists = [item.get('y', []) for item in self.chart_data]
+        self.names = [item.get('name', '') for item in self.chart_data]
+
+        self.setXRange(min([min(x) for x in self.x_lists]), max([max(x) for x in self.x_lists])+1)
+        self.setYRange(min([min(y) for y in self.y_lists]), max([max(y) for y in self.y_lists])+1)
+
+        for i in range(len(self.chart_data)):
+            x = self.chart_data[i].get('x', [])
+            y = self.chart_data[i].get('y', [])
+            symbol = self.chart_data[i].get('symbol', {})
+            plot = pg.ScatterPlotItem(x, y, pen=None, size=symbol.get('size', 10),
+                                      symbol=symbol.get('shape', 'o'), antialias=True, name=self.chart_data[i].get('name', ''))
+            color = QColor(symbol.get('color', 'black'))
+            plot.setPen(pg.mkPen(color, width=1))
+            plot.setBrush(QBrush(QColor(color.red(), color.green(), color.blue(), 50)))
+            self.addItem(plot)
 
 
 if __name__ == "__main__":
@@ -394,17 +445,17 @@ if __name__ == "__main__":
     layout.addWidget(chart_1, 0, 0, 1, 1)
 
     l_data = [
-        {'x': [1, 2, 3, 4, 5], 'y': [10, 2, 3, 4, 5], 'color': 'red', 'name':'y1'},
-        {'x': [1, 2, 3, 4, 5], 'y': [5, 4, 10, 2, 1], 'color': 'green', 'name':'y2'},
-        {'x': [1, 2, 3, 4, 5], 'y': [1, 2, 3, 10, 5], 'color': 'blue', 'name':'y3'},
+        {'x': [1, 2, 3, 4, 5], 'y': [10, 2, 3, 4, 5], 'color': 'red', 'name': 'y1'},
+        {'x': [1, 2, 3, 4, 5], 'y': [5, 4, 10, 2, 1], 'color': 'green', 'name': 'y2'},
+        {'x': [1, 2, 3, 4, 5], 'y': [1, 2, 3, 10, 5], 'color': 'blue', 'name': 'y3'},
     ]
     chart_2 = KitGraph(Graph.Line, l_data)
     layout.addWidget(chart_2, 0, 1, 1, 1)
 
     p_data = [
-        {'a': [0.78, 2, 3, 4, 5], 'r': [10, 2, 3, 4, 5], 'color': 'red',  'name':'y1'},
-        {'a': [1, 2, 3, 4, 5], 'r': [5, 4, 10, 2, 1], 'color': 'green', 'name':'y2'},
-        {'a': [1, 2, 3, 4, 5], 'r': [1, 2, 3, 10, 5], 'color': 'blue', 'name':'y3'},
+        {'a': [0.78, 2, 3, 4, 5], 'r': [10, 2, 3, 4, 5], 'color': 'red', 'name': 'y1'},
+        {'a': [1, 2, 3, 4, 5], 'r': [5, 4, 10, 2, 1], 'color': 'green', 'name': 'y2'},
+        {'a': [1, 2, 3, 4, 5], 'r': [1, 2, 3, 10, 5], 'color': 'blue', 'name': 'y3'},
     ]
     chart_3 = KitGraph(Graph.Polar, p_data)
     chart_3.chart.setTickInterval(2)
@@ -412,13 +463,20 @@ if __name__ == "__main__":
     layout.addWidget(chart_3, 1, 0, 1, 1)
 
     pie_data = [
-        {'label': 'A', 'value': 10, 'color': 'red', 'name':'y1'},
-        {'label': 'B', 'value': 20, 'color': 'green', 'offset': 0.5, 'name':'y2'},
-        {'label': 'C', 'value': 30, 'color': 'blue', 'name':'y3'},
+        {'label': 'A', 'value': 10, 'color': 'red', 'name': 'y1'},
+        {'label': 'B', 'value': 20, 'color': 'green', 'offset': 0.5, 'name': 'y2'},
+        {'label': 'C', 'value': 30, 'color': 'blue', 'name': 'y3'},
     ]
     chart_4 = KitGraph(Graph.Pie, pie_data)
     layout.addWidget(chart_4, 1, 1, 1, 1)
 
+    scatter_data = [
+        {'x': [1, 2, 3, 4, 5], 'y': [10, 2, 3, 4, 5], 'symbol': {'color': 'red', 'size': 10, 'shape': 't'}, 'name': 'y1'},
+        {'x': [1, 2, 3, 4, 5], 'y': [5, 4, 10, 2, 1], 'symbol': {'color': 'green', 'size': 10, 'shape': 't2'}, 'name': 'y2'},
+        {'x': [1, 2, 3, 4, 5], 'y': [1, 2, 3, 10, 5], 'symbol': {'color': 'blue', 'size': 10, 'shape': 'o'}, 'name': 'y3'},
+    ]
+    chart_5 = KitGraph(Graph.Scatter, scatter_data)
+    layout.addWidget(chart_5, 2, 0, 1, 1)
 
     window.setCentralWidget(main)
     window.show()
