@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication
 
 from widget.component.button import KitButton
 from widget.component.icon.kit_movie_icon import KitMovieIcon
-from widget.component.progressbar.kit_progressbar import KitProgressBar
+from widget.component.progress.kit_progressbar import KitProgressBar
 from widget.component.window.kit_frameless_window import KitFramelessWindow
 
 
@@ -18,6 +18,7 @@ class KitSplashScreen(KitFramelessWindow):
 
     def __init_widget(self):
         self.setTitleBar(None)
+        self.setStatusBar(None)
         self.setResizeable(False)
 
     def __init_slot(self):

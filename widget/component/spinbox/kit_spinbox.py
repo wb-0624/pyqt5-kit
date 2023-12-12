@@ -102,8 +102,6 @@ class KitDoubleSpinBox(QDoubleSpinBox):
         painter.drawPixmap(opt.rect, icon.toPixmap())
 
 
-
-
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     from PyQt5.QtGui import QFontDatabase, QPainter
