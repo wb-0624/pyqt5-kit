@@ -6,7 +6,6 @@ from PyQt5.QtGui import QColor, QPainter, QFontDatabase
 from PyQt5.QtWidgets import QProxyStyle, QStyle, QWidget, QStyleOptionSlider, QSlider, QApplication, QVBoxLayout
 
 from config import config
-from widget.component.window.kit_frameless_window import KitFramelessWindow
 
 
 class KitSliderStyle(QProxyStyle):

@@ -1,10 +1,10 @@
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication
 
-from widget.component.button import KitButton
-from widget.component.icon.kit_movie_icon import KitMovieIcon
-from widget.component.progress.kit_progressbar import KitProgressBar
-from widget.component.window.kit_frameless_window import KitFramelessWindow
+from ..button import KitButton
+from ..icon import KitMovieIcon
+from ..progress import KitProgressBar
+from ..window import KitFramelessWindow
 
 
 class KitSplashScreen(KitFramelessWindow):

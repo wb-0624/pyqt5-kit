@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt, QSize, QRect
 from PyQt5.QtWidgets import QSpinBox, QStyleOptionSpinBox, QStyle, QDoubleSpinBox, QWidget, QVBoxLayout
 
-from widget.component.icon.kit_icon import KitIcon
+from ..icon import KitIcon
 from config import config
 from app_config.constant import Icons
 

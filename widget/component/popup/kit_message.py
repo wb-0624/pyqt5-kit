@@ -1,9 +1,9 @@
 from PyQt5.QtCore import Qt, QSize, QTimer, QPropertyAnimation
 from PyQt5.QtWidgets import QGraphicsOpacityEffect, QLabel, QVBoxLayout, QHBoxLayout, QApplication, QWidget
 
-from widget.component.button import KitButton
-from widget.component.icon.kit_icon import KitIcon
-from widget.component.popup.kit_popup import KitPopup
+from ..button.kit_button import KitButton
+from ..icon.kit_icon import KitIcon
+from ..popup.kit_popup import KitPopup
 from app_config.constant import Position, Icons
 
 

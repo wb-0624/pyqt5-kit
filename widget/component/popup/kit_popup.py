@@ -1,4 +1,3 @@
-
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect, QApplication
 

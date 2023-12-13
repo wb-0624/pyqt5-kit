@@ -2,8 +2,8 @@ from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QFontDatabase, QIntValidator
 from PyQt5.QtWidgets import QLineEdit, QApplication, QWidget, QVBoxLayout
 
-from widget.component.icon.kit_icon import KitIcon
 from config import config
+from ..icon import KitIcon
 from app_config.constant import Icons
 
 

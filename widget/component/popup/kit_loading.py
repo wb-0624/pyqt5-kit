@@ -2,10 +2,9 @@ from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QMovie
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication
 
-from widget.component.button import KitButton
-from widget.component.button.kit_button import KitIconButton
-from widget.component.icon.kit_icon import KitIcon
-from widget.component.overlay.kit_overlay import KitOverlay
+from ..button import KitButton, KitIconButton
+from ..icon import KitIcon
+from ..overlay import KitOverlay
 from app_config.constant import ClosePolicy, Icons, Button
 
 

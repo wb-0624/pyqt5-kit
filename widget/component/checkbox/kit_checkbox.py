@@ -4,9 +4,10 @@ from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QFontDatabase, QPainter, QPixmap
 from PyQt5.QtWidgets import QCheckBox, QVBoxLayout, QWidget, QApplication, QStyleOptionButton, QStyle
 
-from widget.component.icon.kit_icon import KitIcon
 from config import config
 from app_config.constant import Icons
+
+from ..icon import KitIcon
 
 
 class CheckBoxIcon(QWidget):

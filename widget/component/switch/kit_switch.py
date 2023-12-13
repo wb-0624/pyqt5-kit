@@ -2,8 +2,8 @@ from PyQt5.QtCore import Qt, QPropertyAnimation, pyqtSignal
 from PyQt5.QtGui import QFontDatabase
 from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QLabel
 
-from widget.component.icon.kit_icon import KitIcon
-from widget.component.window.kit_frameless_window import KitFramelessWindow
+from ..icon import KitIcon
+from ..window import KitFramelessWindow
 from app_config.constant import Icons
 
 

@@ -5,8 +5,7 @@ from PyQt5.QtGui import QPixmap, QPainter, QFontDatabase
 from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QLabel, QSizePolicy
 
 from config import config
-from widget.component.window.kit_frameless_window import KitFramelessWindow
-
+from ..window import KitFramelessWindow
 
 class KitImage(QWidget):
 

@@ -1,8 +1,7 @@
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QMovie
 
-from widget.component.icon.kit_icon import KitIcon
-
+from .kit_icon import KitIcon
 
 class KitMovieIcon(KitIcon):
 

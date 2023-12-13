@@ -1,11 +1,13 @@
 from typing import List
 
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QHBoxLayout, QRadioButton, QStackedWidget
+from PyQt5.QtGui import QPainter
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QHBoxLayout, QRadioButton, QStackedWidget, QStyle, \
+    QStyleOptionButton
 
 from app_config.constant import Icons, Orientation
-from widget.component.button import KitButton
-from widget.component.icon.kit_icon import KitIcon
+from ..button import KitButton
+from ..icon import KitIcon
 
 
 class KitTab(QRadioButton):

@@ -5,7 +5,7 @@ from PyQt5.QtGui import QFontDatabase
 from PyQt5.QtWidgets import QApplication
 
 from config import config
-from pages.index import Index
+from demo.pages.index import Index
 from widget import KitFramelessWindow
 
 
@@ -24,12 +24,12 @@ def main():
 
     window = KitFramelessWindow()
     window.resize(800, 600)
-    window.setCentralWidget(Index())
+
+    index = Index()
+    window.setCentralWidget(index)
 
     window.show()
     sys.exit(app.exec_())
 
 
-if __name__ == '__main__':
-    main()
-
+main()

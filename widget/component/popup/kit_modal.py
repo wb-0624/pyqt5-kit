@@ -1,11 +1,11 @@
 from PyQt5.QtCore import pyqtSignal, Qt
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QFrame, QApplication
 
-from widget.component.button.kit_button import KitIconButton, KitButton
-from widget.component.overlay.kit_overlay import KitOverlay
-from widget.component.popup.kit_popup import KitPopup
+from ..button import KitIconButton, KitButton
+from ..overlay import KitOverlay
+from ..popup import KitPopup
+from ..window import KitWindow
 from app_config.constant import ClosePolicy, Icons, Button
-from widget.component.window.kit_window import KitWindow
 
 
 class KitModal(KitPopup):

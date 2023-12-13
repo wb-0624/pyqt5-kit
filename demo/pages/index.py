@@ -1,8 +1,8 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QStackedWidget
 
-from widget.component.button import KitButton
-from widget.component.popup.kit_modal import KitModal
+from app_config.constant import Icons
+from widget import KitTabBar
 
 
 class Index(QWidget):
@@ -11,6 +11,7 @@ class Index(QWidget):
         super(Index, self).__init__(parent=parent)
 
         self.__init_widget()
+        self.__init_tab()
         self.__init_slot()
         self.__init_qss()
 
@@ -18,10 +19,13 @@ class Index(QWidget):
         self.layout = QVBoxLayout()
         self.setLayout(self.layout)
 
-        btn = KitButton('test')
-        self.layout.addWidget(btn)
+        self.navigation = KitTabBar()
+        self.stack = QStackedWidget()
+        self.layout.addWidget(self.navigation)
+        self.layout.addWidget(self.stack)
 
-        btn.clicked.connect(lambda: KitModal.notice('提示', '这是一个提示信息'))
+    def __init_tab(self):
+        self.navigation.addTab('basic', Icons.widgets)
 
     def __init_slot(self):
         pass

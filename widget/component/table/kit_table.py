@@ -1,9 +1,9 @@
 from PyQt5.QtCore import Qt, QSize, pyqtSignal, QEvent
 from PyQt5.QtWidgets import QLabel, QPushButton, QTableWidget, QAbstractItemView, QWidget
 
-from widget.component.button import KitButton
-from widget.component.checkbox.kit_checkbox import KitCheckBox
-from widget.component.table.table_page import TablePagination
+from ..button import KitButton
+from ..checkbox import KitCheckBox
+from .table_page import TablePagination
 from app_config.constant import Button
 
 

@@ -8,8 +8,7 @@ from PyQt5.QtGui import QColor, QBrush, QFont
 import pyqtgraph as pg
 
 from app_config.constant import Graph
-
-from widget.component.window.kit_frameless_window import KitFramelessWindow
+from ..window import KitFramelessWindow
 
 
 def convertPolarToCartesian(theta, radius):

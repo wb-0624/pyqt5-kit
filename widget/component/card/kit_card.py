@@ -1,7 +1,5 @@
-from PyQt5.QtCore import Qt, QSize, QPropertyAnimation
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QGraphicsDropShadowEffect, QSizePolicy, QFrame
-
-from widget.component.divider.kit_divider import KitHDivider
+from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QGraphicsDropShadowEffect, QSizePolicy
 
 
 class KitCard(QWidget):

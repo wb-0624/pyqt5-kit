@@ -1,16 +1,16 @@
 import sys
 
-from PyQt5.QtCore import Qt, QSize, QEvent
+from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QFontDatabase
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QVBoxLayout, QGraphicsDropShadowEffect
 
-from widget.component.button import KitButton
 from config import config
 from app_config.constant import Position, Window
-
-from widget.component.window.status_bar import KitStatusBar
-from widget.component.window.title_bar import KitTitleBar
 from app_config.signal_center import signal_center
+
+from ..button import KitButton
+from .kit_title_bar import KitTitleBar
+from .kit_status_bar import KitStatusBar
 
 
 class KitWindowBody(QWidget):
@@ -82,6 +82,7 @@ class KitWindowBody(QWidget):
             self.layout.insertWidget(0, status_bar)
         self.status_bar = status_bar
         self.update()
+
 class KitFramelessWindow(QMainWindow):
 
     def __init__(self):
@@ -117,6 +118,9 @@ class KitFramelessWindow(QMainWindow):
 
     def setTitleBar(self, title_bar):
         self.window_body.setTitleBar(title_bar)
+
+    def setStatusBar(self, status_bar) -> None:
+        self.window_body.setStatusBar(status_bar)
 
     def setWindowBody(self, window_body):
         self.window_body = window_body
