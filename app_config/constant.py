@@ -20,6 +20,12 @@ class Button:
 class Window:
     resize_margin = 12  # 窗口缩放边界宽度
 
+    Normal = 0
+    Minimized = 1
+    Maximized = 2
+    FullScreen = 3
+
+
 
 class ClosePolicy:
     """

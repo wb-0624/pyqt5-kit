@@ -5,6 +5,11 @@
 - title_bar.py         标题栏
 - status_bar.py        状态栏
 
+这里的titlebar实现了窗口移动。如果设置titlebar为None的话，会失去移动效果，需要自己实现。
+这里建立删除titlebar里的东西，而不是直接删除titlebar。
+
+``` python
+
 基础仍然是QMainWindow。
 
 ``` python
@@ -29,4 +34,4 @@ title_bar通过 init 时的 parent 和WindowBody建立联系。
 - [x] 双击标题栏，最大化，还原。
 - [x] 按住标题栏移动。
 - [x] 边框拉伸。
-- [ ] 贴靠顶部最大化，拉开还原。 
+- [x] 贴靠顶部最大化，拉开还原。 
