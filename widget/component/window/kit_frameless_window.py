@@ -1,7 +1,7 @@
 import sys
 
-from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtGui import QFontDatabase
+from PyQt5.QtCore import Qt, QSize, QPoint
+from PyQt5.QtGui import QFontDatabase, QCursor
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QVBoxLayout, QGraphicsDropShadowEffect
 
 from config import config
@@ -20,7 +20,6 @@ class KitWindowBody(QWidget):
 
         self.title_bar = KitTitleBar(self)
         self.main_content = QWidget(self)
-        self.main_content.setMouseTracking(True)
         self.status_bar = KitStatusBar(self)
         self.layout = QVBoxLayout()
 
@@ -29,8 +28,6 @@ class KitWindowBody(QWidget):
         self.__init_qss()
 
     def __init_widget(self):
-        self.setMouseTracking(True)
-
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.setSpacing(0)
 
@@ -83,6 +80,13 @@ class KitWindowBody(QWidget):
         self.status_bar = status_bar
         self.update()
 
+    def enterEvent(self, a0) -> None:
+        self.parent().leaveEvent(a0)
+
+    def leaveEvent(self, a0) -> None:
+        self.parent().enterEvent(a0)
+
+
 class KitFramelessWindow(QMainWindow):
 
     def __init__(self):
@@ -90,11 +94,13 @@ class KitFramelessWindow(QMainWindow):
 
         self.window_body = None
         self.title_bar = None
+
         self.window_status = Window.Normal
-        self.resizeable = True
+        self.resizable = True
         self.draggable = True
 
-        self.__drag_resize = None
+        self.__drag_position = None
+        self.__resize = None
         self.resize_margin = Window.resize_margin
 
         self.__init_widget()
@@ -102,7 +108,6 @@ class KitFramelessWindow(QMainWindow):
     def __init_widget(self):
         self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
-        self.setMouseTracking(True)
         self.setContentsMargins(self.resize_margin, self.resize_margin, self.resize_margin, self.resize_margin)
 
         self.window_body = KitWindowBody()
@@ -127,65 +132,110 @@ class KitFramelessWindow(QMainWindow):
         super().setCentralWidget(window_body)
 
     def setResizeable(self, resizeable:bool):
-        self.resizeable = resizeable
+        self.resizable = resizeable
 
-    def isResizeable(self):
-        return self.resizeable
+    def isResizable(self):
+        return self.resizable
 
-    def setDraggable(self, draggable:bool):
+    def windowStatus(self):
+        return self.window_status
+
+    def setDraggable(self, draggable: bool):
         self.draggable = draggable
 
     def isDraggable(self):
         return self.draggable
 
+    # 鼠标边界判断
+    def __fresh_mouse_edge(self, pos: QPoint):
+        # 这里 +8 实际上是增加了拉伸的判定范围。
+        # 否则在边界处难以判定，得稍微离开一点才能判定为拉伸，这里是为了视觉效果体验做出的让步
+        mouse_resize_margin = self.resize_margin + 8
+        edge = 0
+        if not self.isResizable():
+            self.__drag_position = None
+            return
+        if 0 <= pos.x() <= mouse_resize_margin:
+            edge |= Position.Left
+        elif self.width() - mouse_resize_margin <= pos.x() <= self.width():
+            edge |= Position.Right
+        if 0 <= pos.y() <= mouse_resize_margin:
+            edge |= Position.Top
+        elif self.height() - mouse_resize_margin <= pos.y() <= self.height():
+            edge |= Position.Bottom
+        self.__drag_position = None if edge == 0 else edge
+
+    # 根据边界判断鼠标样式
+    def __fresh_mouse_cursor(self):
+
+        if self.__drag_position in (Position.Top, Position.Bottom):
+            cursor = Qt.SizeVerCursor
+        elif self.__drag_position in (Position.Left, Position.Right):
+            cursor = Qt.SizeHorCursor
+        elif self.__drag_position in (Position.TopLeft, Position.BottomRight):
+            cursor = Qt.SizeFDiagCursor
+        elif self.__drag_position in (Position.TopRight, Position.BottomLeft):
+            cursor = Qt.SizeBDiagCursor
+        else:
+            cursor = Qt.ArrowCursor
+
+        self.setCursor(cursor)
+
     def mouseMoveEvent(self, a0) -> None:
-        mouse_pos = a0.pos()
-        # 这里的 减2 非常微妙
-        # 如果不减，和周围留空的边距刚好一样的话
-        # 那么在临界的时候，由于鼠标就到了 body 的组件上，而不是在底层上
-        # 就会导致临界值时，反而依然会导致拉伸功能生效。
-        # 所以这里 减2 可以使得在底层上，就判断出临界。当然减几都行。
-        mouse_resize_margin = self.resize_margin - 2
-        if self.isMaximized() or self.isFullScreen() or self.resizeable is False:
+        if self.isMaximized() or self.isFullScreen() or self.resizable is False:
             return
 
-        if 0 < mouse_pos.x() < mouse_resize_margin:
-            self.setCursor(Qt.SizeHorCursor)
-            self.__drag_resize = Position.Left
-        elif self.width() - mouse_resize_margin < mouse_pos.x() < self.width():
-            self.setCursor(Qt.SizeHorCursor)
-            self.__drag_resize = Position.Right
-        elif 0 < mouse_pos.y() < mouse_resize_margin:
-            self.setCursor(Qt.SizeVerCursor)
-            self.__drag_resize = Position.Top
-        elif self.height() - mouse_resize_margin < mouse_pos.y() < self.height():
-            self.setCursor(Qt.SizeVerCursor)
-            self.__drag_resize = Position.Bottom
-        else:
-            self.setCursor(Qt.ArrowCursor)
-            self.__drag_resize = None
+        if self.__drag_position is not None and self.__resize is not None:
+            dw = a0.globalPos().x() - self.__resize.x()
+            dh = a0.globalPos().y() - self.__resize.y()
+            width = self.width()
+            height = self.height()
+            x = self.x()
+            y = self.y()
+            if self.__drag_position & Position.Right == Position.Right:
+                width += dw
+            elif self.__drag_position & Position.Left == Position.Left:
+                width -= dw
+                x += dw
+            if self.__drag_position & Position.Bottom == Position.Bottom:
+                height += dh
+            elif self.__drag_position & Position.Top == Position.Top:
+                height -= dh
+                y += dh
+
+            minw = self.minimumWidth()
+            minh = self.minimumHeight()
+            maxw = self.maximumWidth()
+            maxh = self.maximumHeight()
+
+            if width < minw or width > maxw or height < minh or height > maxh:
+                return
+
+            self.setGeometry(x, y, width, height)
+            self.__resize = a0.globalPos()
         a0.ignore()
 
     def mousePressEvent(self, a0) -> None:
-        if a0.button() == Qt.LeftButton:
-            if self.__drag_resize == Position.Left and self.cursor() == Qt.SizeHorCursor:
-                self.window().windowHandle().startSystemResize(Qt.LeftEdge)
-            elif self.__drag_resize == Position.Right and self.cursor() == Qt.SizeHorCursor:
-                self.window().windowHandle().startSystemResize(Qt.RightEdge)
-            elif self.__drag_resize == Position.Top and self.cursor() == Qt.SizeVerCursor:
-                self.window().windowHandle().startSystemResize(Qt.TopEdge)
-            elif self.__drag_resize == Position.Bottom and self.cursor() == Qt.SizeVerCursor:
-                self.window().windowHandle().startSystemResize(Qt.BottomEdge)
+        if a0.button() == Qt.LeftButton \
+                and self.__drag_position is not None \
+                and self.__resize is None:
+            self.__resize = a0.globalPos()
         else:
             a0.ignore()
 
     def mouseReleaseEvent(self, a0) -> None:
-        if self.__drag_resize is not None:
-            self.__drag_resize = None
-            self.setCursor(Qt.ArrowCursor)
-            a0.accept()
-        else:
-            a0.ignore()
+        self.__resize = None
+        self.__drag_position = None
+        self.setCursor(Qt.ArrowCursor)
+
+    def enterEvent(self, a0) -> None:
+        self.__fresh_mouse_edge(self.mapFromGlobal(QCursor.pos()))
+        self.__fresh_mouse_cursor()
+
+    def leaveEvent(self, a0) -> None:
+        self.__resize = None
+        self.__drag_position = None
+        self.setCursor(Qt.ArrowCursor)
 
     def sizeHint(self):
         return QSize(800, 600)
@@ -195,8 +245,8 @@ class KitFramelessWindow(QMainWindow):
         super().showMinimized()
 
     def showNormal(self) -> None:
-        self.window_status = Window.Normal
         self.setContentsMargins(self.resize_margin, self.resize_margin, self.resize_margin, self.resize_margin)
+        self.window_status = Window.Normal
         self.window_body.setProperty('type', 'normal')
         self.window_body.style().polish(self.window_body)
         super().showNormal()
@@ -216,9 +266,11 @@ class KitFramelessWindow(QMainWindow):
         super().showFullScreen()
 
 
+
 if __name__ == "__main__":
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
+
     app = QApplication(sys.argv)
     qss = config.init_qss()
     app.setStyleSheet(qss)
@@ -233,6 +285,5 @@ if __name__ == "__main__":
     main.layout().addWidget(btn)
     window.setCentralWidget(main)
     window.show()
-
 
     sys.exit(app.exec_())
