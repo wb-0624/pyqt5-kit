@@ -28,6 +28,7 @@ class KitTab(QRadioButton):
 
     def __init_widget(self):
         self.setCheckable(True)
+        self.setAutoExclusive(True)
         self.setFixedHeight(32)
 
         self.indicator_widget = QWidget(self)
@@ -95,7 +96,7 @@ class KitTabBar(QWidget):
         self.setAttribute(Qt.WA_StyledBackground, True)
 
     def addTab(self, text: str = '', icon: Icons = ''):
-        tab = KitTab(text, icon, self._orientation)
+        tab = KitTab('  '+text, icon, self._orientation)
         tab.toggled.connect(lambda checked: self.setCurrentIndex(self.tab_list.index(tab)))
         self.tab_list.append(tab)
         self.layout.addWidget(tab)
@@ -103,6 +104,7 @@ class KitTabBar(QWidget):
     def setCurrentIndex(self, currentIndex: int):
         if self._currentIndex != currentIndex:
             self._currentIndex = currentIndex
+            self.tab_list[self._currentIndex].setChecked(True)
             if isinstance(self._stackedWidget, QStackedWidget):
                 self._stackedWidget.setCurrentIndex(self._currentIndex)
 
