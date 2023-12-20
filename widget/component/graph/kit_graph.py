@@ -79,7 +79,7 @@ class KitGraph(QWidget):
         elif self.chart_type == Graph.Pie:
             return KitPieGraph(self.chart_data)
         else:
-            raise TypeError("chart type error")
+            raise TypeError("graph type error")
 
     def showEvent(self, a0):
         if self.parent() is not None:

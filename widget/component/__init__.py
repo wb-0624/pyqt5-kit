@@ -1,6 +1,6 @@
 from .button import *
 from .card import *
-from .chart import *
+from .graph import *
 from .checkbox import *
 from .combobox import *
 from .divider import *

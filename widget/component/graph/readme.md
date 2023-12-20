@@ -24,3 +24,4 @@ QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 
 需要自定义 pyqtgraph 图的画，要继承 KitGraphWidget 类，然后重写 fresh_chart() 方法。
 
+最后发现其实是，窗口的拉伸使用了 ``startSystemResize()` 的原因。应该是 Windows 渲染过快的问题，只需要手动实现拉伸即可。

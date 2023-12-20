@@ -25,7 +25,7 @@ $margin: 4px;
 
 // 组件样式
 // 按钮
-$button-color: #f5f5f5;
+$button-color: $gray200;
 $tool-button-color: #f5f5f5;
 // 菜单样式
 $menu-hovered: transparentize($gray300, 0.5);
@@ -36,7 +36,6 @@ $menu-unchecked: transparent;
 $tab-hovered: transparentize($gray300, 0.5);
 $tab-checked: transparentize($gray300, 0.5);
 $tab-unchecked: transparent;
-
 $tab-bar-bg: transparent;
 
 // progress

@@ -5,7 +5,7 @@ from PyQt5.QtGui import QFontDatabase
 from PyQt5.QtWidgets import QApplication
 
 from config import config
-from pages.index import Index
+from demo.pages.index import Index
 from widget import KitFramelessWindow
 
 

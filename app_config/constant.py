@@ -25,8 +25,6 @@ class Window:
     Maximized = 2
     FullScreen = 3
 
-
-
 class ClosePolicy:
     """
     关闭策略
@@ -38,15 +36,15 @@ class ClosePolicy:
 
 
 class Position:
-    Left = 0
-    Top = 1
-    Right = 2
-    Bottom = 3
-    Center = 5
-    TopLeft = 6
-    TopRight = 7
-    BottomLeft = 8
-    BottomRight = 9
+    Center = 0
+    Left = 1
+    Top = 2
+    Right = 4
+    Bottom = 8
+    TopLeft = Top | Left
+    TopRight = Top | Right
+    BottomLeft = Bottom | Left
+    BottomRight = Bottom | Right
 
 
 class Orientation:
