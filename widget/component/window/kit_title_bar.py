@@ -35,6 +35,7 @@ class KitTitleBar(QWidget):
         self.close_button = KitTitleBarButton(Icons.close)
         self.close_button.setObjectName("title_bar_close_button")
 
+        self._pos = None
 
         self.__init_widget()
         self.__init_slot()
@@ -99,23 +100,30 @@ class KitTitleBar(QWidget):
         self.__change_size()
 
     def mouseMoveEvent(self, a0: QMouseEvent) -> None:
-        # 脱离边缘，变成normal大小的功能是startSystemMove() 里自带的
-        # 所以对标题栏的状态变化要这里单独变化一次
         if self.window().isFullScreen() or not self.window().isDraggable():
             return
         if self.window().isMaximized():
+            pos_x_radio = self._pos.x()/self.window().window().width()
             self.window().showNormal()
-        self.window().windowHandle().startSystemMove()
+            self.window().move(a0.globalPos().x()-pos_x_radio*self.window().width(), 0)
+        if self._pos:
+            self.window().move(self.window().pos() + a0.globalPos() - self._pos)
+            self._pos = a0.globalPos()
         a0.ignore()
 
     def enterEvent(self, a0):
         self.setCursor(Qt.ArrowCursor)
 
-    # 贴靠顶部最大化
-    # 离开最小化，内置的 startSystemMove() 已经实现了。
+    def mousePressEvent(self, a0: QMouseEvent) -> None:
+        self._pos = a0.globalPos()
+        super().mousePressEvent(a0)
+
+    # 离开时，如果是最大化状态，就变成normal
     def mouseReleaseEvent(self, a0) -> None:
         if a0.globalPos().y() < 10 and not self.window().isMaximized() and not self.window().isFullScreen():
             self.window().showMaximized()
+        self._pos = None
+        super().mouseReleaseEvent(a0)
 
 
 
