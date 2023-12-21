@@ -49,21 +49,4 @@ class KitIcon(QLabel):
         return pixmap
 
 
-if __name__ == "__main__":
 
-    # 适应分辨率
-    QApplication.setHighDpiScaleFactorRoundingPolicy(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-
-    app = QApplication(sys.argv)
-    QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-
-    main = QWidget()
-    qss = config.init_qss()
-    main.setStyleSheet(qss)
-    icon = KitIcon(Icons.add, main)
-    icon.setText(Icons.home)
-
-    main.show()
-    sys.exit(app.exec_())

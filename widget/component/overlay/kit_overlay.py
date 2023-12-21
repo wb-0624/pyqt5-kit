@@ -5,7 +5,6 @@ from PyQt5.QtWidgets import QWidget, QApplication, QGraphicsOpacityEffect
 from app_config.kit_root import root
 from app_config.signal_center import signal_center
 from app_config.constant import ClosePolicy
-from ..button import KitButton
 
 
 class KitOverlay(QWidget):
@@ -116,28 +115,3 @@ class KitOverlay(QWidget):
         super().resizeEvent(a0)
         self.resized.emit(self.size())
 
-
-if __name__ == "__main__":
-    from PyQt5.QtWidgets import QWidget, QVBoxLayout
-    from PyQt5.QtGui import QFontDatabase
-    from config import config
-    import sys
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-
-    app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
-    main = QWidget()
-    layout = QVBoxLayout()
-    main.setLayout(layout)
-    btn = KitButton('open overlay')
-    overlay = KitOverlay()
-    overlay.setClosePolicy(ClosePolicy.CloseOnClicked)
-    layout.addWidget(btn)
-    btn.clicked.connect(lambda: [overlay.show(), btn.raise_()])
-
-    main.show()
-    sys.exit(app.exec_())

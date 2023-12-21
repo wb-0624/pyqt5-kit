@@ -1,11 +1,8 @@
 from PyQt5.QtCore import Qt, QSize, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QLabel
 
-from widget.component.button import KitButton
 from widget.component.icon.kit_icon import KitIcon
-from widget.component.popup.kit_modal import KitModal
 from app_config.constant import Icons
-from widget.component.window.kit_frameless_window import KitFramelessWindow
 
 
 class KitFileDropArea(QWidget):
@@ -75,31 +72,4 @@ class KitFileDropArea(QWidget):
         self.dropped.emit(self.accepted_file_paths, self.rejected_file_paths)
 
 
-if __name__ == "__main__":
-    from PyQt5.QtGui import QFontDatabase
-    from config import config
-    import sys
 
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-
-    app = QApplication(sys.argv)
-
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-
-    window = KitFramelessWindow()
-
-    main = QWidget()
-    layout = QVBoxLayout()
-    main.setLayout(layout)
-    file_drop = KitFileDropArea([".png", ".jpg", ".jpeg"])
-    layout.addWidget(file_drop)
-    file_drop.dropped.connect(lambda l1, l2: KitModal.notice('info', '接受文件' + ','.join(l1)+'\n拒绝文件' + '.'.join(l2)))
-    # layout.addWidget(btn)
-    window.setCentralWidget(main)
-    # main.show()
-    window.show()
-    sys.exit(app.exec_())

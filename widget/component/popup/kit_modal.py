@@ -1,4 +1,4 @@
-from PyQt5.QtCore import pyqtSignal, Qt
+from PyQt5.QtCore import pyqtSignal, Qt, QEvent
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QFrame, QApplication
 
 from ..button import KitIconButton, KitButton
@@ -139,19 +139,7 @@ if __name__ == "__main__":
     main = QWidget()
     layout = QVBoxLayout()
     main.setLayout(layout)
-    btn = KitButton('notice')
-    btn2 = KitButton('dialog')
-    layout.addWidget(btn)
-    layout.addWidget(btn2)
 
-    content1 = QWidget()
-    content1.setLayout(QVBoxLayout())
-    content1.layout().addWidget(QLabel('123'))
-    content1.layout().addWidget(QLabel('456'))
-    content1.layout().addWidget(KitButton('789'))
-
-    btn.clicked.connect(lambda: KitModal.notice("title", content1))
-    btn2.clicked.connect(lambda: KitModal.dialog('123', '456', lambda: print('confirm')))
 
     window.setCentralWidget(main)
     window.show()

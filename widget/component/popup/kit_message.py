@@ -1,7 +1,6 @@
 from PyQt5.QtCore import Qt, QSize, QTimer, QPropertyAnimation
-from PyQt5.QtWidgets import QGraphicsOpacityEffect, QLabel, QVBoxLayout, QHBoxLayout, QApplication, QWidget
+from PyQt5.QtWidgets import QGraphicsOpacityEffect, QLabel, QVBoxLayout, QHBoxLayout, QApplication
 
-from ..button.kit_button import KitButton
 from ..icon.kit_icon import KitIcon
 from ..popup.kit_popup import KitPopup
 from app_config.constant import Position, Icons
@@ -129,41 +128,3 @@ class KitMessage(KitPopup):
     def error(cls, title, position=Position.BottomRight, close_time=3000):
         msg_error = cls.make(Icons.cancel, title, position, close_time, "danger")
         return msg_error
-
-
-if __name__ == "__main__":
-    from PyQt5.QtGui import QFontDatabase
-    from config import config
-    import sys
-
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-
-    app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
-
-    main = QWidget()
-    layout = QVBoxLayout()
-    main.setLayout(layout)
-
-    btn2 = KitButton("showInfo")
-    layout.addWidget(btn2)
-    btn2.clicked.connect(lambda: KitMessage.info("info", Position.Top))
-
-    btn3 = KitButton("showSuccess")
-    layout.addWidget(btn3)
-    btn3.clicked.connect(lambda: KitMessage.success("success", Position.Left))
-
-    btn4 = KitButton("showWarning")
-    layout.addWidget(btn4)
-    btn4.clicked.connect(lambda: KitMessage.warning("warning", Position.Right))
-
-    btn5 = KitButton("showError")
-    layout.addWidget(btn5)
-    btn5.clicked.connect(lambda: KitMessage.error("error"))
-
-    main.show()
-    sys.exit(app.exec_())

@@ -1,10 +1,9 @@
 from PyQt5.QtCore import Qt, QSize, pyqtSignal, QEvent
-from PyQt5.QtWidgets import QLabel, QPushButton, QTableWidget, QAbstractItemView, QWidget
+from PyQt5.QtGui import QResizeEvent
+from PyQt5.QtWidgets import QLabel, QTableWidget, QAbstractItemView, QWidget, QVBoxLayout
 
-from ..button import KitButton
 from ..checkbox import KitCheckBox
 from .table_page import TablePagination
-from app_config.constant import Button
 
 
 class TableCellWidget(QLabel):
@@ -749,87 +748,3 @@ class KitTable(QWidget):
 
     def setBodyRowHeight(self, height):
         self.freeze_table.setBodyRowHeight(height)
-
-
-if __name__ == "__main__":
-    from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
-    from PyQt5.QtGui import QFontDatabase, QResizeEvent
-    from config import config
-    import sys
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-
-    class CustomCell(TableCellWidget):
-        def __init__(self):
-            super().__init__()
-
-            self.btn = KitButton()
-            self.btn.setType(Button.Primary)
-            self.__init_widget()
-
-        def __init_widget(self):
-            self.layout = QVBoxLayout()
-            self.layout.setContentsMargins(0, 0, 0, 0)
-            self.layout.addWidget(self.btn)
-            self.setLayout(self.layout)
-
-        def setValue(self, index_data, row_data):
-            self.btn.setText(str(index_data))
-
-    app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
-
-    main = QWidget()
-    layout = QVBoxLayout()
-    main.setLayout(layout)
-    table = KitTable()
-    table.setTableColumnProperty([
-        {"display": "序号", "key": "id"},
-        {"display": "姓名", "key": "name", 'width': 200, '_wrap': True},
-        {"display": "年龄", "key": "age"},
-        {"display": "身高", "key": "height", 'cell': type(CustomCell())},
-    ])
-    table_data = [
-        {"id": 1, "name": "张三1289375091 27305781230975091", "age": 18, "height": 180},
-        {"id": 2, "name": "李四", "age": 19, "height": {'text': 170}},
-        {"id": 3, "name": "王五", "age": 20, "height": {'text': 160}},
-        {"id": 4, "name": "赵六", "age": 21, "height": {'text': 150}},
-        {"id": 5, "name": "田七", "age": 22, "height": {'text': 140}},
-    ]
-    table_data_2 = []
-    for i in range(100):
-        table_data_2.append({"id": i, "name": "张三"+str(i), "age": i, "height": 180})
-    table_data_3 = []
-    for i in range(80):
-        table_data_3.append({"id": i*2, "name": "李四"+str(i), "age": i*2, "height": 170})
-    table.setTableShowCheck(True)
-    # table.setTablePageSum(2)
-    table.setTableLeftFreeze(2)
-    table.setBodyRowHeight(60)
-    table.setTableData([])
-    layout.addWidget(table)
-    clear_btn = QPushButton('清空')
-    clear_btn.clicked.connect(lambda: table.setTableData([]))
-    layout.addWidget(clear_btn)
-
-    btn = QPushButton('按钮')
-    btn.clicked.connect(lambda: table.setTableData(table_data_2))
-    layout.addWidget(btn)
-
-    btn2 = QPushButton('按钮2')
-    btn2.clicked.connect(lambda: table.setTableData(table_data_3))
-    layout.addWidget(btn2)
-
-    all = QPushButton('全部')
-    all.clicked.connect(lambda: print(table.table_data))
-    layout.addWidget(all)
-    table.freeze_table.table_body.setRowCount(1)
-
-    check = TableCellCheck()
-    main.layout().addWidget(check)
-    main.show()
-    sys.exit(app.exec_())

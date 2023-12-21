@@ -1,8 +1,8 @@
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QMovie
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication
+from PyQt5.QtWidgets import QVBoxLayout
 
-from ..button import KitButton, KitIconButton
+from ..button import KitIconButton
 from ..icon import KitIcon
 from ..overlay import KitOverlay
 from app_config.constant import ClosePolicy, Icons, Button
@@ -68,28 +68,4 @@ class KitLoading(KitOverlay):
         return loading
 
 
-if __name__ == "__main__":
-    from PyQt5.QtGui import QFontDatabase
-    from config import config
-    import sys
 
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-
-    app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
-
-    main = QWidget()
-    layout = QVBoxLayout()
-    main.setLayout(layout)
-
-    loading = KitLoading()
-    btn = KitButton('open loading')
-    layout.addWidget(btn)
-    btn.clicked.connect(lambda: KitLoading.run())
-
-    main.show()
-    sys.exit(app.exec_())

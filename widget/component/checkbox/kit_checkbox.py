@@ -94,21 +94,3 @@ class KitCheckBox(QCheckBox):
         painter.drawPixmap(rect, QPixmap.fromImage(state_icon.grab().toImage()))
 
 
-if __name__ == "__main__":
-
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-    app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-    main = QWidget()
-    main.setLayout(QVBoxLayout())
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
-    check1 = KitCheckBox()
-    main.layout().addWidget(check1)
-    check2 = KitCheckBox("12345")
-    check2.setTristate(True)
-    main.layout().addWidget(check2)
-    main.show()
-    sys.exit(app.exec_())

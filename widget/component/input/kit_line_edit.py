@@ -1,8 +1,6 @@
 from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtGui import QFontDatabase, QIntValidator
-from PyQt5.QtWidgets import QLineEdit, QApplication, QWidget, QVBoxLayout
+from PyQt5.QtWidgets import QLineEdit
 
-from config import config
 from ..icon import KitIcon
 from app_config.constant import Icons
 
@@ -55,22 +53,3 @@ class KitLineEdit(QLineEdit):
         :return:
         """
         return self.hasAcceptableInput()
-
-
-if __name__ == '__main__':
-    app = QApplication([])
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
-    main = QWidget()
-    main.resize(800, 600)
-    layout = QVBoxLayout()
-    line1 = KitLineEdit()
-    validator = QIntValidator(1, 10)
-    line1.setValidator(validator)
-    line1.setToolTip("请输入1-10的数字")
-    main.setLayout(layout)
-    layout.addWidget(line1)
-    main.show()
-    app.exec_()

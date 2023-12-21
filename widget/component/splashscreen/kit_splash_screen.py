@@ -1,9 +1,5 @@
 from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication
 
-from ..button import KitButton
-from ..icon import KitMovieIcon
-from ..progress import KitProgressBar
 from ..window import KitFramelessWindow
 
 
@@ -29,36 +25,3 @@ class KitSplashScreen(KitFramelessWindow):
 
     def sizeHint(self):
         return QSize(500, 300)
-
-
-if __name__ == "__main__":
-    from PyQt5.QtGui import QFontDatabase
-    from config import config
-    import sys
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-
-    app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
-
-    window = KitSplashScreen()
-    main = QWidget()
-    layout = QVBoxLayout()
-    main.setLayout(layout)
-
-    icon = KitMovieIcon()
-    layout.addWidget(icon, alignment=Qt.AlignHCenter)
-    progress = KitProgressBar()
-    progress.setValue(0)
-    layout.addWidget(progress)
-    btn = KitButton('progress add 1')
-    btn.clicked.connect(lambda: progress.setValue(progress.value()+5))
-    layout.addWidget(btn)
-
-    window.setCentralWidget(main)
-    window.show()
-
-    sys.exit(app.exec_())

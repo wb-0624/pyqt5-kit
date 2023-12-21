@@ -1,8 +1,8 @@
 from PyQt5.QtCore import Qt, QSize, QRect
-from PyQt5.QtWidgets import QSpinBox, QStyleOptionSpinBox, QStyle, QDoubleSpinBox, QWidget, QVBoxLayout
+from PyQt5.QtGui import QPainter
+from PyQt5.QtWidgets import QSpinBox, QStyleOptionSpinBox, QStyle, QDoubleSpinBox
 
 from ..icon import KitIcon
-from config import config
 from app_config.constant import Icons
 
 
@@ -34,7 +34,6 @@ class KitSpinBox(QSpinBox):
 
     def paintEvent(self, e):
         super().paintEvent(e)
-
         painter = QPainter(self)
         opt = QStyleOptionSpinBox()
         opt.initFrom(self)
@@ -100,27 +99,3 @@ class KitDoubleSpinBox(QDoubleSpinBox):
         icon = KitIcon(Icons.expand_more)
         icon.setObjectName('spinbox_icon')
         painter.drawPixmap(opt.rect, icon.toPixmap())
-
-
-if __name__ == "__main__":
-    from PyQt5.QtWidgets import QApplication
-    from PyQt5.QtGui import QFontDatabase, QPainter
-    import sys
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-
-    app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
-
-    main = QWidget()
-    layout = QVBoxLayout()
-    main.setLayout(layout)
-    spin = KitSpinBox()
-    double_spin = KitDoubleSpinBox()
-    layout.addWidget(spin)
-    layout.addWidget(double_spin)
-    main.show()
-    sys.exit(app.exec_())

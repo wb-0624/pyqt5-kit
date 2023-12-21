@@ -47,27 +47,4 @@ class KitCard(QWidget):
         self.setGraphicsEffect(self.shadow)
 
 
-if __name__ == "__main__":
-    from config import config
-    import sys
 
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-
-    app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-
-    main = QWidget()
-    layout = QVBoxLayout()
-    main.setLayout(layout)
-
-    card = KitCard()
-    layout.addWidget(card)
-    card_2 = KitCard()
-    layout.addWidget(card_2)
-    card_3 = KitCard()
-    layout.addWidget(card_3)
-
-    main.show()
-    sys.exit(app.exec_())

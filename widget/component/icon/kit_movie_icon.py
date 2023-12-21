@@ -3,6 +3,7 @@ from PyQt5.QtGui import QMovie
 
 from .kit_icon import KitIcon
 
+
 class KitMovieIcon(KitIcon):
 
     def __init__(self, gif_url: str = 'assets/gif/loading_annular.gif', parent=None):

@@ -1,12 +1,9 @@
 from typing import List
 
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtGui import QPainter
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QHBoxLayout, QRadioButton, QStackedWidget, QStyle, \
-    QStyleOptionButton
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QRadioButton, QStackedWidget
 
 from app_config.constant import Icons, Orientation
-from ..button import KitButton
 from ..icon import KitIcon
 
 
@@ -100,6 +97,8 @@ class KitTabBar(QWidget):
         tab.toggled.connect(lambda checked: self.setCurrentIndex(self.tab_list.index(tab)))
         self.tab_list.append(tab)
         self.layout.addWidget(tab)
+        if self._currentIndex == -1:
+            self.setCurrentIndex(0)
 
     def setCurrentIndex(self, currentIndex: int):
         if self._currentIndex != currentIndex:
@@ -127,38 +126,3 @@ class KitTabBar(QWidget):
         self._stackedWidget = stacked_widget
 
 
-if __name__ == "__main__":
-    from PyQt5.QtGui import QFontDatabase
-    from config import config
-    import sys
-
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-
-    app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
-
-    main = QWidget()
-    layout = QVBoxLayout()
-    main.setLayout(layout)
-
-    tab_bar = KitTabBar()
-    tab_bar.addTab('Tab 1', Icons.home)
-    tab_bar.addTab('Tab 2', Icons.home)
-    tab_bar.addTab('Tab 312341235123', Icons.home)
-
-    stacked = QStackedWidget()
-    stacked.addWidget(KitButton('1'))
-    stacked.addWidget(KitButton('2'))
-    stacked.addWidget(KitButton('3'))
-
-    tab_bar.connectStackedWidget(stacked)
-
-    layout.addWidget(tab_bar)
-    layout.addWidget(stacked)
-
-    main.show()
-    sys.exit(app.exec_())
