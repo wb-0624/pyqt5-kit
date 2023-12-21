@@ -6,7 +6,6 @@ from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QVBoxLayout, QGr
 
 from config import config
 from app_config.constant import Position, Window
-from app_config.signal_center import signal_center
 
 from ..button import KitButton
 from .kit_title_bar import KitTitleBar
@@ -19,7 +18,7 @@ class KitWindowBody(QWidget):
         super(KitWindowBody, self).__init__(parent=parent)
 
         self.title_bar = KitTitleBar(self)
-        self.main_content = QWidget(self)
+        self.central_widget = QWidget(self)
         self.status_bar = KitStatusBar(self)
         self.layout = QVBoxLayout()
 
@@ -33,15 +32,15 @@ class KitWindowBody(QWidget):
 
         self.setLayout(self.layout)
         self.layout.addWidget(self.title_bar)
-        self.layout.addWidget(self.main_content, 1)
+        self.layout.addWidget(self.central_widget, 1)
         self.layout.addWidget(self.status_bar)
 
     def setCentralWidget(self, widget: QWidget):
-        self.layout.removeWidget(self.main_content)
-        self.main_content.deleteLater()
+        self.layout.removeWidget(self.central_widget)
+        self.central_widget.deleteLater()
         widget.setMouseTracking(True)
         self.layout.insertWidget(1, widget, stretch=1)
-        self.main_content = widget
+        self.central_widget = widget
 
     def __init_slot(self):
         pass
@@ -58,7 +57,6 @@ class KitWindowBody(QWidget):
     def resizeEvent(self, a0) -> None:
         if self.title_bar is not None:
             self.title_bar.resizeEvent(a0)
-        signal_center.mainWindowResized.emit(self.size())
         super().resizeEvent(a0)
 
     def setTitleBar(self, bar):
@@ -145,6 +143,12 @@ class KitFramelessWindow(QMainWindow):
 
     def isDraggable(self):
         return self.draggable
+
+    def centralWidget(self):
+        return self.window_body.central_widget
+
+    def windowBody(self):
+        return self.window_body
 
     # 鼠标边界判断
     def __fresh_mouse_edge(self, pos: QPoint):
@@ -264,7 +268,6 @@ class KitFramelessWindow(QMainWindow):
         self.window_body.setProperty('type', 'max')
         self.window_body.style().polish(self.window_body)
         super().showFullScreen()
-
 
 
 if __name__ == "__main__":

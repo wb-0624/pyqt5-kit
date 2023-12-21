@@ -13,8 +13,8 @@ class KitMessage(KitPopup):
     @param close_time: 自动关闭时间毫秒, -1 为不关闭
     """
 
-    def __init__(self, position=Position.BottomRight, close_time=3000):
-        super(KitMessage, self).__init__()
+    def __init__(self, parent, position: Position = Position.BottomRight, close_time=3000):
+        super(KitMessage, self).__init__(parent)
 
         self.offset = 20
         self.position = position
@@ -48,17 +48,6 @@ class KitMessage(KitPopup):
         self._animation.setStartValue(0)
         self._animation.setEndValue(1)
 
-    def __init_parent(self):
-        self.focusWidget()
-        # 用于获取当前应用的最上层的组件，可以理解为主窗口
-        widget = QApplication.activeWindow()
-        if widget is None:
-            widget = self.window()
-        if self._parent == widget:
-            return
-        self._parent = widget
-        self.setParent(self._parent)
-
     def sizeHint(self):
         return QSize(100, 40)
 
@@ -66,7 +55,6 @@ class KitMessage(KitPopup):
         self.offset = offset
 
     def show(self):
-        self.__init_parent()
         self.__init_close_timer()
         self._animation.setDirection(QPropertyAnimation.Forward)
         self._animation.start()
@@ -79,8 +67,8 @@ class KitMessage(KitPopup):
         self._animation.start()
 
     @classmethod
-    def make(cls, icon, title, position=Position.BottomRight, close_time=3000, style_type="info"):
-        msg = cls(position, close_time)
+    def make(cls, parent, icon, title, position=Position.BottomRight, close_time=3000, style_type="info"):
+        msg = cls(parent, position, close_time)
         msg.icon = icon
         msg.title = title
 
@@ -110,21 +98,21 @@ class KitMessage(KitPopup):
         return msg
 
     @classmethod
-    def info(cls, title, position=Position.BottomRight, close_time=3000):
-        msg_info = cls.make(Icons.info, title, position, close_time, "info")
+    def info(cls, parent, title, position=Position.BottomRight, close_time=3000):
+        msg_info = cls.make(parent, Icons.info, title, position, close_time, "info")
         return msg_info
 
     @classmethod
-    def success(cls, title, position=Position.BottomRight, close_time=3000):
-        msg_success = cls.make(Icons.check_circle, title, position, close_time, "success")
+    def success(cls, parent, title, position=Position.BottomRight, close_time=3000):
+        msg_success = cls.make(parent, Icons.check_circle, title, position, close_time, "success")
         return msg_success
 
     @classmethod
-    def warning(cls, title, position=Position.BottomRight, close_time=3000):
-        msg_warning = cls.make(Icons.error, title, position, close_time, "warning")
+    def warning(cls, parent, title, position=Position.BottomRight, close_time=3000):
+        msg_warning = cls.make(parent, Icons.error, title, position, close_time, "warning")
         return msg_warning
 
     @classmethod
-    def error(cls, title, position=Position.BottomRight, close_time=3000):
-        msg_error = cls.make(Icons.cancel, title, position, close_time, "danger")
+    def error(cls, parent, title, position=Position.BottomRight, close_time=3000):
+        msg_error = cls.make(parent, Icons.cancel, title, position, close_time, "danger")
         return msg_error

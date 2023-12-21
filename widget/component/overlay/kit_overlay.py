@@ -1,10 +1,8 @@
 from PyQt5.QtCore import pyqtSignal, Qt, QEvent, QSize, QPropertyAnimation
-from PyQt5.QtGui import QPalette, QPainter, QBrush, QColor, QPen
-from PyQt5.QtWidgets import QWidget, QApplication, QGraphicsOpacityEffect
+from PyQt5.QtWidgets import QWidget, QGraphicsOpacityEffect
 
-from app_config.kit_root import root
-from app_config.signal_center import signal_center
 from app_config.constant import ClosePolicy
+from ..window import KitFramelessWindow
 
 
 class KitOverlay(QWidget):
@@ -21,7 +19,6 @@ class KitOverlay(QWidget):
     def __init__(self, parent=None):
         super(KitOverlay, self).__init__(parent)
 
-        self._parent = parent
         self._show_animation = None
         self._close_animation = None
         self.close_policy = ClosePolicy.CloseOnEscape
@@ -42,12 +39,9 @@ class KitOverlay(QWidget):
 
     def __init_slot(self):
         self.clicked.connect(lambda: self.close() if self.close_policy == ClosePolicy.CloseOnClicked else None)
-        signal_center.mainWindowResized.connect(lambda: self.__fresh_overlay())
 
     def __init_qss(self):
-        palette = QPalette(self.palette())
-        palette.setColor(palette.Background, Qt.transparent)
-        self.setPalette(palette)
+        self.setAttribute(Qt.WA_StyledBackground)
 
     def __init_animation(self):
         self._show_animation = QPropertyAnimation(self.opacity_effect, b"opacity")
@@ -61,36 +55,18 @@ class KitOverlay(QWidget):
         self._close_animation.setEndValue(0)
         self._close_animation.finished.connect(lambda: self.hide())
 
-    def __init_parent(self):
-        # 用于获取当前应用的最上层的组件，可以理解为主窗口
-        widget = None
-        try:
-            widget = QApplication.activeWindow()
-        except Exception as e:
-            print(e)
-        if widget is None:
-            raise Exception("No active window found, please use `QApplication.setActiveWindow(self)` in where you want to show overlay.")
-        self._parent = widget
-        self.setParent(self._parent)
-
     def setClosePolicy(self, policy: [ClosePolicy.CloseOnClicked, ClosePolicy.CloseOnEscape]):
         self.close_policy = policy
 
-    def paintEvent(self, event):
-        painter = QPainter()
-        painter.begin(self)
-        painter.setRenderHint(QPainter.Antialiasing)
-        painter.fillRect(event.rect(), QBrush(QColor(0, 0, 0, 127)))
-        painter.setPen(QPen(Qt.NoPen))
-        painter.end()
-
     def __fresh_overlay(self):
-        if self._parent is not None:
-            if root.mainWindowSize is None:
-                self.resize(self._parent.size())
-            else:
-                self.resize(root.mainWindowSize)
-            self.move((self._parent.width() - self.width()) // 2, (self._parent.height() - self.height()) // 2)
+        if isinstance(self.parent(), KitFramelessWindow):
+            window = self.parent().windowBody()
+        else:
+            window = self.parent()
+        self.setGeometry(window.pos().x(), window.pos().y(), window.width(), window.height())
+
+    def paintEvent(self, a0) -> None:
+        self.__fresh_overlay()
 
     def eventFilter(self, obj, e):
         if e.type() == QEvent.MouseButtonPress:
@@ -102,16 +78,9 @@ class KitOverlay(QWidget):
         return super().eventFilter(obj, e)
 
     def show(self):
-        self.__init_parent()
-        self.__fresh_overlay()
         self.raise_()
-        super().show()
         self._show_animation.start()
+        super().show()
 
     def close(self):
         self._close_animation.start()
-
-    def resizeEvent(self, a0) -> None:
-        super().resizeEvent(a0)
-        self.resized.emit(self.size())
-

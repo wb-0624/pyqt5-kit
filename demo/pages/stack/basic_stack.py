@@ -28,7 +28,7 @@ class BasicStack(QScrollArea):
 
         btn = KitButton('default')
         btn.setToolTip('default')
-        btn.clicked.connect(lambda: KitModal.notice('default', 'default'))
+        btn.clicked.connect(lambda: KitModal.notice(self.window(), 'default', 'default'))
         self.layout.addWidget(btn)
 
         btn2 = KitButton('primary')

@@ -19,14 +19,14 @@ if __name__ == "__main__":
 
     window = KitFramelessWindow()
     main = QWidget()
+    window.setCentralWidget(main)
     layout = QVBoxLayout()
     main.setLayout(layout)
     btn = KitButton('open overlay')
-    overlay = KitOverlay()
+    overlay = KitOverlay(main.window())
     overlay.setClosePolicy(ClosePolicy.CloseOnClicked)
     layout.addWidget(btn)
     btn.clicked.connect(lambda: [overlay.show(), btn.raise_()])
 
-    window.setCentralWidget(main)
     window.show()
     sys.exit(app.exec_())

@@ -12,8 +12,8 @@ class KitModal(KitPopup):
     confirm = pyqtSignal()
     cancel = pyqtSignal()
 
-    def __init__(self, title: [str, QWidget], content: [str, QWidget]):
-        super(KitModal, self).__init__()
+    def __init__(self, parent, title: [str, QWidget], content: [str, QWidget]):
+        super(KitModal, self).__init__(parent=parent)
 
         self.close_policy = ClosePolicy.CloseOnClicked
 
@@ -23,7 +23,7 @@ class KitModal(KitPopup):
         self.close_btn.setStyle(Button.Text)
         self.close_btn.setShape(Button.Round)
 
-        self.overlay = KitOverlay()
+        self.overlay = KitOverlay(self.parent())
         self.overlay.setClosePolicy(self.close_policy)
 
         if isinstance(title, str):
@@ -86,15 +86,15 @@ class KitModal(KitPopup):
         super().close()
 
     @classmethod
-    def notice(cls, title, content):
-        modal_notice = cls(title, content)
+    def notice(cls, parent, title, content):
+        modal_notice = cls(parent, title, content)
         modal_notice.setClosePolicy(ClosePolicy.CloseOnEscape)
         modal_notice.show()
         return modal_notice
 
     @classmethod
-    def dialog(cls, title, content, confirm_slot, cancel_slot=None):
-        modal_dialog = cls(title, content)
+    def dialog(cls, parent, title, content, confirm_slot, cancel_slot=None):
+        modal_dialog = cls(parent, title, content)
         modal_dialog.setCloseBtn(False)
         modal_dialog.setClosePolicy(ClosePolicy.CloseOnEscape)
 
@@ -120,29 +120,3 @@ class KitModal(KitPopup):
 
         modal_dialog.show()
         return modal_dialog
-
-
-if __name__ == "__main__":
-    import sys
-    from PyQt5.QtGui import QFontDatabase
-    from config import config
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-    app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
-
-    window = KitWindow()
-
-    main = QWidget()
-    layout = QVBoxLayout()
-    main.setLayout(layout)
-
-
-    window.setCentralWidget(main)
-    window.show()
-
-    # main.show()
-    sys.exit(app.exec_())

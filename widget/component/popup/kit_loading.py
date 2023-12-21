@@ -10,7 +10,7 @@ from app_config.constant import ClosePolicy, Icons, Button
 
 class KitLoading(KitOverlay):
 
-    def __init__(self, loading_gif: str = 'assets/gif/loading_annular.gif', parent=None):
+    def __init__(self, parent, loading_gif: str = 'assets/gif/loading_annular.gif'):
         super(KitLoading, self).__init__(parent=parent)
 
         self.timer = QTimer()
@@ -62,8 +62,8 @@ class KitLoading(KitOverlay):
         super().close()
 
     @classmethod
-    def run(cls, movie_url: str = 'assets/gif/loading_annular.gif'):
-        loading = cls(movie_url)
+    def run(cls, parent, movie_url: str = 'assets/gif/loading_annular.gif'):
+        loading = cls(parent, movie_url)
         loading.show()
         return loading
 

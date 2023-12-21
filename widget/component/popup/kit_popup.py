@@ -6,10 +6,9 @@ from app_config.constant import Position
 
 class KitPopup(QWidget):
 
-    def __init__(self, parent=None):
+    def __init__(self, parent):
         super(KitPopup, self).__init__(parent=parent)
 
-        self._parent = None
         self.position = Position.Center
 
         self.__init_widget()
@@ -57,23 +56,7 @@ class KitPopup(QWidget):
             self.move(window_size.width() - self.width() - self.offset,
                       window_size.height() - self.height() - self.offset)
 
-    def init_parent(self):
-        # 用于获取当前应用的最上层的组件，可以理解为主窗口
-        widget = None
-        try:
-            widget = QApplication.activeWindow()
-        except Exception as e:
-            print(e)
-        if widget is None:
-            raise Exception(
-                "No active window found, please use `QApplication.setActiveWindow(self)` in where you want to show popup.")
-        if self._parent == widget:
-            return
-        self._parent = widget
-        self.setParent(self._parent)
-
     def show(self):
-        self.init_parent()
         self.__init_position()
         self.raise_()
         super().show()
