@@ -26,6 +26,7 @@ def read_code_points_file(file_url: str, prefix: str = 'i'):
 
 def write_codepoints_to_class(code_points:dict):
     with open("Icon.py", 'w') as f:
+        f.write("class Icons:\n")
         for key in code_points:
             f.write("    {} = \"{}\"\n".format(key, code_points[key]))
 
