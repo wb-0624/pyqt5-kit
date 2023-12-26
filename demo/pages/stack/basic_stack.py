@@ -1,10 +1,7 @@
 from PyQt5.QtCore import Qt, QEvent
 from PyQt5.QtWidgets import QWidget, QScrollArea, QVBoxLayout
 
-from app_config.constant import Button
-from widget import KitButton, KitModal
-from .stack_card import StackCard
-
+from demo.widgets_demo import ButtonDemo, InputDemo, CheckBoxDemo, ProgressDemo, SliderDemo, SwitchDemo
 
 class BasicStack(QScrollArea):
 
@@ -17,23 +14,28 @@ class BasicStack(QScrollArea):
 
     def __init_widget(self):
         self.content = QWidget()
-        self.content.resize(self.width(), 1000)
+        self.content.resize(500, 1000)
         self.setWidget(self.content)
         self.layout = QVBoxLayout()
         self.content.setLayout(self.layout)
 
-        card1 = StackCard()
-        self.layout.addWidget(card1)
+        btn_demo = ButtonDemo()
+        self.layout.addWidget(btn_demo)
 
-        btn = KitButton('default')
-        btn.setToolTip('default')
-        btn.clicked.connect(lambda: KitModal.notice(self.window(), 'default', 'default'))
-        self.layout.addWidget(btn)
+        input_demo = InputDemo()
+        self.layout.addWidget(input_demo)
 
-        btn2 = KitButton('primary')
-        btn2.setToolTip('primary')
-        btn2.setType(Button.Primary)
-        self.layout.addWidget(btn2)
+        check_demo = CheckBoxDemo()
+        self.layout.addWidget(check_demo)
+
+        progress_demo = ProgressDemo()
+        self.layout.addWidget(progress_demo)
+
+        slider_demo = SliderDemo()
+        self.layout.addWidget(slider_demo)
+
+        switch_demo = SwitchDemo()
+        self.layout.addWidget(switch_demo)
 
         self.layout.addStretch(1)
 

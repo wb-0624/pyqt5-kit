@@ -8,9 +8,9 @@ from config import config
 from widget import KitComboBox, KitButton, KitFramelessWindow
 
 
-class ComboboxDemo(QWidget):
+class ComboBoxDemo(QWidget):
     def __init__(self, parent=None):
-        super(ComboboxDemo, self).__init__(parent=parent)
+        super(ComboBoxDemo, self).__init__(parent=parent)
         layout = QVBoxLayout()
         self.setLayout(layout)
 
@@ -40,7 +40,7 @@ if __name__ == "__main__":
     window = KitFramelessWindow()
     # window = KitWindow()
 
-    demo = ComboboxDemo()
+    demo = ComboBoxDemo()
     window.setCentralWidget(demo)
     window.show()
     sys.exit(app.exec_())

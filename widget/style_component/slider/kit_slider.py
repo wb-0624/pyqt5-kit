@@ -12,9 +12,9 @@ class KitSliderStyle(QProxyStyle):
 
         self.config = {
             "groove.height": 3,
-            "sub-page.color": QColor(255, 0, 0),
-            "add-page.color": QColor(255, 255, 0, 64),
-            "handle.inner-color": QColor(0, 0, 255),
+            "add-page.color": QColor('#e6e6e9'),
+            "sub-page.color": QColor('#0d69b9'),
+            "handle.inner-color": QColor('#1a76c6'),
             "handle.ring-color": QColor(255, 255, 255),
             "handle.ring-width": 4,
             "handle.inner-radius": 6,
@@ -95,9 +95,9 @@ class KitSlider(QSlider):
     """
     config = {
             "groove.height": 3,
-            "sub-page.color": QColor(255, 0, 0),
+            "sub-page.color": QColor(#e6e6e9),
             "add-page.color": QColor(255, 255, 255, 64),
-            "handle.inner-color": QColor(0, 0, 255),
+            "handle.inner-color": QColor(#0d69b9),
             "handle.ring-color": QColor(255, 255, 255),
             "handle.ring-width": 4,
             "handle.inner-radius": 6,

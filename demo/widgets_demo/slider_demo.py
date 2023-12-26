@@ -8,7 +8,7 @@ from config import config
 from widget import KitSlider, KitFramelessWindow
 
 
-class Demo(QWidget):
+class SliderDemo(QWidget):
     def __init__(self):
         super().__init__()
         self.resize(300, 150)
@@ -29,7 +29,7 @@ if __name__ == '__main__':
     window = KitFramelessWindow()
     # window = KitWindow()
 
-    demo = Demo()
+    demo = SliderDemo()
     window.setCentralWidget(demo)
     window.show()
     sys.exit(app.exec_())
