@@ -43,12 +43,12 @@ class KitSpinBox(QSpinBox):
 
         opt.rect = QRect(arrow_up_rect.center().x()-self.indicator_size//2,
                          arrow_up_rect.center().y()-self.indicator_size//2, self.indicator_size, self.indicator_size)
-        icon = KitIcon(Icons.expand_less)
+        icon = KitIcon(Icons.md_expand_less)
         icon.setObjectName('icon')
         painter.drawPixmap(opt.rect, icon.toPixmap())
         opt.rect = QRect(arrow_down_rect.center().x()-self.indicator_size//2,
                          arrow_down_rect.center().y()-self.indicator_size//2, self.indicator_size, self.indicator_size)
-        icon = KitIcon(Icons.expand_more)
+        icon = KitIcon(Icons.md_expand_more)
         icon.setObjectName('icon')
         painter.drawPixmap(opt.rect, icon.toPixmap())
 
@@ -91,11 +91,11 @@ class KitDoubleSpinBox(QDoubleSpinBox):
 
         opt.rect = QRect(arrow_up_rect.center().x()-self.indicator_size//2,
                          arrow_up_rect.center().y()-self.indicator_size//2, self.indicator_size, self.indicator_size)
-        icon = KitIcon(Icons.expand_less)
+        icon = KitIcon(Icons.md_expand_less)
         icon.setObjectName('spinbox_icon')
         painter.drawPixmap(opt.rect, icon.toPixmap())
         opt.rect = QRect(arrow_down_rect.center().x()-self.indicator_size//2,
                          arrow_down_rect.center().y()-self.indicator_size//2, self.indicator_size, self.indicator_size)
-        icon = KitIcon(Icons.expand_more)
+        icon = KitIcon(Icons.md_expand_more)
         icon.setObjectName('spinbox_icon')
         painter.drawPixmap(opt.rect, icon.toPixmap())

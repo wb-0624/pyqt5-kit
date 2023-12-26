@@ -5,15 +5,8 @@
 记得批量替换 \\ -> \
 """
 
-# 下面的 icon 名称会和 python 内置的关键字冲突，需要排除
-# 排除数组开头的
-exclude_list = [
-    "class", "try", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
-]
 
-
-def read_conde_points_file(file_url:str):
-    lines = []
+def read_code_points_file(file_url: str, prefix: str = 'i'):
     conde_points = {}
     with open(file_url, 'r') as f:
         # 读取文件每一行
@@ -25,12 +18,18 @@ def read_conde_points_file(file_url:str):
         line_list = line.split(" ")
         key = line_list[0]
         value = "\\u" + line_list[1]
-        if key not in exclude_list and key[0] not in exclude_list:
-            conde_points[key] = value
 
-    print(conde_points)
+        conde_points[prefix + "_" + key] = value
 
+    return conde_points
+
+
+def write_codepoints_to_class(code_points:dict):
+    with open("Icon.py", 'w') as f:
+        for key in code_points:
+            f.write("    {} = \"{}\"\n".format(key, code_points[key]))
 
 
 if __name__ == "__main__":
-    read_conde_points_file("assets/font/Material-Icons.codepoints")
+    code = read_code_points_file("assets/font/Material-Icons.codepoints", 'md')
+    write_codepoints_to_class(code)

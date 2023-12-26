@@ -23,8 +23,8 @@ if __name__ == "__main__":
     window = KitFramelessWindow()
     main = QWidget()
 
-    icon = KitIcon(Icons.add, main)
-    icon.setText(Icons.home)
+    icon = KitIcon(Icons.md_add, main)
+    icon.setText(Icons.md_home)
 
     icon_movie = KitMovieIcon(parent=main)
     icon_movie.move(100, 100)

@@ -18,7 +18,7 @@ class KitModal(KitPopup):
 
         self.header_layout = QHBoxLayout()
         self.content = QVBoxLayout()
-        self.close_btn = KitIconButton(Icons.close)
+        self.close_btn = KitIconButton(Icons.md_close)
         self.close_btn.setStyle(Button.Text)
         self.close_btn.setShape(Button.Round)
 

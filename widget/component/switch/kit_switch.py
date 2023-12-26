@@ -59,8 +59,8 @@ class KitSwitch(QWidget):
         super(KitSwitch, self).__init__(parent=parent)
         self.indicator = KitSwitchIndicator(self)
         self.checked = False
-        self.checked_icon = Icons.check
-        self.unchecked_icon = Icons.close
+        self.checked_icon = Icons.md_check
+        self.unchecked_icon = Icons.md_close
 
         self.__init_widget()
         self.__init_slot()

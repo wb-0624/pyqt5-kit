@@ -1,5 +1,4 @@
 from PyQt5.QtCore import Qt, QEvent
-from PyQt5.QtGui import QPaintEngine
 from PyQt5.QtWidgets import QWidget, QScrollArea, QVBoxLayout
 
 from app_config.constant import Button

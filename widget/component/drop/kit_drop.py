@@ -28,7 +28,7 @@ class KitFileDropArea(QWidget):
         self.layout = QVBoxLayout()
         self.setLayout(self.layout)
 
-        self.icon = KitIcon(Icons.post_add, self)
+        self.icon = KitIcon(Icons.md_post_add, self)
         self.layout.addStretch(1)
         self.layout.addWidget(self.icon, alignment=Qt.AlignCenter)
         self.layout.addWidget(QLabel("拖拽文件到此处", self), alignment=Qt.AlignCenter)

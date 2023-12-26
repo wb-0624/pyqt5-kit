@@ -100,20 +100,20 @@ class KitMessage(KitPopup):
 
     @classmethod
     def info(cls, window, title, position=Position.BottomRight, close_time=3000):
-        msg_info = cls.make(window, Icons.info, title, position, close_time, "info")
+        msg_info = cls.make(window, Icons.md_info, title, position, close_time, "info")
         return msg_info
 
     @classmethod
     def success(cls, window, title, position=Position.BottomRight, close_time=3000):
-        msg_success = cls.make(window, Icons.check_circle, title, position, close_time, "success")
+        msg_success = cls.make(window, Icons.md_check_circle, title, position, close_time, "success")
         return msg_success
 
     @classmethod
     def warning(cls, window, title, position=Position.BottomRight, close_time=3000):
-        msg_warning = cls.make(window, Icons.error, title, position, close_time, "warning")
+        msg_warning = cls.make(window, Icons.md_error, title, position, close_time, "warning")
         return msg_warning
 
     @classmethod
     def error(cls, window, title, position=Position.BottomRight, close_time=3000):
-        msg_error = cls.make(window, Icons.cancel, title, position, close_time, "danger")
+        msg_error = cls.make(window, Icons.md_cancel, title, position, close_time, "danger")
         return msg_error

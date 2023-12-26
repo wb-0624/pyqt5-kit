@@ -29,7 +29,7 @@ class KitLoading(KitOverlay):
         self.loading_icon.setFixedSize(60, 60)
         self.loading.setScaledSize(self.loading_icon.size())
 
-        self.close_btn = KitIconButton(Icons.close)
+        self.close_btn = KitIconButton(Icons.md_close)
         self.close_btn.setStyle(Button.Text)
         self.close_btn.setShape(Button.Round)
         self.close_btn.setVisible(False)

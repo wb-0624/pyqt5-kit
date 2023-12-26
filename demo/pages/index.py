@@ -29,22 +29,22 @@ class Index(QWidget):
         self.navigation.connectStackedWidget(self.stack)
 
     def __init_tab(self):
-        self.navigation.addTab('basic', Icons.widgets)
+        self.navigation.addTab('basic', Icons.md_widgets)
         basic_stack = BasicStack()
         self.stack.addWidget(basic_stack)
         self.navigation.setCurrentIndex(0)
 
-        self.navigation.addTab('dialog', Icons.comment)
+        self.navigation.addTab('dialog', Icons.md_comment)
         dialog_stack = DialogStack()
         dialog_stack.setStyleSheet('background-color: blue;')
         self.stack.addWidget(dialog_stack)
 
-        self.navigation.addTab('graph', Icons.pie_chart)
+        self.navigation.addTab('graph', Icons.md_pie_chart)
         chart_stack = QWidget()
         chart_stack.setStyleSheet('background-color: green;')
         self.stack.addWidget(chart_stack)
 
-        self.navigation.addTab('dataview', Icons.table_view)
+        self.navigation.addTab('dataview', Icons.md_table_view)
         dataview_stack = QWidget()
         dataview_stack.setStyleSheet('background-color: yellow;')
         self.stack.addWidget(dataview_stack)

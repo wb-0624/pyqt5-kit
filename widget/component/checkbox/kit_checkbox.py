@@ -45,13 +45,13 @@ class CheckBoxIcon(QWidget):
     def setCheckState(self, check_state: int):
         if check_state == CheckBoxIcon.Checked:
             self.setProperty('state', 'checked')
-            self.icon.setIcon(Icons.check)
+            self.icon.setIcon(Icons.md_check)
         elif check_state == CheckBoxIcon.UnChecked:
             self.setProperty('state', 'unchecked')
             self.icon.setIcon("")
         elif check_state == CheckBoxIcon.PartialChecked:
             self.setProperty('state', 'partial_checked')
-            self.icon.setIcon(Icons.horizontal_rule)
+            self.icon.setIcon(Icons.md_horizontal_rule)
         self.style().polish(self)
 
     def sizeHint(self):

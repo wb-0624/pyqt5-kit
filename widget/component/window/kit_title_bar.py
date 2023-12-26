@@ -27,12 +27,12 @@ class KitTitleBar(QWidget):
     def __init__(self, parent):
         super(KitTitleBar, self).__init__(parent=parent)
 
-        self.title_icon = KitIcon(Icons.star)
+        self.title_icon = KitIcon(Icons.md_star)
         self.title = QLabel('demo')
 
-        self.min_button = KitTitleBarButton(Icons.minimize)
-        self.change_size_button = KitTitleBarButton(Icons.crop_square)
-        self.close_button = KitTitleBarButton(Icons.close)
+        self.min_button = KitTitleBarButton(Icons.md_minimize)
+        self.change_size_button = KitTitleBarButton(Icons.md_crop_square)
+        self.close_button = KitTitleBarButton(Icons.md_close)
         self.close_button.setObjectName("title_bar_close_button")
 
         self._pos = None
@@ -91,9 +91,9 @@ class KitTitleBar(QWidget):
 
     def resizeEvent(self, a0) -> None:
         if self.window().isMaximized() or self.window().isFullScreen():
-            self.change_size_button.setIcon(Icons.filter_none)
+            self.change_size_button.setIcon(Icons.md_filter_none)
         else:
-            self.change_size_button.setIcon(Icons.crop_square)
+            self.change_size_button.setIcon(Icons.md_crop_square)
         super().resizeEvent(a0)
 
     def mouseDoubleClickEvent(self, a0) -> None:

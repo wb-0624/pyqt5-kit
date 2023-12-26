@@ -23,9 +23,9 @@ if __name__ == "__main__":
     main.setLayout(layout)
 
     tab_bar = KitTabBar()
-    tab_bar.addTab('Tab 1', Icons.home)
-    tab_bar.addTab('Tab 2', Icons.home)
-    tab_bar.addTab('Tab 312341235123', Icons.home)
+    tab_bar.addTab('Tab 1', Icons.md_home)
+    tab_bar.addTab('Tab 2', Icons.md_home)
+    tab_bar.addTab('Tab 312341235123', Icons.md_home)
 
     stacked = QStackedWidget()
     stacked.addWidget(KitButton('1'))

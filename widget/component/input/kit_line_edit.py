@@ -34,10 +34,10 @@ class KitLineEdit(QLineEdit):
         self.validator_icon.setVisible(True)
         if self.hasAcceptableInput():
             self.validator_icon.setProperty('type', 'success')
-            self.validator_icon.setIcon(Icons.check_circle)
+            self.validator_icon.setIcon(Icons.md_check_circle)
         else:
             self.validator_icon.setProperty('type', 'danger')
-            self.validator_icon.setIcon(Icons.info)
+            self.validator_icon.setIcon(Icons.md_info)
         self.validator_icon.style().polish(self.validator_icon)
 
     def sizeHint(self):

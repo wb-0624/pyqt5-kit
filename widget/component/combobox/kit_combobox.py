@@ -74,11 +74,11 @@ class KitComboBox(QComboBox):
         opt.rect = rect
 
         if self.view().isVisible():
-            icon = KitIcon(Icons.expand_more)
+            icon = KitIcon(Icons.md_expand_more)
             icon.setObjectName('combobox_icon')
             painter.drawPixmap(rect, icon.toPixmap())
         else:
-            icon = KitIcon(Icons.chevron_right)
+            icon = KitIcon(Icons.md_chevron_right)
             icon.setObjectName('combobox_icon')
             painter.drawPixmap(rect, icon.toPixmap())
 
