@@ -3,10 +3,24 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
 from widget import KitFramelessWindow, KitProgressBar
 
+
+class ProgressDemo(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+
+        progress_bar = KitProgressBar()
+        progress_bar.setValue(40)
+        layout.addWidget(progress_bar)
+
+
 if __name__ == "__main__":
     from PyQt5.QtGui import QFontDatabase
     from config import config
     import sys
+
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 
@@ -17,14 +31,9 @@ if __name__ == "__main__":
     fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
 
     window = KitFramelessWindow()
-    main = QWidget()
-    layout = QVBoxLayout()
-    main.setLayout(layout)
+    # window = KitWindow()
 
-    progress_bar = KitProgressBar(main)
-    progress_bar.setValue(40)
-    layout.addWidget(progress_bar)
-
-    window.setCentralWidget(main)
+    demo = ProgressDemo()
+    window.setCentralWidget(demo)
     window.show()
     sys.exit(app.exec_())

@@ -23,10 +23,12 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     qss = config.init_qss()
     app.setStyleSheet(qss)
-
     fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
     fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
+
     window = KitFramelessWindow()
+    # window = KitWindow()
+
     demo = Demo()
     window.setCentralWidget(demo)
     window.show()

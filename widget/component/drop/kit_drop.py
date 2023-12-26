@@ -57,7 +57,6 @@ class KitFileDropArea(QWidget):
         return QSize(100, 40)
 
     def dragEnterEvent(self, ev):
-        QApplication.setActiveWindow(self)
         if ev.mimeData().hasUrls():
             ev.accept()
         else:

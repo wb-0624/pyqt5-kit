@@ -1,7 +1,23 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
-from widget import KitTag
+from widget import KitTag, KitFramelessWindow, KitWindow
+
+
+class TagDemo(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+
+        tag1 = KitTag("Tag1")
+        tag2 = KitTag("Tag223151", "#6e6e6e")
+        tag3 = KitTag("Tag3", "#ff11ff")
+
+        layout.addWidget(tag1)
+        layout.addWidget(tag2)
+        layout.addWidget(tag3)
 
 if __name__ == "__main__":
     from PyQt5.QtGui import QFontDatabase
@@ -17,17 +33,10 @@ if __name__ == "__main__":
     fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
     fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
 
-    main = QWidget()
-    layout = QVBoxLayout()
-    main.setLayout(layout)
+    window = KitFramelessWindow()
+    # window = KitWindow()
 
-    tag1 = KitTag("Tag1")
-    tag2 = KitTag("Tag223151", "#6e6e6e")
-    tag3 = KitTag("Tag3", "#ff11ff")
-
-    layout.addWidget(tag1)
-    layout.addWidget(tag2)
-    layout.addWidget(tag3)
-
-    main.show()
+    demo = TagDemo()
+    window.setCentralWidget(demo)
+    window.show()
     sys.exit(app.exec_())

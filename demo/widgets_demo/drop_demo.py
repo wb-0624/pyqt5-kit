@@ -3,6 +3,19 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
 from widget import KitFramelessWindow, KitFileDropArea, KitModal
 
+
+class DropDemo(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+
+        file_drop = KitFileDropArea([".png", ".jpg", ".jpeg"])
+        layout.addWidget(file_drop)
+        file_drop.dropped.connect(lambda l1, l2: KitModal.notice(self.window(), 'info', '接受文件' + ','.join(l1)+'\n拒绝文件' + '.'.join(l2)))
+
+
 if __name__ == "__main__":
     from PyQt5.QtGui import QFontDatabase
     from config import config
@@ -19,13 +32,9 @@ if __name__ == "__main__":
     app.setStyleSheet(qss)
 
     window = KitFramelessWindow()
+    # window = KitWindow()
 
-    main = QWidget()
-    layout = QVBoxLayout()
-    main.setLayout(layout)
-    file_drop = KitFileDropArea([".png", ".jpg", ".jpeg"])
-    layout.addWidget(file_drop)
-    file_drop.dropped.connect(lambda l1, l2: KitModal.notice('info', '接受文件' + ','.join(l1)+'\n拒绝文件' + '.'.join(l2)))
-    window.setCentralWidget(main)
+    demo = DropDemo()
+    window.setCentralWidget(demo)
     window.show()
     sys.exit(app.exec_())
