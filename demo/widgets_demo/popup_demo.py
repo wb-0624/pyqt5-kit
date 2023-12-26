@@ -5,8 +5,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel
 
 from config import config
 from app_config.constant import Position
-from widget import KitFramelessWindow, KitLoading, KitButton, KitMessage, KitModal
-
+from widget import KitFramelessWindow, KitLoading, KitButton, KitMessage, KitModal, KitWindow
 
 if __name__ == "__main__":
 
@@ -20,6 +19,7 @@ if __name__ == "__main__":
     fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
 
     window = KitFramelessWindow()
+    # window = KitWindow()
     main = QWidget()
     layout = QVBoxLayout()
     main.setLayout(layout)

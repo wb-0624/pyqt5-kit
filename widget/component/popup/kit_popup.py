@@ -1,15 +1,24 @@
 from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect, QApplication
+from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect
 
 from app_config.constant import Position
+
+from ..window import KitWindow, KitFramelessWindow
 
 
 class KitPopup(QWidget):
 
-    def __init__(self, parent):
-        super(KitPopup, self).__init__(parent=parent)
+    def __init__(self, window: KitWindow):
+
+        if isinstance(window, KitFramelessWindow):
+            super(KitPopup, self).__init__(parent=window.windowBody())
+        elif isinstance(window, KitWindow):
+            super(KitPopup, self).__init__(parent=window)
+        else:
+            raise TypeError("window must be KitFramelessWindow or KitWindow")
 
         self.position = Position.Center
+        self._show_window = window
 
         self.__init_widget()
         self.__init_slot()
@@ -26,12 +35,12 @@ class KitPopup(QWidget):
         self.hide()
 
     def __init_slot(self):
-        pass
+        self._show_window.windowSizeChanged.connect(lambda: self.__fresh_position())
 
     def __init_qss(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
 
-    def __init_position(self):
+    def __fresh_position(self):
         # 当前窗口大小， 用来计算tip展示的位置
         window_size = self.parent().size()
         if self.position == Position.Center:
@@ -55,15 +64,13 @@ class KitPopup(QWidget):
         elif self.position == Position.BottomRight:
             self.move(window_size.width() - self.width() - self.offset,
                       window_size.height() - self.height() - self.offset)
+        else:
+            raise ValueError("position error")
 
     def show(self):
-        self.__init_position()
+        self.__fresh_position()
         self.raise_()
         super().show()
-
-    def paintEvent(self, a0):
-        self.__init_position()
-        super().paintEvent(a0)
 
     def sizeHint(self):
         return QSize(300, 180)

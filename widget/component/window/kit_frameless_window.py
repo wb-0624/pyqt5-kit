@@ -1,18 +1,20 @@
 import sys
 
-from PyQt5.QtCore import Qt, QSize, QPoint
+from PyQt5.QtCore import Qt, QSize, QPoint, pyqtSignal
 from PyQt5.QtGui import QFontDatabase, QCursor
-from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QVBoxLayout, QGraphicsDropShadowEffect
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QGraphicsDropShadowEffect, QGraphicsOpacityEffect
 
 from config import config
 from app_config.constant import Position, Window
 
 from ..button import KitButton
+from .kit_window import KitWindow
 from .kit_title_bar import KitTitleBar
 from .kit_status_bar import KitStatusBar
 
 
 class KitWindowBody(QWidget):
+    resized = pyqtSignal(QSize)
 
     def __init__(self, parent=None):
         super(KitWindowBody, self).__init__(parent=parent)
@@ -27,6 +29,8 @@ class KitWindowBody(QWidget):
         self.__init_qss()
 
     def __init_widget(self):
+        self.installEventFilter(self)
+
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.setSpacing(0)
 
@@ -38,7 +42,6 @@ class KitWindowBody(QWidget):
     def setCentralWidget(self, widget: QWidget):
         self.layout.removeWidget(self.central_widget)
         self.central_widget.deleteLater()
-        widget.setMouseTracking(True)
         self.layout.insertWidget(1, widget, stretch=1)
         self.central_widget = widget
 
@@ -48,7 +51,7 @@ class KitWindowBody(QWidget):
     def __init_qss(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
         # 设置阴影
-        shadow = QGraphicsDropShadowEffect()
+        shadow = QGraphicsDropShadowEffect(self)
         shadow.setOffset(0, 0)
         shadow.setBlurRadius(10)
         shadow.setColor(Qt.gray)
@@ -57,6 +60,7 @@ class KitWindowBody(QWidget):
     def resizeEvent(self, a0) -> None:
         if self.title_bar is not None:
             self.title_bar.resizeEvent(a0)
+        self.resized.emit(self.size())
         super().resizeEvent(a0)
 
     def setTitleBar(self, bar):
@@ -85,7 +89,7 @@ class KitWindowBody(QWidget):
         self.parent().enterEvent(a0)
 
 
-class KitFramelessWindow(QMainWindow):
+class KitFramelessWindow(KitWindow):
 
     def __init__(self):
         super(KitFramelessWindow, self).__init__()
@@ -102,6 +106,7 @@ class KitFramelessWindow(QMainWindow):
         self.resize_margin = Window.resize_margin
 
         self.__init_widget()
+        self.__init_slot()
 
     def __init_widget(self):
         self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
@@ -112,6 +117,9 @@ class KitFramelessWindow(QMainWindow):
         self.title_bar = self.window_body.title_bar
 
         self.setWindowBody(self.window_body)
+
+    def __init_slot(self):
+        pass
 
     def setCentralWidget(self, widget: QWidget):
         self.window_body.setCentralWidget(widget)

@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt
 
 from app_config.constant import ClosePolicy
-from widget import KitButton, KitOverlay, KitFramelessWindow
+from widget import KitButton, KitOverlay, KitFramelessWindow, KitWindow
 
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication
@@ -18,6 +18,7 @@ if __name__ == "__main__":
     fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
 
     window = KitFramelessWindow()
+    # window = KitWindow()
     main = QWidget()
     window.setCentralWidget(main)
     layout = QVBoxLayout()
@@ -26,7 +27,7 @@ if __name__ == "__main__":
     overlay = KitOverlay(main.window())
     overlay.setClosePolicy(ClosePolicy.CloseOnClicked)
     layout.addWidget(btn)
-    btn.clicked.connect(lambda: [overlay.show(), btn.raise_()])
+    btn.clicked.connect(lambda: overlay.show())
 
     window.show()
     sys.exit(app.exec_())

@@ -1,4 +1,4 @@
-from PyQt5.QtCore import Qt, QSize, QTimer, QPropertyAnimation
+from PyQt5.QtCore import Qt, QSize, QTimer, QPropertyAnimation, QParallelAnimationGroup
 from PyQt5.QtWidgets import QGraphicsOpacityEffect, QLabel, QVBoxLayout, QHBoxLayout, QApplication
 
 from ..icon.kit_icon import KitIcon
@@ -13,8 +13,8 @@ class KitMessage(KitPopup):
     @param close_time: 自动关闭时间毫秒, -1 为不关闭
     """
 
-    def __init__(self, parent, position: Position = Position.BottomRight, close_time=3000):
-        super(KitMessage, self).__init__(parent)
+    def __init__(self, window, position: Position = Position.BottomRight, close_time=3000):
+        super(KitMessage, self).__init__(window=window)
 
         self.offset = 20
         self.position = position
@@ -29,7 +29,8 @@ class KitMessage(KitPopup):
 
     def __init_widget(self):
         self.opacity_effect = QGraphicsOpacityEffect(self)
-        self.setGraphicsEffect(self.opacity_effect)
+        # todo 透明度动画 和 KitOverlay 一样，会导致位置发生偏移
+        # self.setGraphicsEffect(self.opacity_effect)
         self.__init_animation()
 
     def __init_slot(self):
@@ -43,7 +44,7 @@ class KitMessage(KitPopup):
             self.close_timer.start(self.close_time)
 
     def __init_animation(self):
-        self._animation = QPropertyAnimation(self.opacity_effect, b"opacity")
+        self._animation = QPropertyAnimation(self.opacity_effect, b'opacity')
         self._animation.setDuration(300)
         self._animation.setStartValue(0)
         self._animation.setEndValue(1)
@@ -67,8 +68,8 @@ class KitMessage(KitPopup):
         self._animation.start()
 
     @classmethod
-    def make(cls, parent, icon, title, position=Position.BottomRight, close_time=3000, style_type="info"):
-        msg = cls(parent, position, close_time)
+    def make(cls, window, icon, title, position=Position.BottomRight, close_time=3000, style_type="info"):
+        msg = cls(window, position, close_time)
         msg.icon = icon
         msg.title = title
 
@@ -98,21 +99,21 @@ class KitMessage(KitPopup):
         return msg
 
     @classmethod
-    def info(cls, parent, title, position=Position.BottomRight, close_time=3000):
-        msg_info = cls.make(parent, Icons.info, title, position, close_time, "info")
+    def info(cls, window, title, position=Position.BottomRight, close_time=3000):
+        msg_info = cls.make(window, Icons.info, title, position, close_time, "info")
         return msg_info
 
     @classmethod
-    def success(cls, parent, title, position=Position.BottomRight, close_time=3000):
-        msg_success = cls.make(parent, Icons.check_circle, title, position, close_time, "success")
+    def success(cls, window, title, position=Position.BottomRight, close_time=3000):
+        msg_success = cls.make(window, Icons.check_circle, title, position, close_time, "success")
         return msg_success
 
     @classmethod
-    def warning(cls, parent, title, position=Position.BottomRight, close_time=3000):
-        msg_warning = cls.make(parent, Icons.error, title, position, close_time, "warning")
+    def warning(cls, window, title, position=Position.BottomRight, close_time=3000):
+        msg_warning = cls.make(window, Icons.error, title, position, close_time, "warning")
         return msg_warning
 
     @classmethod
-    def error(cls, parent, title, position=Position.BottomRight, close_time=3000):
-        msg_error = cls.make(parent, Icons.cancel, title, position, close_time, "danger")
+    def error(cls, window, title, position=Position.BottomRight, close_time=3000):
+        msg_error = cls.make(window, Icons.cancel, title, position, close_time, "danger")
         return msg_error

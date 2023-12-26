@@ -1,9 +1,9 @@
-from PyQt5.QtCore import Qt, QEvent
+from PyQt5.QtCore import Qt, QSize, pyqtSignal
 from PyQt5.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QLabel, QApplication
 
 
-
 class KitWindow(QMainWindow):
+    windowSizeChanged = pyqtSignal(QSize)
 
     def __init__(self, parent=None):
         super(KitWindow, self).__init__(parent=parent)
@@ -20,6 +20,10 @@ class KitWindow(QMainWindow):
 
     def __init_qss(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
+
+    def resizeEvent(self, a0) -> None:
+        self.windowSizeChanged.emit(self.size())
+        super().resizeEvent(a0)
 
 if __name__ == "__main__":
     from PyQt5.QtGui import QFontDatabase

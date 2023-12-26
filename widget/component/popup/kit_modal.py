@@ -1,10 +1,9 @@
-from PyQt5.QtCore import pyqtSignal, Qt, QEvent
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QFrame, QApplication
+from PyQt5.QtCore import pyqtSignal, Qt
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QFrame
 
 from ..button import KitIconButton, KitButton
 from ..overlay import KitOverlay
 from ..popup import KitPopup
-from ..window import KitWindow
 from app_config.constant import ClosePolicy, Icons, Button
 
 
@@ -12,8 +11,8 @@ class KitModal(KitPopup):
     confirm = pyqtSignal()
     cancel = pyqtSignal()
 
-    def __init__(self, parent, title: [str, QWidget], content: [str, QWidget]):
-        super(KitModal, self).__init__(parent=parent)
+    def __init__(self, window, title: [str, QWidget], content: [str, QWidget]):
+        super(KitModal, self).__init__(window=window)
 
         self.close_policy = ClosePolicy.CloseOnClicked
 
@@ -23,7 +22,7 @@ class KitModal(KitPopup):
         self.close_btn.setStyle(Button.Text)
         self.close_btn.setShape(Button.Round)
 
-        self.overlay = KitOverlay(self.parent())
+        self.overlay = KitOverlay(window)
         self.overlay.setClosePolicy(self.close_policy)
 
         if isinstance(title, str):

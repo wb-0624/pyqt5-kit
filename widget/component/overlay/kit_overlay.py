@@ -2,7 +2,7 @@ from PyQt5.QtCore import pyqtSignal, Qt, QEvent, QSize, QPropertyAnimation
 from PyQt5.QtWidgets import QWidget, QGraphicsOpacityEffect
 
 from app_config.constant import ClosePolicy
-from ..window import KitFramelessWindow
+from ..window import KitFramelessWindow, KitWindow
 
 
 class KitOverlay(QWidget):
@@ -16,9 +16,16 @@ class KitOverlay(QWidget):
     clicked = pyqtSignal()
     resized = pyqtSignal(QSize)
 
-    def __init__(self, parent=None):
-        super(KitOverlay, self).__init__(parent)
+    def __init__(self, window: KitWindow):
 
+        if isinstance(window, KitFramelessWindow):
+            super(KitOverlay, self).__init__(parent=window.windowBody())
+        elif isinstance(window, KitWindow):
+            super(KitOverlay, self).__init__(parent=window)
+        else:
+            raise TypeError("window must be KitFramelessWindow or KitWindow")
+
+        self._show_window = window
         self._show_animation = None
         self._close_animation = None
         self.close_policy = ClosePolicy.CloseOnEscape
@@ -28,17 +35,18 @@ class KitOverlay(QWidget):
         self.__init_qss()
 
     def __init_widget(self):
-        self.setMouseTracking(False)
         self.installEventFilter(self)
         self.opacity_effect = QGraphicsOpacityEffect(self)
         self.opacity_effect.setOpacity(0)
-        self.setGraphicsEffect(self.opacity_effect)
+        # todo 这里使用透明度变化动画时，会导致遮罩位置发生偏移，似乎是和 KitWindowBody 的阴影有关.
+        # self.setGraphicsEffect(self.opacity_effect)
         self.hide()
 
         self.__init_animation()
 
     def __init_slot(self):
         self.clicked.connect(lambda: self.close() if self.close_policy == ClosePolicy.CloseOnClicked else None)
+        self._show_window.windowSizeChanged.connect(lambda: self.__fresh_overlay())
 
     def __init_qss(self):
         self.setAttribute(Qt.WA_StyledBackground)
@@ -59,14 +67,12 @@ class KitOverlay(QWidget):
         self.close_policy = policy
 
     def __fresh_overlay(self):
-        if isinstance(self.parent(), KitFramelessWindow):
-            window = self.parent().windowBody()
-        else:
-            window = self.parent()
-        self.setGeometry(window.pos().x(), window.pos().y(), window.width(), window.height())
+        window = self.parent()
+        self.resize(window.width(), window.height())
 
-    def paintEvent(self, a0) -> None:
-        self.__fresh_overlay()
+    def resizeEvent(self, a0) -> None:
+        self.resized.emit(self.size())
+        super().resizeEvent(a0)
 
     def eventFilter(self, obj, e):
         if e.type() == QEvent.MouseButtonPress:
@@ -78,9 +84,11 @@ class KitOverlay(QWidget):
         return super().eventFilter(obj, e)
 
     def show(self):
+        self.__fresh_overlay()
         self.raise_()
-        self._show_animation.start()
         super().show()
+        self._show_animation.start()
 
     def close(self):
         self._close_animation.start()
+        super().close()

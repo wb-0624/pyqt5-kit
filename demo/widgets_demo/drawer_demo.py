@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
 from app_config.constant import Position, ClosePolicy
 from config import config
-from widget import KitDrawer, KitButton, KitWindow
+from widget import KitDrawer, KitButton, KitFramelessWindow, KitWindow
 
 if __name__ == '__main__':
     import sys
@@ -18,6 +18,7 @@ if __name__ == '__main__':
     fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
     fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
 
+    # window = KitFramelessWindow()
     window = KitWindow()
 
     top_main = QWidget()
@@ -33,8 +34,9 @@ if __name__ == '__main__':
     main.setLayout(main_layout)
 
     top_main_layout.addWidget(main)
+    window.setCentralWidget(top_main)
 
-    drawer_left = KitDrawer(orientation=Position.Left)
+    drawer_left = KitDrawer(main.window(), orientation=Position.Left)
     drawer_left.setWidth(600)
     drawer_left.setClosePolicy(ClosePolicy.CloseOnEscape)
     btn = KitButton('left')
@@ -44,7 +46,7 @@ if __name__ == '__main__':
     close_left.clicked.connect(lambda: drawer_left.close())
     drawer_left.layout().addWidget(close_left)
 
-    drawer_right = KitDrawer(orientation=Position.Right)
+    drawer_right = KitDrawer(main.window(), orientation=Position.Right)
     btn2 = KitButton('right')
     btn2.clicked.connect(lambda: drawer_right.open())
     drawer_right.setLayout(QVBoxLayout())
@@ -52,7 +54,7 @@ if __name__ == '__main__':
     close_right.clicked.connect(lambda: drawer_right.close())
     drawer_right.layout().addWidget(close_right)
 
-    drawer_top = KitDrawer(orientation=Position.Top)
+    drawer_top = KitDrawer(main.window(), orientation=Position.Top)
     btn3 = KitButton('top')
     btn3.clicked.connect(lambda: drawer_top.open())
     drawer_top.setLayout(QVBoxLayout())
@@ -60,7 +62,7 @@ if __name__ == '__main__':
     close_top.clicked.connect(lambda: drawer_top.close())
     drawer_top.layout().addWidget(close_top)
 
-    drawer_bottom = KitDrawer(orientation=Position.Bottom)
+    drawer_bottom = KitDrawer(main.window(), orientation=Position.Bottom)
     btn4 = KitButton('bottom')
     btn4.clicked.connect(lambda: drawer_bottom.open())
     drawer_bottom.setLayout(QVBoxLayout())
@@ -73,6 +75,5 @@ if __name__ == '__main__':
     main_layout.addWidget(btn3)
     main_layout.addWidget(btn4)
 
-    window.setCentralWidget(top_main)
     window.show()
     sys.exit(app.exec_())
