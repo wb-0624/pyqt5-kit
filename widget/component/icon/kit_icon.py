@@ -1,11 +1,8 @@
-import sys
-
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFontDatabase, QIcon, QPixmap
-from PyQt5.QtWidgets import QLabel, QApplication, QWidget, QSizePolicy
+from PyQt5.QtGui import QIcon, QPixmap
 
-from config import config
-from app_config.constant import Icons
+from PyQt5.QtWidgets import QLabel, QSizePolicy
+
 
 
 class KitIcon(QLabel):

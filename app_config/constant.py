@@ -1,3 +1,8 @@
+class Theme:
+    DARK = "dark"
+    LIGHT = "light"
+
+
 class Button:
     # Button Style
     Text = "text"

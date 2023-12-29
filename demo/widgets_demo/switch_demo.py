@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFontDatabase
+
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel
 
 from widget import KitFramelessWindow, KitSwitch
@@ -37,9 +37,8 @@ if __name__ == "__main__":
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 
     app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-    QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
+    config.init()
+
 
     window = KitFramelessWindow()
     # window = KitWindow()

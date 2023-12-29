@@ -20,7 +20,7 @@ class TagDemo(QWidget):
         layout.addWidget(tag3)
 
 if __name__ == "__main__":
-    from PyQt5.QtGui import QFontDatabase
+
     from config import config
     import sys
 
@@ -28,10 +28,9 @@ if __name__ == "__main__":
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 
     app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
+    config.init()
+
+
 
     window = KitFramelessWindow()
     # window = KitWindow()

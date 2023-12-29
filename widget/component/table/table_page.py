@@ -1,7 +1,7 @@
 import sys
 
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtGui import QFontDatabase
+
 from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QPushButton, QHBoxLayout, QLabel
 
 from widget.component.button.kit_button import KitIconButton
@@ -142,12 +142,11 @@ class TablePagination(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
+    config.init()
     main = QWidget()
     main.setLayout(QVBoxLayout())
-    fontId = QFontDatabase.addApplicationFont("assets/font/iconfont.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
+
+
 
     page = TablePagination()
     page.setAllData([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])

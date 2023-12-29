@@ -2,7 +2,7 @@ import sys
 
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFontDatabase
+
 
 from config import config
 from widget import KitSpinBox, KitDoubleSpinBox, KitFramelessWindow, KitWindow
@@ -26,10 +26,9 @@ if __name__ == "__main__":
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 
     app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
+    config.init()
+
+
 
     window = KitFramelessWindow()
     # window = KitWindow()

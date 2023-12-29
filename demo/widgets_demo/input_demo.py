@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFontDatabase, QIntValidator
+from PyQt5.QtGui import QIntValidator
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
 from config import config
@@ -25,10 +25,9 @@ if __name__ == '__main__':
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
     app = QApplication([])
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
+    config.init()
+
+
 
     window = KitFramelessWindow()
     # window = KitWindow()

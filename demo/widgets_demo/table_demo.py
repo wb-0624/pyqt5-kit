@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 from app_config.constant import Button
 import sys
 
-from PyQt5.QtGui import QFontDatabase
+
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
 from config import config
@@ -84,11 +84,10 @@ if __name__ == "__main__":
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
     app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
+    config.init()
 
-    fontId = QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
+
+
 
     window = KitFramelessWindow()
     # window = KitWindow()

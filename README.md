@@ -39,3 +39,28 @@ QApplication.setActiveWindow(self)
 这里的self必须是在当前窗口中的一个控件，否则无法激活窗口。
 
 只有在外部条件触发时，需要额外注意。如果是通过按钮等触发，则不需要考虑该问题。
+
+
+# Theme
+
+- 通常情况下只需要在 `theme` 下建立主体文件，例如: `light.scss` 。并且参照其内的样式变量实现自定义的样式。
+``` css
+$color-primary: #3f51b5;
+```
+
+- 如果需要添加额外的预定义变量， 在 `common` 下创建  `.scss` 文件即可。
+
+``` css
+$white: white;
+```
+
+- 如果需要添加额外的组件修改变量， 修改component下的对应的组件的scss文件即可。例如需要为button组件贴图。
+
+``` css
+KitButton{
+    border-image: $button-border-image;
+}
+```
+
+> 切勿在 `component` 下的文件内使用 import 语句。
+> 要记得在主题变量文件中添加该变量并赋值。

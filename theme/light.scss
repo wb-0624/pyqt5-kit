@@ -1,6 +1,6 @@
 //本主题特定样式
-@import "theme/theme.scss";
-@import "theme/color.scss";
+@import "common/theme";
+@import "common/color";
 
 *{
   font-size: $font-size;
@@ -19,20 +19,7 @@ $danger: $red500;
 $success: $green500;
 $disable: $gray300;
 
-
-// 通用边距，间距等
-// border
-$border-width: 1px;
-$border-radius: 4px;
-
-
-// layout
-$spacing: 8px;
-$margin: 4px;
-
-
 // 组件样式
-
 // button
 $button-color: $gray200;
 $tool-button-color: #f5f5f5;

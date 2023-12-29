@@ -1,7 +1,7 @@
 import sys
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFontDatabase
+
 from PyQt5.QtWidgets import QApplication
 
 from config import config
@@ -16,11 +16,10 @@ def main():
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 
     app = QApplication(sys.argv)
-    qss = config.init_qss()
-    app.setStyleSheet(qss)
+    config.init()
 
-    QFontDatabase.addApplicationFont("assets/font/Material-Icons.ttf")
-    QFontDatabase.addApplicationFont("assets/font/Ubuntu-Regular.ttf")
+
+
 
     window = KitFramelessWindow()
     window.resize(800, 600)
