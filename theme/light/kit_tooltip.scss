@@ -1,8 +1,7 @@
-QToolTip {
-    background-color: #F7F7F7;
-    color: #333333;
-    border: 1px solid #CCCCCC;
-    border-radius: 2px;
-    padding: 4px;
-    box-shadow: none !important;
+@import "theme/light/app.scss";
+KitToolTip > KitWindowBody{
+    background-color: $tool-tip-bg;
+    color: $gray900;
+    border: $tool-tip-border;
+    border-radius: $border-radius;
 }

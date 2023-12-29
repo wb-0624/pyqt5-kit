@@ -1,39 +1,40 @@
 @import "theme/color.scss";
+@import "theme/light/app.scss";
 
 CheckBoxIcon{
-  background-color: transparent;
+  background-color: $checkbox-icon-bg;
 }
 
 CheckBoxIcon > KitIcon{
-  border:1px solid black;
-  color: white;
+  border:$checkbox-icon-border;
+  color: $checkbox-icon-color;
   font-weight: 800;
   font-size: 20px;
-  border-radius: 4px;
+  border-radius: $checkbox-icon-radius;
 }
 
 CheckBoxIcon[state='unchecked'] > KitIcon{
-  background-color: white;
+  background-color: $checkbox-icon-unchecked-color;
 }
 CheckBoxIcon[state='checked'] > KitIcon{
-  background-color: $blue600;
+  background-color: $checkbox-icon-checked-color;
 }
 CheckBoxIcon[state='partial_checked'] > KitIcon{
-  background-color: $blue600;
+  background-color: $checkbox-icon-partial-checked-color;
 }
 
 
 KitCheckBox{
     &:indicator{
-      width: 32px;
-      height: 32px;
-      border-radius: 16px;
-      background-color: transparent;
+      width: $checkbox-indicator-size;
+      height: $checkbox-indicator-size;
+      border-radius: $checkbox-indicator-radius;
+      background-color: $checkbox-indicator-bg;
       &:hover{
-        background-color: transparentize($stone900, 0.8);
+        background-color: $checkbox-indicator-bg-hover;
       }
     &:pressed{
-      background-color: transparentize($stone900, 0.6);
+      background-color: $checkbox-indicator-bg-pressed;
     }
   }
 }

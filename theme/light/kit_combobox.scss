@@ -15,7 +15,7 @@ KitComboBox{
     background-color: $disable;
   }
 
-  QAbstractItemView {
+  KitComboBox > QAbstractItemView {
     outline: 0px;   /* 选定项的虚框 */
     border: 1px solid $gray300;   /* 整个下拉窗体的边框 */
     border-radius: 4px;

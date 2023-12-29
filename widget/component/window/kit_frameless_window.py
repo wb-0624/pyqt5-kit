@@ -2,7 +2,7 @@ import sys
 
 from PyQt5.QtCore import Qt, QSize, QPoint, pyqtSignal
 from PyQt5.QtGui import QFontDatabase, QCursor
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QGraphicsDropShadowEffect, QGraphicsOpacityEffect
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QGraphicsDropShadowEffect
 
 from config import config
 from app_config.constant import Position, Window
@@ -137,7 +137,7 @@ class KitFramelessWindow(KitWindow):
         self.window_body = window_body
         super().setCentralWidget(window_body)
 
-    def setResizeable(self, resizeable:bool):
+    def setResizeable(self, resizeable: bool):
         self.resizable = resizeable
 
     def isResizable(self):

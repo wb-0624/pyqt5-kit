@@ -1,12 +1,13 @@
 @import "theme/theme.scss";
 @import "theme/color.scss";
+@import "theme/light/app.scss";
 
 /* window */
 
 KitWindowBody{
-    background-color: $gray200;
-    padding: 0px;
-    border-radius: 8px;
+    background-color: $frameless-window-bg;
+    padding: $frameless-window-padding;
+    border-radius: $frameless-window-radius;
 }
 
 KitWindowBody[type='max']{
@@ -15,11 +16,7 @@ KitWindowBody[type='max']{
 }
 
 KitTitleBar{
-    background-color: transparent;
-}
-KitTitleBar > #title_bar_handler{
-    background-color: transparentize(black, 0.5);
-    border-radius: 2px;
+    background-color: $title-bar-bg;
 }
 
 //TitleBarButton{

@@ -2,6 +2,11 @@
 @import "theme/theme.scss";
 @import "theme/color.scss";
 
+*{
+  font-size: $font-size;
+  font-family: $font;
+}
+
 //背景
 $bg-color: $neutral50;
 $text_color:$neutral900;
@@ -24,10 +29,19 @@ $spacing: 8px;
 $margin: 4px;
 
 // 组件样式
-// 按钮
+// window
+$frameless-window-bg: $gray200;
+$frameless-window-padding: 0px;
+$frameless-window-radius: 8px;
+
+//title-bar
+$title-bar-bg: transparent;
+
+// button
 $button-color: $gray200;
 $tool-button-color: #f5f5f5;
-// 菜单样式
+
+// menu
 $menu-hovered: transparentize($gray300, 0.5);
 $menu-checked: transparentize($gray300, 0.5);
 $menu-unchecked: transparent;
@@ -48,6 +62,31 @@ $splash-screen-bg: $gray200;
 
 //card
 $card-bg: $gray100;
+$card-border: $border-width solid transparent;
+$card-radius: $border-radius;
 
 //overlay
 $overlay-bg: rgba(0, 0, 0, 0.5);
+
+//checkbox
+$checkbox-icon-bg: transparent;
+$checkbox-icon-radius: $border-radius;
+$checkbox-icon-border: $border-width solid black;
+$checkbox-icon-border-radius: $border-radius;
+$checkbox-icon-color:white;
+$checkbox-icon-unchecked-color: white;
+$checkbox-icon-checked-color: $blue600;
+$checkbox-icon-partial-checked-color: $blue600;
+
+$checkbox-indicator-size: 32px;
+$checkbox-indicator-radius: $checkbox-indicator-size/2;
+$checkbox-indicator-bg: transparent;
+$checkbox-indicator-bg-hover: transparentize($stone900, 0.8);
+$checkbox-indicator-bg-pressed: transparentize($stone900, 0.6);
+
+
+//tool-tip
+$tool-tip-bg: $gray100;
+$tool-tip-color: $gray900;
+$tool-tip-radius: $border-radius;
+$tool-tip-border: 1px solid $gray300;
