@@ -7,8 +7,8 @@
 
 KitIcon{
   font-family: $icon;
-  font-size: 16px;
-  background-color: transparent;
+  font-size: $icon-size;
+  background-color: $icon-bg;
 }
 
 KitIcon[type='primary']{

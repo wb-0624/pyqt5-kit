@@ -3,27 +3,27 @@
 
 
 KitSpinBox, KitDoubleSpinBox{
-  border: 1px solid $gray600;
-  border-radius: $border-radius;
-  background-color: $gray100;
+  border: $spin-box-border;
+  border-radius: $spin-box-border-radius;
+  background-color: $spin-box-bg;
   &:up-button {
-    background-color: transparent;
-    border-top-right-radius: $border_radius;
+    background-color: $spin-box-button-bg;
+    border-top-right-radius: $spin-box-button-border-radius;
     &:hover{
-      background-color: $gray200;
+      background-color: $spin-box-button-bg-hover;
     }
     &:pressed{
-        background-color: $gray400;
+        background-color: $spin-box-button-bg-pressed;
     }
   }
   &:down-button {
-    background-color: transparent;
-    border-bottom-right-radius: $border_radius;
+    background-color: $spin-box-button-bg;
+    border-bottom-right-radius: $spin-box-button-border-radius;
     &:hover{
-      background-color: $gray200;
+      background-color: $spin-box-button-bg-hover;
     }
     &:pressed{
-        background-color: $gray400;
+        background-color: $spin-box-button-bg-pressed;
     }
   }
 }

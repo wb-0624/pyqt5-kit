@@ -10,39 +10,39 @@ KitSwitchIndicator{
 
 
 KitSwitch{
-  border: 2px solid $zinc500;
+  border: $switch-border;
   border-radius: 16px;
-  background-color: white;
+  background-color: $switch-bg;
   &:disabled{
-    background-color: $disable;
-    border-color: darken($disable, 10%);
+    background-color: $switch-disabled;
+    border-color: $switch-disabled-border;
   }
   #indicator-inner{
-    background-color: $zinc500;
+    background-color: $switch-indicator-bg;
     border-radius: 12px;
     #indicator-inner-icon{
-      color: $bg-color;
+      color: $switch-indicator-icon-color;
     }
   }
   #indicator-inner{
     &:disabled{
-      background-color: darken($disable, 10%);
+      background-color: $switch-indicator-disabled;
     }
   }
 }
 
 KitSwitch[checked='true']{
-  background-color: $success;
+  background-color: $switch-true-bg;
   &:disabled{
-    background-color: lighten($success, 10%);
+    background-color: $switch-true-bg-disabled;
   }
   #indicator-inner{
-    background-color: $bg-color;
+    background-color: $switch-indicator-true-bg;
     #indicator-inner-icon{
-      color: black;
+      color: $switch-indicator-icon-true-color;
     }
     &:disabled{
-      background-color: lighten($disable, 10%);
+      background-color: $switch-indicator-icon-bg-disabled;
     }
   }
 }

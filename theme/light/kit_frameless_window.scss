@@ -21,21 +21,21 @@ KitTitleBar{
 
 //TitleBarButton{
 KitTitleBar > #title_bar_button{
-    background-color: transparent;
+    background-color: $title-bar-button-bg;
     &:hover{
-        background-color: transparentize($gray400, 0.8);
+        background-color: $title-bar-button-hovered;
     }
     &:pressed{
-        background-color: transparentize($gray600, 0.6);
+        background-color: $title-bar-button-pressed;
     }
 }
 
 KitTitleBar > #title_bar_close_button{
-    background-color: transparent;
+    background-color: $title-bar-close-button-bg;
     &:hover{
-        background-color: $red400;
+        background-color: $title-bar-close-button-hovered;
     }
     &:pressed{
-        background-color: $red600;
+        background-color: $title-bar-close-button-pressed;
     }
 }

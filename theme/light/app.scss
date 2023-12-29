@@ -19,54 +19,30 @@ $danger: $red500;
 $success: $green500;
 $disable: $gray300;
 
+
 // 通用边距，间距等
 // border
 $border-width: 1px;
 $border-radius: 4px;
 
+
 // layout
 $spacing: 8px;
 $margin: 4px;
 
-// 组件样式
-// window
-$frameless-window-bg: $gray200;
-$frameless-window-padding: 0px;
-$frameless-window-radius: 8px;
 
-//title-bar
-$title-bar-bg: transparent;
+// 组件样式
 
 // button
 $button-color: $gray200;
 $tool-button-color: #f5f5f5;
 
-// menu
-$menu-hovered: transparentize($gray300, 0.5);
-$menu-checked: transparentize($gray300, 0.5);
-$menu-unchecked: transparent;
-
-// tab样式
-$tab-hovered: transparentize($gray300, 0.5);
-$tab-checked: transparentize($gray300, 0.5);
-$tab-unchecked: transparent;
-$tab-bar-bg: transparent;
-
-// progress
-$progress-bg: $gray300;
-$progress-chunk: $green700;
-$progress-border: transparent;
-
-// splashscreen
-$splash-screen-bg: $gray200;
 
 //card
 $card-bg: $gray100;
 $card-border: $border-width solid transparent;
 $card-radius: $border-radius;
 
-//overlay
-$overlay-bg: rgba(0, 0, 0, 0.5);
 
 //checkbox
 $checkbox-icon-bg: transparent;
@@ -78,11 +54,144 @@ $checkbox-icon-unchecked-color: white;
 $checkbox-icon-checked-color: $blue600;
 $checkbox-icon-partial-checked-color: $blue600;
 
-$checkbox-indicator-size: 32px;
-$checkbox-indicator-radius: $checkbox-indicator-size/2;
 $checkbox-indicator-bg: transparent;
 $checkbox-indicator-bg-hover: transparentize($stone900, 0.8);
 $checkbox-indicator-bg-pressed: transparentize($stone900, 0.6);
+
+
+//combobox
+$combobox-bg: $gray100;
+$combobox-border: $border-width solid $info;
+$combobox-radius: $border-radius;
+
+$combobox-bg-hover: transparentize($blue200, 0.8);
+$combobox-border-color-hover: $blue400;
+
+$combobox-bg-disabled: $disable;
+$combobox-item-color: black;
+$combobox-item-bg-selected: transparentize($gray300, 0.6);
+$combobox-item-bg-hover: transparentize($gray300, 0.6);
+
+
+//divider
+$divider-color: $gray300;
+
+
+//drawer
+$drawer-bg: $gray100;
+
+
+//drop
+$drop-bg: $gray200;
+$drop-bg-hover: $gray300;
+$drop-border: 2px dashed $gray400;
+$drop-icon-size: 50px;
+
+
+// window
+$frameless-window-bg: $gray200;
+$frameless-window-padding: 0px;
+$frameless-window-radius: 8px;
+//title-bar
+$title-bar-bg: transparent;
+$title-bar-button-bg: transparent;
+$title-bar-button-hovered: transparentize($gray400, 0.8);
+$title-bar-button-pressed: transparentize($gray600, 0.6);
+$title-bar-close-button-bg: transparent;
+$title-bar-close-button-hovered: $red400;
+$title-bar-close-button-pressed: $red600;
+
+
+//icon
+$icon-size: $font-size;
+$icon-bg: transparent;
+
+
+//line-edit
+$line-edit-bg: $gray50;
+$line-edit-border: $border-width solid black;
+$line-edit-border-radius: $border-radius;
+
+
+// menu
+$menu-hovered: transparentize($gray300, 0.5);
+$menu-checked: transparentize($gray300, 0.5);
+$menu-unchecked: transparent;
+
+
+//overlay
+$overlay-bg: rgba(0, 0, 0, 0.5);
+
+
+// progress
+$progress-bg: $gray300;
+$progress-chunk: $green700;
+$progress-border: transparent;
+
+
+//spin-box
+$spin-box-bg: $gray100;
+$spin-box-border: $border-width solid $gray600;
+$spin-box-border-radius: $border-radius;
+$spin-box-button-bg: transparent;
+$spin-box-button-bg-hover: $gray200;
+$spin-box-button-bg-pressed: $gray400;
+$spin-box-button-border-radius: $border-radius;
+
+
+//splashscreen
+$splash-screen-bg: $gray200;
+
+
+//switch
+$switch-bg: white;
+$switch-border: 2px solid $zinc500;
+$switch-disabled: $disable;
+$switch-disabled-border: darken($disable, 10%);
+$switch-indicator-bg: $zinc500;
+$switch-indicator-icon-color: $bg-color;
+$switch-indicator-disabled:darken($disable, 10%);
+//switch-true
+$switch-true-bg: $success;
+$switch-true-bg-disabled: lighten($success, 10%);
+$switch-indicator-true-bg: $bg-color;
+$switch-indicator-icon-true-color: black;
+$switch-indicator-icon-bg-disabled: lighten($disable, 10%);
+
+
+// tab
+$tab-hovered: transparentize($gray300, 0.5);
+$tab-checked: transparentize($gray300, 0.5);
+$tab-unchecked: transparent;
+$tab-bar-bg: transparent;
+
+
+//table
+$table-header-bg: $gray300;
+$table-header-bottom-border: 2px solid $gray500;
+$table-header-top-border: 2px solid $gray500;
+//table-cell
+$table-cell-bg: $gray100;
+$table-cell-bottom-border: 1px solid $gray300;
+// 偶数行
+$table-cell-even-row-bg: $gray100;
+// 奇数行
+$table-cell-odd-row-bg: $gray100;
+// 当前选中行
+$table-cell-current-row-bg: $gray300;
+// 鼠标悬浮行
+$table-cell-hovered-row-bg: $gray200;
+// 表格分页跳转输入框
+$table-page-input-border: 1px solid $gray300;
+// 表格分页按钮
+$table-page-button-bg: transparent;
+$table-page-button-bg-hover: $gray400;
+$table-page-button-bg-pressed: $gray500;
+
+
+//tag
+$tag-font-size: $font-size-small;
+$tag-border-radius: 2px;
 
 
 //tool-tip

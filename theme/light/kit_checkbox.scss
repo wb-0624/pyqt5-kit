@@ -26,9 +26,9 @@ CheckBoxIcon[state='partial_checked'] > KitIcon{
 
 KitCheckBox{
     &:indicator{
-      width: $checkbox-indicator-size;
-      height: $checkbox-indicator-size;
-      border-radius: $checkbox-indicator-radius;
+      width: 32px;
+      height: 32px;
+      border-radius: 16px;
       background-color: $checkbox-indicator-bg;
       &:hover{
         background-color: $checkbox-indicator-bg-hover;

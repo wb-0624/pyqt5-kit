@@ -1,11 +1,12 @@
-@import "theme/color.scss";
+@import "theme/light/app.scss";
+
 KitFileDropArea{
-  background-color: $gray200;
-  border: 2px dashed $gray400;
+  background-color: $drop-bg;
+  border: $drop-border;
   &:hover{
-    background-color: $gray300;
+    background-color: $drop-bg-hover;
   }
   KitIcon{
-    font-size:50px;
+    font-size:$drop-icon-size;
   }
 }

@@ -3,16 +3,15 @@
 @import "theme/light/app.scss";
 
 KitComboBox{
-  background-color: $gray100;
-  border: 1px solid $info;
-  border-radius: $border-radius;
+  background-color: $combobox-bg;
+  border: $combobox-border;
+  border-radius: $combobox-radius;
   &:hover{
-    background-color: transparentize($blue200, 0.8);
-    border-color: $blue400;
-    border-radius: $border-radius;
+    background-color: $combobox-bg-hover;
+    border-color: $combobox-border-color-hover;
   }
   &:disabled{
-    background-color: $disable;
+    background-color: $combobox-bg-disabled;
   }
 
   KitComboBox > QAbstractItemView {
@@ -25,12 +24,12 @@ KitComboBox{
       height: 32px;
       margin:$margin;
       border-radius: $border-radius;
-      color:black;
+      color:$combobox-item-color;
       &:selected {
-        background-color: transparentize($gray300, 0.6);
+        background-color: $combobox-item-bg-selected;
       }
       &:hover{
-        background-color: transparentize($gray300, 0.6);
+        background-color: $combobox-item-bg-hover;
       }
     }
   }

@@ -1,7 +1,8 @@
-@import "theme/color.scss";
+@import "theme/light/app.scss";
+
 KitHDivider{
-  background-color: $gray300;
+  background-color: $divider-color;
 }
 KitVDivider{
-  background-color: $gray300;
+  background-color: $divider-color;
 }

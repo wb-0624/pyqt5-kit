@@ -13,9 +13,9 @@ QTableWidget{
 }
 
 TableHeader TableCellWidget{
-  border-top: 2px solid $gray500;
-  border-bottom: 2px solid $gray500;
-  background-color: $gray300;
+  border-top: $table-header-top-border;
+  border-bottom: $table-header-bottom-border;
+  background-color: $table-header-bg;
   font-weight: 900;
 }
 
@@ -32,23 +32,23 @@ TableBody{
 
 TableBody TableCellWidget{
   background-color: $gray100;
-  border-bottom: 1px solid $gray300;
+  border-bottom: $table-cell-bottom-border;
 }
 
 TableBody TableCellWidget[row='even']{
-  background-color: $gray100;
+  background-color: $table-cell-even-row-bg;
 }
 
 TableBody TableCellWidget[row='odd']{
-    background-color: $gray100;
+    background-color: $table-cell-odd-row-bg;
 }
 
 TableBody TableCellWidget[row='current']{
-  background-color: $gray300;
+  background-color: $table-cell-current-row-bg;
 }
 
 TableBody TableCellWidget[row='hovered']{
-  background-color: $gray200;
+  background-color: $table-cell-hovered-row-bg;
 }
 
 #table_freeze{
@@ -64,16 +64,16 @@ TableBody TableCellWidget[row='hovered']{
 TablePagination{
   background-color: transparent;
   KitLineEdit{
-    border: 1px solid $gray300;
+    border: $table-page-input-border;
   }
   #page_icon{
     border:none;
-    background-color: transparent;
+    background-color: $table-page-button-bg;
     &:hover{
-      background-color: $gray400;
+      $table-page-button-bg-hover: $gray400;
     }
     &:pressed{
-      background-color: $gray500;
+      $table-page-button-bg-pressed: $gray500;
     }
   }
 }

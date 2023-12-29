@@ -1,8 +1,8 @@
 @import "theme/light/app.scss";
 
 KitLineEdit{
-  background-color: $gray50;
-  border: 1px solid black;
-  border-radius: 4px;
+  background-color: $line-edit-bg;
+  border:$line-edit-border;
+  border-radius: $line-edit-border-radius;
 }
 
