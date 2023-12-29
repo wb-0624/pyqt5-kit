@@ -1,14 +1,15 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QVBoxLayout
 
 from app_config.constant import Graph
 from widget import KitFramelessWindow, KitGraph
+
 
 class GraphDemo(QWidget):
     def __init__(self):
         super().__init__()
 
-        layout = QGridLayout()
+        layout = QVBoxLayout()
         self.setLayout(layout)
         c_data = [
             {'name': 'A', 'value': 10, 'color': 'red'},
@@ -17,7 +18,7 @@ class GraphDemo(QWidget):
             {'name': 'D', 'value': 40, 'color': 'blue'},
         ]
         chart_1 = KitGraph(Graph.Histogram, c_data)
-        layout.addWidget(chart_1, 0, 0, 1, 1)
+        layout.addWidget(chart_1)
 
         l_data = [
             {'x': [1, 2, 3, 4, 5], 'y': [10, 2, 3, 4, 5], 'color': 'red', 'name': 'y1'},
@@ -25,7 +26,7 @@ class GraphDemo(QWidget):
             {'x': [1, 2, 3, 4, 5], 'y': [1, 2, 3, 10, 5], 'color': 'blue', 'name': 'y3'},
         ]
         chart_2 = KitGraph(Graph.Line, l_data)
-        layout.addWidget(chart_2, 0, 1, 1, 1)
+        layout.addWidget(chart_2)
 
         p_data = [
             {'a': [0.78, 2, 3, 4, 5], 'r': [10, 2, 3, 4, 5], 'color': 'red', 'name': 'y1'},
@@ -35,7 +36,7 @@ class GraphDemo(QWidget):
         chart_3 = KitGraph(Graph.Polar, p_data)
         chart_3.chart.setTickInterval(2)
         chart_3.chart.setTickCount(5)
-        layout.addWidget(chart_3, 1, 0, 1, 1)
+        layout.addWidget(chart_3)
 
         pie_data = [
             {'label': 'A', 'value': 10, 'color': 'red', 'name': 'y1'},
@@ -43,7 +44,7 @@ class GraphDemo(QWidget):
             {'label': 'C', 'value': 30, 'color': 'blue', 'name': 'y3'},
         ]
         chart_4 = KitGraph(Graph.Pie, pie_data)
-        layout.addWidget(chart_4, 1, 1, 1, 1)
+        layout.addWidget(chart_4)
 
         scatter_data = [
             {'x': [1, 2, 3, 4, 5], 'y': [10, 2, 3, 4, 5], 'symbol': {'color': 'red', 'size': 10, 'shape': 't'},
@@ -54,7 +55,7 @@ class GraphDemo(QWidget):
              'name': 'y3'},
         ]
         chart_5 = KitGraph(Graph.Scatter, scatter_data)
-        layout.addWidget(chart_5, 2, 0, 1, 1)
+        layout.addWidget(chart_5)
 
 
 if __name__ == "__main__":

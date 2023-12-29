@@ -1,7 +1,8 @@
 from PyQt5.QtCore import Qt, QEvent
 from PyQt5.QtWidgets import QWidget, QScrollArea, QVBoxLayout
 
-from demo.widgets_demo import ButtonDemo, InputDemo, CheckBoxDemo, ProgressDemo, SliderDemo, SwitchDemo
+from demo.widgets_demo import ButtonDemo, InputDemo, CheckBoxDemo, ProgressDemo, SliderDemo, SwitchDemo, ComboBoxDemo
+
 
 class BasicStack(QScrollArea):
 
@@ -14,7 +15,7 @@ class BasicStack(QScrollArea):
 
     def __init_widget(self):
         self.content = QWidget()
-        self.content.resize(500, 1000)
+        self.content.resize(500, 1200)
         self.setWidget(self.content)
         self.layout = QVBoxLayout()
         self.content.setLayout(self.layout)
@@ -37,6 +38,9 @@ class BasicStack(QScrollArea):
         switch_demo = SwitchDemo()
         self.layout.addWidget(switch_demo)
 
+        combobox_demo = ComboBoxDemo()
+        self.layout.addWidget(combobox_demo)
+
         self.layout.addStretch(1)
 
     def __init_slot(self):
@@ -51,5 +55,3 @@ class BasicStack(QScrollArea):
         elif a1.type() == QEvent.Wheel:
             self.update()
         return super().eventFilter(a0, a1)
-
-

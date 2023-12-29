@@ -15,7 +15,9 @@ class ComboBoxDemo(QWidget):
         self.setLayout(layout)
 
         combo = KitComboBox()
-        combo.setContentList([{'id': 1, 'name': 'test1213512351'}, {'id': 2, 'name': 'test2'}, {'id': 3, 'name': 'test3'}, {'id': 4, 'name': 'test4'}, {'id': 5, 'name': 'test5'}])
+        combo.setContentList(
+            [{'id': 1, 'name': 'test1213512351'}, {'id': 2, 'name': 'test2'}, {'id': 3, 'name': 'test3'},
+             {'id': 4, 'name': 'test4'}, {'id': 5, 'name': 'test5'}])
 
         btn1 = KitButton("set1")
         btn1.clicked.connect(lambda: combo.setCurrentId(1))
@@ -26,8 +28,8 @@ class ComboBoxDemo(QWidget):
         layout.addWidget(btn1)
         layout.addWidget(btn2)
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 

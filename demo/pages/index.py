@@ -5,6 +5,8 @@ from app_config.constant import Icons
 from widget import KitTabBar
 
 from .stack import DialogStack, BasicStack
+from .stack.graph_stack import GraphStack
+from .stack.table_stack import TableStack
 
 
 class Index(QWidget):
@@ -36,18 +38,15 @@ class Index(QWidget):
 
         self.navigation.addTab('dialog', Icons.md_comment)
         dialog_stack = DialogStack()
-        dialog_stack.setStyleSheet('background-color: blue;')
         self.stack.addWidget(dialog_stack)
 
         self.navigation.addTab('graph', Icons.md_pie_chart)
-        chart_stack = QWidget()
-        chart_stack.setStyleSheet('background-color: green;')
+        chart_stack = GraphStack()
         self.stack.addWidget(chart_stack)
 
-        self.navigation.addTab('dataview', Icons.md_table_view)
-        dataview_stack = QWidget()
-        dataview_stack.setStyleSheet('background-color: yellow;')
-        self.stack.addWidget(dataview_stack)
+        self.navigation.addTab('table', Icons.md_table_view)
+        table_stack = TableStack()
+        self.stack.addWidget(table_stack)
 
         self.navigation.layout.addStretch(1)
 
