@@ -1,7 +1,8 @@
-from PyQt5.QtCore import Qt, QEvent, QPoint, QObject, QSize
+from PyQt5.QtCore import Qt, QEvent, QPoint, QObject
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel
 
-from widget import KitFramelessWindow, KitButton
+from ..window import KitFramelessWindow
+from ..button import KitButton
 
 
 class KitToolTip(KitFramelessWindow):
@@ -34,9 +35,9 @@ class KitToolTip(KitFramelessWindow):
         self.setAttribute(Qt.WA_StyledBackground, True)
 
 
-class ToolTipFilter(QObject):
+class KitToolTipFilter(QObject):
     def __init__(self, parent: QWidget = None):
-        super(ToolTipFilter, self).__init__(parent=parent)
+        super(KitToolTipFilter, self).__init__(parent=parent)
         self.tool_tip = KitToolTip(parent.toolTip())
         self.tool_tip.hide()
 
@@ -49,11 +50,10 @@ class ToolTipFilter(QObject):
         elif event.type() == QEvent.Leave:
             self.tool_tip.hide()
             return True
-        return super(ToolTipFilter, self).eventFilter(obj, event)
+        return super(KitToolTipFilter, self).eventFilter(obj, event)
 
 
 if __name__ == "__main__":
-
     from config import config
     import sys
 
@@ -71,7 +71,7 @@ if __name__ == "__main__":
 
     btn = KitButton('123')
     btn.setToolTip('123')
-    btn.installEventFilter(ToolTipFilter(btn))
+    btn.installEventFilter(KitToolTipFilter(btn))
     layout.addWidget(btn)
 
     window.setCentralWidget(main)

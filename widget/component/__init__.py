@@ -18,4 +18,5 @@ from .switch import *
 from .tab import *
 from .table import *
 from .tag import *
+from .tooltip import *
 from .window import *

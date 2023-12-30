@@ -15,15 +15,15 @@ class Config(QObject):
         # 工程根目录
         self.app_root_path = ""
         self.theme = Theme.LIGHT
-        self.getAppRootPath()
+        self.get_app_root_path()
 
-    def getAppRootPath(self):
+    def get_app_root_path(self):
         # 获取当前文件所在的绝对路径
         current_path = os.path.abspath(__file__)
         # 获取当前文件所在的目录
         self.app_root_path = os.path.dirname(current_path)
 
-    def setTheme(self, theme):
+    def set_theme(self, theme: Theme):
         self.theme = theme
 
     def init(self):
@@ -56,7 +56,7 @@ class Config(QObject):
         # 读取主题文件下的当前主题样式变量
         current_theme = f'@import "theme/{self.theme}.scss";\n'
 
-        # 给组件scss 导入通用变量和当前主题变量
+        # 给组件 scss 导入通用变量和当前主题变量
         css = theme_common + current_theme + css
         css = sass.compile(string=css)
         app.setStyleSheet(css + qss)

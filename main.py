@@ -18,9 +18,6 @@ def main():
     app = QApplication(sys.argv)
     config.init()
 
-
-
-
     window = KitFramelessWindow()
     window.resize(800, 600)
     window.setCentralWidget(Index())
