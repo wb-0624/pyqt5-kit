@@ -49,9 +49,6 @@ class KitMessage(KitPopup):
         self._animation.setStartValue(0)
         self._animation.setEndValue(1)
 
-    def sizeHint(self):
-        return QSize(100, 40)
-
     def setOffset(self, offset: int):
         self.offset = offset
 
@@ -89,12 +86,13 @@ class KitMessage(KitPopup):
         msg_header_layout.setSpacing(4)
         msg_header_layout.addWidget(msg_icon)
         msg_header_layout.addWidget(msg_title)
+        msg_title.adjustSize()
 
         msg_layout.addLayout(msg_header_layout)
 
         msg.setProperty("type", style_type)
         msg.style().polish(msg)
-        msg.adjustSize()
+        msg.resize(msg_icon.width() + msg_title.width() + 24, msg_icon.height() + 8 * 2)
         msg.show()
         return msg
 
