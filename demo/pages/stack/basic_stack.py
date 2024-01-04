@@ -1,7 +1,10 @@
 from PyQt5.QtCore import Qt, QEvent
 from PyQt5.QtWidgets import QWidget, QScrollArea, QVBoxLayout
 
+from app_config import Icons
 from demo.widgets_demo import ButtonDemo, InputDemo, CheckBoxDemo, ProgressDemo, SliderDemo, SwitchDemo, ComboBoxDemo
+from widget import KitIcon
+from widget.component.menu.kit_menu import KitMenu
 
 
 class BasicStack(QScrollArea):
@@ -55,3 +58,9 @@ class BasicStack(QScrollArea):
         elif a1.type() == QEvent.Wheel:
             self.update()
         return super().eventFilter(a0, a1)
+
+    def contextMenuEvent(self, a0) -> None:
+        menu = KitMenu(self)
+        menu.addAction(KitIcon(Icons.md_add).toIcon(), '添加')
+        menu.addAction('删除')
+        menu.exec_(a0.globalPos())

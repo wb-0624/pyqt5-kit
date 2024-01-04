@@ -15,7 +15,7 @@ class TableStack(QScrollArea):
 
     def __init_widget(self):
         self.content = QWidget()
-        self.content.resize(500, 500)
+        self.content.resize(700, 700)
         self.setWidget(self.content)
         self.layout = QVBoxLayout()
         self.content.setLayout(self.layout)

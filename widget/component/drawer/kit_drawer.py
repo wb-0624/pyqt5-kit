@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QPropertyAnimation, QParallelAnimationGroup, QAbstractAnimation, Qt, QRect
+from PyQt5.QtCore import QPropertyAnimation, Qt, QRect
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect
 

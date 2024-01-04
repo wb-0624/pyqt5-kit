@@ -101,9 +101,11 @@ $line-edit-border-radius: $border-radius;
 
 
 // menu
-$menu-hovered: transparentize($gray300, 0.5);
-$menu-checked: transparentize($gray300, 0.5);
 $menu-unchecked: transparent;
+$menu-unchecked-text: black;
+$menu-hovered: transparentize($gray300, 0.1);
+$menu-hovered-text: black;
+$menu-bg: $gray100;
 
 
 //overlay
