@@ -30,6 +30,7 @@ class Window:
     Maximized = 2
     FullScreen = 3
 
+
 class ClosePolicy:
     """
     关闭策略
@@ -73,6 +74,12 @@ class Graph:
     Pie = 2
     Scatter = 3
     Polar = 4
+
+
+class Animation:
+    Opacity = 0
+    Move = 1
+    Geometry = 2
 
 
 class Icons:
