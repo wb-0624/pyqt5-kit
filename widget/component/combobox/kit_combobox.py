@@ -26,6 +26,7 @@ class KitComboBox(QComboBox):
     def __init_widget(self):
         self.setView(QListView(self))
         self.view().setTextElideMode(Qt.ElideRight)
+        self.view().parent().setWindowFlag(Qt.NoDropShadowWindowHint)
 
     def __init_slot(self):
         pass

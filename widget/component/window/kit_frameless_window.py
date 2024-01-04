@@ -92,8 +92,8 @@ class KitWindowBody(QWidget):
 
 class KitFramelessWindow(KitWindow):
 
-    def __init__(self):
-        super(KitFramelessWindow, self).__init__()
+    def __init__(self, parent=None):
+        super(KitFramelessWindow, self).__init__(parent=parent)
 
         self.window_body = None
         self.title_bar = None

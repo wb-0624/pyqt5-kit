@@ -9,13 +9,16 @@ KitComboBox{
   &:disabled{
     background-color: $combobox-bg-disabled;
   }
-
-  KitComboBox > QAbstractItemView {
+  &:drop-down{
+    background:transparent;
+  }
+  QAbstractItemView {
     outline: 0px;   /* 选定项的虚框 */
     border: 1px solid $gray300;   /* 整个下拉窗体的边框 */
     border-radius: 4px;
     color: black;
     background-color: $gray100;   /* 整个下拉窗体的背景色 */
+    box-shadow: none;
     &:item{
       height: 32px;
       margin:$margin;
@@ -29,12 +32,8 @@ KitComboBox{
       }
     }
   }
-
-  &:drop-down{
-    background:transparent;
-  }
-
 }
+
 #combobox_icon{
   font-size: 16px;
 }
