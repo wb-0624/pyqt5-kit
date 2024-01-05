@@ -1,7 +1,7 @@
 import sys
 
 from PyQt5.QtCore import Qt, QSize, QPoint, pyqtSignal
-from PyQt5.QtGui import QCursor
+from PyQt5.QtGui import QCursor, QColor
 
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QGraphicsDropShadowEffect
 
@@ -55,7 +55,7 @@ class KitWindowBody(QWidget):
         shadow = QGraphicsDropShadowEffect(self)
         shadow.setOffset(0, 0)
         shadow.setBlurRadius(10)
-        shadow.setColor(Qt.gray)
+        shadow.setColor(QColor('#b4b4b4'))
         self.setGraphicsEffect(shadow)
 
     def resizeEvent(self, a0) -> None:

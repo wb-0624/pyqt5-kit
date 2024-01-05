@@ -42,10 +42,10 @@ class KitButton(QPushButton):
         if if_shadow:
             shadow = QGraphicsDropShadowEffect()
             shadow.setXOffset(0)
-            shadow.setYOffset(1)
+            shadow.setYOffset(0)
             # setting blur radius
-            shadow.setBlurRadius(1)
-            shadow.setColor(QColor(0, 0, 0, 100))
+            shadow.setBlurRadius(8)
+            shadow.setColor(QColor('#b4b4b4'))
             # adding shadow to the button
             self.setGraphicsEffect(shadow)
         else:
