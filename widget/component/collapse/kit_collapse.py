@@ -1,9 +1,8 @@
-from PyQt5.QtCore import Qt, pyqtSignal, QRect, QPropertyAnimation
+from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel
 
-from animation.kit_animation import KitAnimationFactory
-from app_config import Icons, Animation
-from widget import KitIcon
+from app_config import Icons
+from ..icon import KitIcon
 
 
 class KitCollapse(QWidget):
