@@ -45,6 +45,14 @@ $checkbox-indicator-bg: transparent;
 $checkbox-indicator-bg-hover: transparentize($stone900, 0.8);
 $checkbox-indicator-bg-pressed: transparentize($stone900, 0.6);
 
+//collapse
+$collapse-bg: transparent;
+$collapse-item-bg: $neutral200;
+$collapse-item-border: 1px solid $neutral300;
+$collapse-item-radius: $border-radius;
+$collapse-content-bg: $stone200;
+$collapse-content-radius: $border-radius;
+
 
 //combobox
 $combobox-bg: $gray100;
@@ -76,7 +84,7 @@ $drop-icon-size: 50px;
 
 
 // window
-$frameless-window-bg: $gray200;
+$frameless-window-bg: $gray100;
 $frameless-window-padding: 0px;
 $frameless-window-radius: 8px;
 //title-bar

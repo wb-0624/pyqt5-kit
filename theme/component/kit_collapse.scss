@@ -1,0 +1,13 @@
+KitCollapse{
+  background-color: $collapse-bg;
+
+}
+KitCollapseItem{
+  border: $collapse-item-border;
+  border-radius: $collapse-item-radius;
+  background-color: $collapse-item-bg;
+}
+KitCollapseContent{
+  border-radius: $collapse-content-radius;
+  background-color: $collapse-content-bg;
+}

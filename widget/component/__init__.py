@@ -2,6 +2,7 @@ from .button import *
 from .card import *
 from .graph import *
 from .checkbox import *
+from .collapse import *
 from .combobox import *
 from .divider import *
 from .drawer import *
