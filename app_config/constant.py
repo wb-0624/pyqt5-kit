@@ -22,6 +22,14 @@ class Button:
     Checked = "checked"
 
 
+class Badge:
+    Primary = "primary"
+    Success = "success"
+    Warning = "warning"
+    Danger = "danger"
+    Info = "info"
+
+
 class Window:
     resize_margin = 12  # 窗口缩放边界宽度
 

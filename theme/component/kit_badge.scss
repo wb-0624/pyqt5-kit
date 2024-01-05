@@ -1,0 +1,25 @@
+KitBadge{
+  background-color: $badge-bg;
+  color:$badge-text-color;
+  border-radius: 7px;
+  font-size: 10px;
+}
+KitBadge[type='primary']{
+  background-color: $primary;
+}
+KitBadge[type='success']{
+  background-color: $success;
+}
+KitBadge[type='warning']{
+  background-color: $warning;
+}
+KitBadge[type='danger']{
+  background-color: $danger;
+}
+KitBadge[type='info']{
+  background-color: $info;
+}
+
+KitDotBadge{
+  border-radius: 4px;
+}

@@ -1,3 +1,4 @@
+from .badge import *
 from .button import *
 from .card import *
 from .graph import *
