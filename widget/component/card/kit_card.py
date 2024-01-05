@@ -1,4 +1,5 @@
 from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QGraphicsDropShadowEffect, QSizePolicy
 
 
@@ -18,7 +19,7 @@ class KitCard(QWidget):
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setOffset(0, 0)
         self.shadow.setBlurRadius(10)
-        self.shadow.setColor(Qt.gray)
+        self.shadow.setColor(QColor('#b4b4b4'))
         self.setGraphicsEffect(self.shadow)
         self.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
 
