@@ -1,12 +1,12 @@
 from PyQt5.QtCore import Qt, QEvent
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QLabel
+from PyQt5.QtWidgets import QLabel, QWidget
 
 from app_config import Badge
 
 
 class KitBadge(QLabel):
 
-    def __init__(self, parent=None):
+    def __init__(self, parent: QWidget):
         super(KitBadge, self).__init__(parent=parent)
 
         self.__init_widget()
@@ -26,7 +26,7 @@ class KitBadge(QLabel):
         self.setAttribute(Qt.WA_StyledBackground, True)
 
     def __fresh_position(self):
-        self.move(self.parent().rect().topRight().x() - self.width()-2, 2)
+        self.move(self.parent().rect().topRight().x() - self.width() - 2, 2)
 
     def eventFilter(self, obj, e: QEvent):
         if obj is self.parent():
@@ -40,7 +40,7 @@ class KitBadge(QLabel):
         self.style().polish(self)
 
     def setNum(self, a0: int) -> None:
-        if a0 > 99:
+        if 99 < a0 < 999:
             self.setText('99+')
         elif a0 > 999:
             self.setText('999+')
