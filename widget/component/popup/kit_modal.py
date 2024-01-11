@@ -15,6 +15,7 @@ class KitModal(KitPopup):
         super(KitModal, self).__init__(window=window)
 
         self.close_policy = ClosePolicy.CloseOnClicked
+        self.window = window
 
         self.header_layout = QHBoxLayout()
         self.content = QVBoxLayout()
@@ -72,13 +73,12 @@ class KitModal(KitPopup):
     def setCloseBtn(self, show: bool):
         self.close_btn.setVisible(show)
 
-    def paintEvent(self, a0):
-        super().paintEvent(a0)
-
-    def show(self):
+    def showEvent(self, a0) -> None:
+        self.adjustSize()
+        self.resize(self.window.width() // 2, self.height())
         self.overlay.show()
         self.raise_()
-        super().show()
+        super().showEvent(a0)
 
     def close(self):
         self.overlay.close()
@@ -88,6 +88,7 @@ class KitModal(KitPopup):
     def notice(cls, parent, title, content):
         modal_notice = cls(parent, title, content)
         modal_notice.setClosePolicy(ClosePolicy.CloseOnEscape)
+        modal_notice.resize(modal_notice.sizeHint())
         modal_notice.show()
         return modal_notice
 

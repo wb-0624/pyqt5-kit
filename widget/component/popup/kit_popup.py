@@ -25,12 +25,11 @@ class KitPopup(QWidget):
         self.__init_qss()
 
     def __init_widget(self):
-        self.resize(self.sizeHint())
         shadow = QGraphicsDropShadowEffect()
         shadow.setXOffset(0)
         shadow.setYOffset(0)
         shadow.setBlurRadius(8)
-        shadow.setColor(Qt.black)
+        shadow.setColor(Qt.gray)
         self.setGraphicsEffect(shadow)
         self.hide()
 
@@ -67,13 +66,9 @@ class KitPopup(QWidget):
         else:
             raise ValueError("position error")
 
-    def show(self):
+    def showEvent(self, a0) -> None:
         self.__fresh_position()
         self.raise_()
-        super().show()
-
-    def sizeHint(self):
-        return QSize(300, 180)
 
     def setPosition(self, position: int):
         self.position = position

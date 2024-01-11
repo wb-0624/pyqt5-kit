@@ -1,5 +1,5 @@
-from PyQt5.QtCore import Qt, QSize, QTimer, QPropertyAnimation, QParallelAnimationGroup
-from PyQt5.QtWidgets import QGraphicsOpacityEffect, QLabel, QVBoxLayout, QHBoxLayout, QApplication
+from PyQt5.QtCore import Qt, QSize, QTimer, QPropertyAnimation
+from PyQt5.QtWidgets import QGraphicsOpacityEffect, QLabel, QVBoxLayout, QHBoxLayout
 
 from ..icon.kit_icon import KitIcon
 from ..popup.kit_popup import KitPopup
@@ -52,17 +52,19 @@ class KitMessage(KitPopup):
     def setOffset(self, offset: int):
         self.offset = offset
 
-    def show(self):
+    def showEvent(self, a0) -> None:
         self.__init_close_timer()
         self._animation.setDirection(QPropertyAnimation.Forward)
         self._animation.start()
-        super().show()
 
     def close(self):
         self.close_timer.stop()
         self._animation.setDirection(QPropertyAnimation.Backward)
         self._animation.finished.connect(super().close)
         self._animation.start()
+
+    def sizeHint(self):
+        return QSize(-1, -1)
 
     @classmethod
     def make(cls, window, icon, title, position=Position.BottomRight, close_time=3000, style_type="info"):
@@ -74,9 +76,9 @@ class KitMessage(KitPopup):
         msg_icon.setObjectName("message_icon")
         msg_icon.setFixedSize(QSize(24, 24))
         msg_title = QLabel(title)
-        msg_title.setFixedHeight(msg_icon.height())
         msg_title.setAlignment(Qt.AlignVCenter)
         msg_title.setObjectName("message_title")
+        msg_title.adjustSize()
 
         msg_layout = QVBoxLayout()
         msg_layout.setContentsMargins(8, 8, 8, 8)
@@ -84,15 +86,14 @@ class KitMessage(KitPopup):
 
         msg_header_layout = QHBoxLayout()
         msg_header_layout.setSpacing(4)
-        msg_header_layout.addWidget(msg_icon)
+        msg_header_layout.addWidget(msg_icon, alignment=Qt.AlignTop)
         msg_header_layout.addWidget(msg_title)
-        msg_title.adjustSize()
 
         msg_layout.addLayout(msg_header_layout)
 
         msg.setProperty("type", style_type)
         msg.style().polish(msg)
-        msg.resize(msg_icon.width() + msg_title.width() + 24, msg_icon.height() + 8 * 2)
+        msg.resize(msg_layout.sizeHint())
         msg.show()
         return msg
 

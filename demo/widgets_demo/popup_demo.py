@@ -25,7 +25,7 @@ class PopupDemo(QWidget):
 
         btn3 = KitButton("success msg")
         main_layout.addWidget(btn3)
-        btn3.clicked.connect(lambda: KitMessage.success(self.window(), "success", Position.Left))
+        btn3.clicked.connect(lambda: KitMessage.success(self.window(), "超长success success success\n换行文本\n自适应大小", Position.Left))
 
         btn4 = KitButton("warning msg")
         main_layout.addWidget(btn4)
@@ -41,13 +41,14 @@ class PopupDemo(QWidget):
         main_layout.addWidget(modal_btn2)
 
         content1 = QWidget()
-        content1.setLayout(QVBoxLayout())
-        content1.layout().addWidget(QLabel('123'))
-        content1.layout().addWidget(QLabel('456'))
-        content1.layout().addWidget(KitButton('789'))
+        layout = QVBoxLayout()
+        layout.addWidget(QLabel('123'))
+        layout.addWidget(QLabel('456'))
+        layout.addWidget(KitButton('789'))
+        content1.setLayout(layout)
 
         modal_btn.clicked.connect(lambda: KitModal.notice(self.window(), "title", content1))
-        modal_btn2.clicked.connect(lambda: KitModal.dialog(self.window(), '123', '456', lambda: print('confirm')))
+        modal_btn2.clicked.connect(lambda: KitModal.dialog(self.window(), '123', '45612\n74021\n231\n41\n234\n12341', lambda: print('confirm')))
 
 
 if __name__ == "__main__":
