@@ -66,10 +66,10 @@ TablePagination{
     border:none;
     background-color: $table-page-button-bg;
     &:hover{
-      $table-page-button-bg-hover: $gray400;
+      background-color: $table-page-button-bg-hover;
     }
     &:pressed{
-      $table-page-button-bg-pressed: $gray500;
+      background-color: $table-page-button-bg-pressed;
     }
   }
 }

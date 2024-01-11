@@ -1,13 +1,12 @@
 import sys
 
 from PyQt5.QtCore import Qt, pyqtSignal
-
 from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QPushButton, QHBoxLayout, QLabel
 
-from widget.component.button.kit_button import KitIconButton
-from widget.component.input.kit_line_edit import KitLineEdit
+from ..button import KitIconButton
+from ..edit import KitLineEdit
 from config import config
-from app_config.constant import Button, Icons
+from app_config import Button, Icons
 
 
 class TablePagination(QWidget):

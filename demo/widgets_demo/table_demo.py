@@ -7,8 +7,8 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
 from config import config
-from widget import KitButton, KitFramelessWindow, KitWindow
-from widget.component.table.kit_table import TableCellCheck, KitTable, TableCellWidget
+from widget import KitButton, KitFramelessWindow
+from widget.component.table.kit_table import KitTable, TableCellWidget
 
 
 class CustomCell(TableCellWidget):

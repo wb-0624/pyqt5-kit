@@ -185,8 +185,8 @@ $table-cell-hovered-row-bg: $gray200;
 $table-page-input-border: 1px solid $gray300;
 // 表格分页按钮
 $table-page-button-bg: transparent;
-$table-page-button-bg-hover: $gray400;
-$table-page-button-bg-pressed: $gray500;
+$table-page-button-bg-hover: transparentize($gray400, 0.8);
+$table-page-button-bg-pressed: transparentize($gray400, 0.6);
 
 
 //tag

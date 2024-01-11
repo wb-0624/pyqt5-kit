@@ -10,7 +10,7 @@ from .drawer import *
 from .drop import *
 from .icon import *
 from .image import *
-from .input import *
+from .edit import *
 from .overlay import *
 from .popup import *
 from .progress import *
