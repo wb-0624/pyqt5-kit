@@ -3,9 +3,8 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 from PyQt5.QtCore import Qt
 
-
 from config import config
-from widget import KitSpinBox, KitDoubleSpinBox, KitFramelessWindow, KitWindow
+from widget import KitSpinBox, KitDoubleSpinBox, KitFramelessWindow, KitDateSpinBox, KitTimeSpinBox, KitDateTimeSpinBox
 
 
 class SpinBoxDemo(QWidget):
@@ -19,6 +18,12 @@ class SpinBoxDemo(QWidget):
         layout.addWidget(spin)
         double_spin = KitDoubleSpinBox()
         layout.addWidget(double_spin)
+        date_spin = KitDateSpinBox()
+        layout.addWidget(date_spin)
+        time_spin = KitTimeSpinBox()
+        layout.addWidget(time_spin)
+        date_time_spin = KitDateTimeSpinBox()
+        layout.addWidget(date_time_spin)
 
 
 if __name__ == "__main__":
@@ -27,8 +32,6 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     config.init()
-
-
 
     window = KitFramelessWindow()
     # window = KitWindow()
