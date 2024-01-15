@@ -49,11 +49,12 @@ $checkbox-indicator-bg-hover: transparentize($stone900, 0.8);
 $checkbox-indicator-bg-pressed: transparentize($stone900, 0.6);
 
 //collapse
-$collapse-bg: transparent;
-$collapse-item-bg: $neutral200;
+$collapse-bg: $neutral200;
+$collapse-radius: $border-radius;
+$collapse-item-bg: transparent;
 $collapse-item-border: 1px solid $neutral300;
 $collapse-item-radius: $border-radius;
-$collapse-content-bg: $stone200;
+$collapse-content-bg: transparent;
 $collapse-content-radius: $border-radius;
 
 
