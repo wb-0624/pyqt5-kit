@@ -19,7 +19,7 @@ class KitButton(QPushButton):
         self.setText(text)
         if icon is not None:
             self.icon = KitIcon(icon)
-            self.setIcon(self.icon.toIcon())
+            self.setIcon(self.icon.toQIcon())
 
         self.setShadow(True)
 
@@ -87,7 +87,7 @@ class KitButton(QPushButton):
         elif self._type == Button.Danger:
             self.icon.setProperty('type', 'danger')
         self.icon.style().polish(self.icon)
-        self.setIcon(self.icon.toIcon())
+        self.setIcon(self.icon.toQIcon())
 
     def mouseMoveEvent(self, e) -> None:
         if self.underMouse():
@@ -101,7 +101,7 @@ class KitButton(QPushButton):
         if type(icon) is QIcon:
             new_icon = icon
         elif type(icon) is str:
-            new_icon = KitIcon(icon).toIcon()
+            new_icon = KitIcon(icon).toQIcon()
         else:
             raise TypeError("Icon must be a QIcon or a str")
         super().setIcon(new_icon)

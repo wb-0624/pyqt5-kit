@@ -4,7 +4,6 @@ from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWidgets import QLabel, QSizePolicy
 
 
-
 class KitIcon(QLabel):
     def __init__(self, icon_str=None, parent=None):
         super().__init__(parent=parent)
@@ -30,10 +29,13 @@ class KitIcon(QLabel):
         self.icon_str = icon_str
         self.setText(icon_str)
 
+    def iconStr(self):
+        return self.icon_str
+
     def setIconColor(self, color):
         self.setStyleSheet(self.styleSheet()+"color: %s;" % color)
 
-    def toIcon(self) -> QIcon:
+    def toQIcon(self) -> QIcon:
         img = self.grab().toImage()
         pixmap = QPixmap.fromImage(img)
 
