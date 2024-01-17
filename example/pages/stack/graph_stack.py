@@ -1,13 +1,13 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QVBoxLayout, QScrollArea, QWidget
 
-from demo.widgets_demo import PopupDemo
+from example.widgets_demo import GraphDemo
 
 
-class DialogStack(QScrollArea):
+class GraphStack(QScrollArea):
 
     def __init__(self, parent=None):
-        super(DialogStack, self).__init__(parent=parent)
+        super(GraphStack, self).__init__(parent=parent)
 
         self.__init_widget()
         self.__init_slot()
@@ -20,8 +20,8 @@ class DialogStack(QScrollArea):
         self.layout = QVBoxLayout()
         self.content.setLayout(self.layout)
 
-        popup_demo = PopupDemo()
-        self.layout.addWidget(popup_demo)
+        graph_demo = GraphDemo()
+        self.layout.addWidget(graph_demo)
 
     def __init_slot(self):
         pass

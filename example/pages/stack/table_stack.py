@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QVBoxLayout, QScrollArea, QWidget
 
-from demo.widgets_demo import TableDemo
+from example.widgets_demo import TableDemo
 
 
 class TableStack(QScrollArea):
