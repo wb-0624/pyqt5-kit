@@ -5,7 +5,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication
 
 from config import config
-from demo.pages.index import Index
+from example.pages.index import Index
 from widget import KitFramelessWindow
 
 
