@@ -2,7 +2,7 @@ from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtWidgets import QLineEdit
 
 from ..icon import KitIcon
-from app_config.constant import Icons
+from app_config.md_icons import Icons
 
 
 class KitLineEdit(QLineEdit):

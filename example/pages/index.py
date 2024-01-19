@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QStackedWidget, QHBoxLayout
 
-from app_config.constant import Icons
+from app_config.md_icons import Icons
 from widget import KitTabBar
 
 from .stack import DialogStack, BasicStack

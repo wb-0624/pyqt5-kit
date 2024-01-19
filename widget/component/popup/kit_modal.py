@@ -4,7 +4,8 @@ from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QFrame
 from ..button import KitIconButton, KitButton
 from ..overlay import KitOverlay
 from ..popup import KitPopup
-from app_config.constant import ClosePolicy, Icons, Button
+from app_config.constant import ClosePolicy, Button
+from app_config.md_icons import Icons
 
 
 class KitModal(KitPopup):

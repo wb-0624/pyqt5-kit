@@ -1,9 +1,9 @@
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QIcon, QColor
-from PyQt5.QtWidgets import QPushButton, QApplication, QWidget, QVBoxLayout, QGraphicsDropShadowEffect
+from PyQt5.QtWidgets import QPushButton, QGraphicsDropShadowEffect
 
 from ..icon import KitIcon
-from app_config.constant import Button, Icons
+from app_config.constant import Button
 
 
 class KitButton(QPushButton):

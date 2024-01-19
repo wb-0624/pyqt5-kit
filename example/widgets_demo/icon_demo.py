@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 
 from PyQt5.QtWidgets import QApplication, QWidget
 
-from app_config.constant import Icons
+from app_config.md_icons import Icons
 from config import config
 from widget import KitIcon, KitFramelessWindow, KitMovieIcon
 

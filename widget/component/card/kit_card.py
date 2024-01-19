@@ -1,6 +1,6 @@
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QGraphicsDropShadowEffect, QSizePolicy
+from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect, QSizePolicy
 
 
 class KitCard(QWidget):

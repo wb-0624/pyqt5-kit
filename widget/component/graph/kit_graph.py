@@ -2,7 +2,7 @@ from typing import List
 import numpy as np
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QGraphicsEllipseItem, QGridLayout
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QGraphicsEllipseItem
 from PyQt5.QtGui import QColor, QBrush, QFont
 
 import pyqtgraph as pg

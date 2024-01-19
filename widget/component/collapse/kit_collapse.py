@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QLabel, QVBoxLayout, QHBoxLayout
 
-from app_config import Icons
+from app_config.md_icons import Icons
 from ..icon import KitIcon
 
 

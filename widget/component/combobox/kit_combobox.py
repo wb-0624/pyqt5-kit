@@ -2,9 +2,9 @@ from PyQt5.QtCore import Qt, QSize, QVariant, QRect
 from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import QComboBox, QListView, QStyle, QStyleOptionComboBox
 
-from widget.component.icon.kit_icon import KitIcon
-from app_config.constant import Icons
+from app_config.md_icons import Icons
 from utils.kit_property import KitNotifyProperty
+from ..icon import KitIcon
 
 
 class KitComboBox(QComboBox):

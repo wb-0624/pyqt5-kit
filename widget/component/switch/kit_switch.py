@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt, QPropertyAnimation, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QVBoxLayout
 
-from app_config.constant import Icons
+from app_config.md_icons import Icons
 
 from ..icon import KitIcon
 

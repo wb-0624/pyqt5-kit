@@ -24,8 +24,8 @@ def read_code_points_file(file_url: str, prefix: str = 'i'):
     return conde_points
 
 
-def write_codepoints_to_class(code_points:dict):
-    with open("Icon.py", 'w') as f:
+def write_codepoints_to_class(code_points:dict, prefix:str):
+    with open("app_config/"+prefix+"_icons.py", 'w') as f:
         f.write("class Icons:\n")
         for key in code_points:
             f.write("    {} = \"{}\"\n".format(key, code_points[key]))
@@ -33,4 +33,4 @@ def write_codepoints_to_class(code_points:dict):
 
 if __name__ == "__main__":
     code = read_code_points_file("assets/font/Material-Icons.codepoints", 'md')
-    write_codepoints_to_class(code)
+    write_codepoints_to_class(code, 'md')

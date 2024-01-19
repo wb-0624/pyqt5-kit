@@ -5,7 +5,8 @@ from PyQt5.QtWidgets import QVBoxLayout
 from ..button import KitIconButton
 from ..icon import KitIcon
 from ..overlay import KitOverlay
-from app_config.constant import ClosePolicy, Icons, Button
+from app_config.constant import ClosePolicy, Button
+from app_config.md_icons import Icons
 
 
 class KitLoading(KitOverlay):

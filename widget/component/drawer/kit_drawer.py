@@ -2,10 +2,10 @@ from PyQt5.QtCore import QPropertyAnimation, Qt, QRect
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect
 
-from widget.component.overlay.kit_overlay import KitOverlay
 from app_config.constant import ClosePolicy, Position
 
 from ..window import KitFramelessWindow, KitWindow
+from ..overlay import KitOverlay
 
 
 class KitDrawer(QWidget):

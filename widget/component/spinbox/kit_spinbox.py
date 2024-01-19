@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QSpinBox, QStyleOptionSpinBox, QStyle, QDoubleSpinBo
     QAbstractSpinBox, QWidget
 
 from ..icon import KitIcon
-from app_config.constant import Icons
+from app_config.md_icons import Icons
 
 
 class SpinBoxEventFilter(QObject):

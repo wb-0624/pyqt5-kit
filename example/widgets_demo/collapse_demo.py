@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel
 
 from PyQt5.QtCore import Qt
 
-from app_config import Icons
+from app_config.md_icons import Icons
 from config import config
 from widget import KitButton, KitFramelessWindow
 from widget.component.collapse.kit_collapse import KitCollapse

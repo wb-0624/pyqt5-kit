@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt, QEvent
 from PyQt5.QtWidgets import QWidget, QScrollArea, QVBoxLayout
 
-from app_config import Icons
+from app_config.md_icons import Icons
 from example.widgets_demo import ButtonDemo, InputDemo, CheckBoxDemo, ProgressDemo, SliderDemo, SwitchDemo, ComboBoxDemo
 from widget import KitIcon
 from widget.component.menu.kit_menu import KitMenu

@@ -1,7 +1,8 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
-from app_config.constant import Icons, Button
+from app_config.constant import Button
+from app_config.md_icons import Icons
 from widget import KitButton, KitIconButton, KitToolButton, KitFramelessWindow
 
 

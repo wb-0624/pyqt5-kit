@@ -3,7 +3,8 @@ from typing import List
 from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QRadioButton, QStackedWidget
 
-from app_config.constant import Icons, Orientation
+from app_config.constant import Orientation
+from app_config.md_icons import Icons
 from ..icon import KitIcon
 
 

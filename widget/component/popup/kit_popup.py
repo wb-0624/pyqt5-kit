@@ -1,4 +1,4 @@
-from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect
 
 from app_config.constant import Position

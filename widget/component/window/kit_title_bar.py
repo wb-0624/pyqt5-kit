@@ -7,7 +7,8 @@ from PyQt5.QtWidgets import QWidget, QHBoxLayout, QApplication, QLabel
 
 from ..button import KitIconButton
 from ..icon import KitIcon
-from app_config.constant import Button, Icons
+from app_config.constant import Button
+from app_config.md_icons import Icons
 from config import config
 
 

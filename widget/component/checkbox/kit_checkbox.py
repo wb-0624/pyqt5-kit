@@ -1,11 +1,8 @@
-import sys
-
 from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QPainter, QPixmap
-from PyQt5.QtWidgets import QCheckBox, QVBoxLayout, QWidget, QApplication, QStyleOptionButton, QStyle
+from PyQt5.QtWidgets import QCheckBox, QVBoxLayout, QWidget, QStyleOptionButton, QStyle
 
-from config import config
-from app_config.constant import Icons
+from app_config.md_icons import Icons
 
 from ..icon import KitIcon
 

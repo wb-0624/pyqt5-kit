@@ -1,8 +1,8 @@
 from PyQt5.QtCore import Qt, QSize, pyqtSignal
-from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel
 
-from widget.component.icon.kit_icon import KitIcon
-from app_config.constant import Icons
+from app_config.md_icons import Icons
+from ..icon import KitIcon
 
 
 class KitFileDropArea(QWidget):
