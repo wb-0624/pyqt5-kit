@@ -9,7 +9,7 @@ from .stack.data_widget_list import DataWidgetList
 from .stack.graph_widget_list import GraphWidgetList
 from .stack.input_widget_list import InputWidgetList
 from .stack.state_widget_list import StateWidgetList
-from .stack.table_stack import TableStack
+from .stack.table_widget_list import TableWidgetList
 
 
 class Index(QWidget):
@@ -62,7 +62,7 @@ class Index(QWidget):
         self.stack.addWidget(chart_stack)
 
         self.navigation.addTab('table', Icons.md_table_view)
-        table_stack = TableStack(self)
+        table_stack = TableWidgetList(self)
         self.stack.addWidget(table_stack)
 
         self.navigation.layout.addStretch(1)

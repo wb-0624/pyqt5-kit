@@ -19,3 +19,7 @@ Icons.close
 # script
 
 自己写的一些脚本，用于快速生成一些文件。
+
+# example
+
+run `example/demo.py`

@@ -64,17 +64,14 @@ class TableDemo(QWidget):
         clear_btn.clicked.connect(lambda: table.setTableData([]))
         layout.addWidget(clear_btn)
 
-        btn = KitButton('按钮')
+        btn = KitButton('数据1')
         btn.clicked.connect(lambda: table.setTableData(table_data_2))
         layout.addWidget(btn)
 
-        btn2 = KitButton('按钮2')
+        btn2 = KitButton('数据2')
         btn2.clicked.connect(lambda: table.setTableData(table_data_3))
         layout.addWidget(btn2)
 
-        all = KitButton('全部')
-        all.clicked.connect(lambda: print(table.table_data))
-        layout.addWidget(all)
         table.freeze_table.table_body.setRowCount(1)
 
 
