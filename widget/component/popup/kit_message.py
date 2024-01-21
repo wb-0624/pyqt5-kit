@@ -57,6 +57,7 @@ class KitMessage(KitPopup):
         self.__init_close_timer()
         self._animation.setDirection(QPropertyAnimation.Forward)
         self._animation.start()
+        super().showEvent(a0)
 
     def close(self):
         self.close_timer.stop()

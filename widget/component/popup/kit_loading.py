@@ -50,6 +50,10 @@ class KitLoading(KitOverlay):
     def __init_qss(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
 
+    def setLoadingIconSize(self, size: int):
+        self.loading_icon.setFixedSize(size, size)
+        self.loading.setScaledSize(self.loading_icon.size())
+
     def show(self):
         self.loading_icon.raise_()
         self.loading_icon.movie().start()

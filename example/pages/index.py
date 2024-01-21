@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QWidget, QStackedWidget, QHBoxLayout
 from app_config.md_icons import Icons
 from widget import KitTabBar
 
-from .stack import DialogStack, BasicWidgetList
+from .stack import DialogWidgetList, BasicWidgetList
 from .stack.data_widget_list import DataWidgetList
 from .stack.graph_widget_list import GraphWidgetList
 from .stack.state_widget_list import StateWidgetList
@@ -53,7 +53,7 @@ class Index(QWidget):
         self.stack.addWidget(input_list)
 
         self.navigation.addTab('dialog', Icons.md_comment)
-        dialog_stack = DialogStack(self)
+        dialog_stack = DialogWidgetList(self)
         self.stack.addWidget(dialog_stack)
 
         self.navigation.addTab('graph', Icons.md_pie_chart)
