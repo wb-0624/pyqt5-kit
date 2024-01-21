@@ -4,3 +4,6 @@ KitToolTip > KitWindowBody{
     border: $tool-tip-border;
     border-radius: $border-radius;
 }
+KitToolTip  KitWindowBody QLabel{
+    font-size: $tool-tip-font-size;
+}
