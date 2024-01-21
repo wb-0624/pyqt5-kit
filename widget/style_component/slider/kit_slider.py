@@ -15,7 +15,7 @@ class KitSliderStyle(QProxyStyle):
             "add-page.color": QColor('#e6e6e9'),
             "sub-page.color": QColor('#0d69b9'),
             "handle.inner-color": QColor('#1a76c6'),
-            "handle.ring-color": QColor(255, 255, 255),
+            "handle.ring-color": QColor('#f8f8f8'),
             "handle.ring-width": 4,
             "handle.inner-radius": 6,
         }

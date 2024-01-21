@@ -1,6 +1,6 @@
 from PyQt5.QtCore import Qt
 
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QHBoxLayout
 
 from widget import KitFramelessWindow, KitSwitch
 
@@ -9,7 +9,7 @@ class SwitchDemo(QWidget):
     def __init__(self):
         super().__init__()
 
-        layout = QVBoxLayout()
+        layout = QHBoxLayout()
         self.setLayout(layout)
 
         switch = KitSwitch()

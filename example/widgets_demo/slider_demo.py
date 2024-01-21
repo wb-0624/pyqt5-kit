@@ -11,9 +11,6 @@ from widget import KitSlider, KitFramelessWindow
 class SliderDemo(QWidget):
     def __init__(self):
         super().__init__()
-        self.resize(300, 150)
-        self.setStyleSheet("Demo{background: rgb(184, 106, 106)}")
-
         self.slider = KitSlider(Qt.Horizontal)
         self.layout = QVBoxLayout(self)
         self.layout.addWidget(self.slider)

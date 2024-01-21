@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QListWidget, QListWidgetItem
 from widget import KitIcon
 from widget.component.menu.kit_menu import KitMenu
 from .demo_card import DemoCard
-from ... import ProgressDemo
+from ... import ProgressDemo, SwitchDemo, SliderDemo
 from ...widgets_demo.combobox_demo import ComboBoxDemo
 from ...widgets_demo.button_demo import *
 from ...widgets_demo.checkbox_demo import *
@@ -60,14 +60,17 @@ class BasicWidgetList(QListWidget):
         progress_bar_card.setDemoWidget(progress_bar_demo)
         self.addDemoCard(progress_bar_card)
 
+        switch_card = DemoCard('开关', 'switch_demo.py', 'SwitchDemo')
+        switch_demo = SwitchDemo()
+        switch_card.setDemoWidget(switch_demo)
+        self.addDemoCard(switch_card)
 
-        # slider_demo = SliderDemo()
-        # self.layout.addWidget(slider_demo)
-        #
-        # switch_demo = SwitchDemo()
-        # self.layout.addWidget(switch_demo)
-        #
-        # self.layout.addStretch(1)
+        slider_card = DemoCard('滑块', 'slider_demo.py', 'SliderDemo')
+        slider_demo = SliderDemo()
+        slider_card.setDemoWidget(slider_demo)
+        self.addDemoCard(slider_card)
+
+
 
     def __init_slot(self):
         pass
