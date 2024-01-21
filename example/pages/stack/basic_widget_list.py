@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QListWidget, QListWidgetItem
 from widget import KitIcon
 from widget.component.menu.kit_menu import KitMenu
 from .demo_card import DemoCard
-from ... import ComboBoxDemo, InputDemo, ValidatorDemo
+from ...widgets_demo.combobox_demo import ComboBoxDemo
 from ...widgets_demo.button_demo import *
 from ...widgets_demo.checkbox_demo import *
 
@@ -54,22 +54,6 @@ class BasicWidgetList(QListWidget):
         combo_box_card.setDemoWidget(combo_box_demo)
         self.addDemoCard(combo_box_card)
 
-        input_card = DemoCard('简单输入框', 'input_demo.py', 'InputDemo')
-        input_demo = InputDemo()
-        input_card.setDemoWidget(input_demo)
-        self.addDemoCard(input_card)
-
-        validator_card = DemoCard('输入框验证(1-10)', 'input_demo.py', 'ValidatorDemo')
-        validator_demo = ValidatorDemo()
-        validator_card.setDemoWidget(validator_demo)
-        self.addDemoCard(validator_card)
-
-        # input_demo = InputDemo()
-        # self.layout.addWidget(input_demo)
-        #
-        # check_demo = CheckBoxDemo()
-        # self.layout.addWidget(check_demo)
-        #
         # progress_demo = ProgressDemo()
         # self.layout.addWidget(progress_demo)
         #
@@ -78,9 +62,6 @@ class BasicWidgetList(QListWidget):
         #
         # switch_demo = SwitchDemo()
         # self.layout.addWidget(switch_demo)
-        #
-        # combobox_demo = ComboBoxDemo()
-        # self.layout.addWidget(combobox_demo)
         #
         # self.layout.addStretch(1)
 
