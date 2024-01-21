@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout
 
 from app_config.constant import Button, Badge
 from app_config.md_icons import Icons
@@ -38,6 +38,77 @@ class BadgeDemo(QWidget):
         layout.addWidget(btn2)
         layout.addWidget(btn4)
         layout.addWidget(btn5)
+
+
+class DotBadgeDemo(QWidget):
+
+    def __init__(self, parent=None):
+        super().__init__(parent=parent)
+        self.layout = QHBoxLayout()
+        self.setLayout(self.layout)
+
+        button = KitButton('多种主题色')
+        label_dot_badge = KitDotBadge(button)
+        label_dot_badge.setType(Badge.Primary)
+        self.layout.addWidget(button)
+
+        button2 = KitIconButton(Icons.md_person)
+        label2_dot_badge = KitDotBadge(button2)
+        label2_dot_badge.setType(Badge.Success)
+        self.layout.addWidget(button2)
+
+        self.layout.addStretch(1)
+
+
+class NumberBadgeDemo(QWidget):
+
+    def __init__(self, parent=None):
+        super().__init__(parent=parent)
+        self.layout = QHBoxLayout()
+        self.setLayout(self.layout)
+
+        button = KitButton('小于99')
+        button_badge = KitBadge(button)
+        button_badge.setType(Badge.Primary)
+        button_badge.setNum(23)
+        self.layout.addWidget(button)
+
+        button2 = KitButton('大于99')
+        button2_badge = KitBadge(button2)
+        button2_badge.setNum(123)
+        button2_badge.setType(Badge.Success)
+        self.layout.addWidget(button2)
+
+        button3 = KitButton('大于999')
+        button3_badge = KitBadge(button3)
+        button3_badge.setNum(1234)
+        button3_badge.setType(Badge.Danger)
+        self.layout.addWidget(button3)
+
+class TextBadgeDemo(QWidget):
+
+    def __init__(self, parent=None):
+        super().__init__(parent=parent)
+        self.layout = QHBoxLayout()
+        self.setLayout(self.layout)
+
+        button = KitButton('文本')
+        button_badge = KitBadge(button)
+        button_badge.setType(Badge.Primary)
+        button_badge.setText('NEW')
+        self.layout.addWidget(button)
+
+        button2 = KitButton('文本')
+        button2_badge = KitBadge(button2)
+        button2_badge.setText('!!')
+        button2_badge.setType(Badge.Warning)
+        self.layout.addWidget(button2)
+
+        button3 = KitButton('文本')
+        button3_badge = KitBadge(button3)
+        button3_badge.setText('HOT')
+        button3_badge.setType(Badge.Danger)
+        self.layout.addWidget(button3)
 
 
 if __name__ == "__main__":

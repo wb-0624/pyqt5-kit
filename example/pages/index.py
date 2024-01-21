@@ -6,6 +6,7 @@ from widget import KitTabBar
 
 from .stack import DialogStack, BasicWidgetList
 from .stack.graph_stack import GraphStack
+from .stack.state_widget_list import StateWidgetList
 from .stack.table_stack import TableStack
 
 
@@ -32,9 +33,13 @@ class Index(QWidget):
 
     def __init_tab(self):
         self.navigation.addTab('basic', Icons.md_widgets)
-        basic_stack = BasicWidgetList()
-        self.stack.addWidget(basic_stack)
+        basic_list = BasicWidgetList()
+        self.stack.addWidget(basic_list)
         self.navigation.setCurrentIndex(0)
+
+        self.navigation.addTab('state', Icons.md_query_stats)
+        state_list = StateWidgetList()
+        self.stack.addWidget(state_list)
 
         self.navigation.addTab('dialog', Icons.md_comment)
         dialog_stack = DialogStack()
