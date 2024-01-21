@@ -4,6 +4,7 @@ from widget import KitIcon
 from widget.component.menu.kit_menu import KitMenu
 from .demo_card import DemoCard
 from ...widgets_demo.button_demo import *
+from ...widgets_demo.checkbox_demo import *
 
 
 class BasicWidgetList(QListWidget):
@@ -20,30 +21,33 @@ class BasicWidgetList(QListWidget):
         btn_card = DemoCard('简单的按钮', 'example/widgets_demo/button_demo.py', 'ButtonDemo')
         btn_demo = ButtonDemo()
         btn_card.setDemoWidget(btn_demo)
-        self.addDemo(btn_card)
+        self.addDemoCard(btn_card)
 
         theme_btn_card = DemoCard('主题色按钮', 'example/widgets_demo/button_demo.py', 'ThemeButtonDemo')
         theme_btn_demo = ThemeButtonDemo()
         theme_btn_card.setDemoWidget(theme_btn_demo)
-        self.addDemo(theme_btn_card)
+        self.addDemoCard(theme_btn_card)
 
         text_btn_card = DemoCard('文字按钮', 'example/widgets_demo/button_demo.py', 'TextButtonDemo')
         text_btn_demo = TextButtonDemo()
         text_btn_card.setDemoWidget(text_btn_demo)
-        self.addDemo(text_btn_card)
+        self.addDemoCard(text_btn_card)
 
         icon_btn_card = DemoCard('图标按钮', 'example/widgets_demo/button_demo.py', 'IconButtonDemo')
         icon_btn_demo = IconButtonDemo()
         icon_btn_card.setDemoWidget(icon_btn_demo)
-        self.addDemo(icon_btn_card)
+        self.addDemoCard(icon_btn_card)
 
         tool_btn_card = DemoCard('工具按钮', 'example/widgets_demo/button_demo.py', 'ToolButtonDemo')
         tool_btn_demo = ToolButtonDemo()
         tool_btn_card.setDemoWidget(tool_btn_demo)
-        self.addDemo(tool_btn_card)
+        self.addDemoCard(tool_btn_card)
 
-        # self.layout.addWidget(btn_demo)
-        #
+        check_box_card = DemoCard('复选框', 'example/widgets_demo/checkbox_demo.py', 'CheckBoxDemo')
+        check_box_demo = CheckBoxDemo()
+        check_box_card.setDemoWidget(check_box_demo)
+        self.addDemoCard(check_box_card)
+
         # input_demo = InputDemo()
         # self.layout.addWidget(input_demo)
         #
@@ -76,7 +80,7 @@ class BasicWidgetList(QListWidget):
         menu.addAction('删除')
         menu.exec_(a0.globalPos())
 
-    def addDemo(self, card: DemoCard):
+    def addDemoCard(self, card: DemoCard):
         demo_item = QListWidgetItem(self)
         demo_item.setSizeHint(card.sizeHint())
         self.setItemWidget(demo_item, card)
