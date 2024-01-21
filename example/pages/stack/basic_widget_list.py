@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QListWidget, QListWidgetItem
 from widget import KitIcon
 from widget.component.menu.kit_menu import KitMenu
 from .demo_card import DemoCard
+from ... import ProgressDemo
 from ...widgets_demo.combobox_demo import ComboBoxDemo
 from ...widgets_demo.button_demo import *
 from ...widgets_demo.checkbox_demo import *
@@ -54,9 +55,12 @@ class BasicWidgetList(QListWidget):
         combo_box_card.setDemoWidget(combo_box_demo)
         self.addDemoCard(combo_box_card)
 
-        # progress_demo = ProgressDemo()
-        # self.layout.addWidget(progress_demo)
-        #
+        progress_bar_card = DemoCard('进度条', 'progress_demo.py', 'ProgressDemo')
+        progress_bar_demo = ProgressDemo()
+        progress_bar_card.setDemoWidget(progress_bar_demo)
+        self.addDemoCard(progress_bar_card)
+
+
         # slider_demo = SliderDemo()
         # self.layout.addWidget(slider_demo)
         #

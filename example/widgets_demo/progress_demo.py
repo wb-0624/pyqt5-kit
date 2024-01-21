@@ -1,23 +1,29 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout
 
-from widget import KitFramelessWindow, KitProgressBar
+from widget import KitFramelessWindow, KitProgressBar, KitSpinBox
 
 
 class ProgressDemo(QWidget):
     def __init__(self):
         super().__init__()
 
-        layout = QVBoxLayout()
+        layout = QHBoxLayout()
         self.setLayout(layout)
 
         progress_bar = KitProgressBar()
         progress_bar.setValue(40)
         layout.addWidget(progress_bar)
 
+        spin_box = KitSpinBox()
+        spin_box.setRange(0, 100)
+        spin_box.setValue(40)
+        layout.addWidget(spin_box)
+
+        spin_box.textChanged.connect(lambda value: progress_bar.setValue(int(value)))
+
 
 if __name__ == "__main__":
-
     from config import config
     import sys
 
@@ -26,8 +32,6 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     config.init()
-
-
 
     window = KitFramelessWindow()
     # window = KitWindow()
