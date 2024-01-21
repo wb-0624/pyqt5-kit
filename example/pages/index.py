@@ -6,7 +6,7 @@ from widget import KitTabBar
 
 from .stack import DialogStack, BasicWidgetList
 from .stack.data_widget_list import DataWidgetList
-from .stack.graph_stack import GraphStack
+from .stack.graph_widget_list import GraphWidgetList
 from .stack.state_widget_list import StateWidgetList
 from .stack.table_stack import TableStack
 
@@ -47,12 +47,17 @@ class Index(QWidget):
         data_list = DataWidgetList(self)
         self.stack.addWidget(data_list)
 
+        # add input tab
+        self.navigation.addTab('input', Icons.md_input)
+        input_list = DataWidgetList(self)
+        self.stack.addWidget(input_list)
+
         self.navigation.addTab('dialog', Icons.md_comment)
         dialog_stack = DialogStack(self)
         self.stack.addWidget(dialog_stack)
 
         self.navigation.addTab('graph', Icons.md_pie_chart)
-        chart_stack = GraphStack(self)
+        chart_stack = GraphWidgetList(self)
         self.stack.addWidget(chart_stack)
 
         self.navigation.addTab('table', Icons.md_table_view)

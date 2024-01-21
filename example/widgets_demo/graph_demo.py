@@ -1,15 +1,14 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout
 
 from app_config.constant import Graph
 from widget import KitFramelessWindow, KitGraph
 
 
-class GraphDemo(QWidget):
-    def __init__(self):
-        super().__init__()
-
-        layout = QVBoxLayout()
+class HistogramGraphDemo(QWidget):
+    def __init__(self, parent=None):
+        super(HistogramGraphDemo, self).__init__(parent=parent)
+        layout = QHBoxLayout()
         self.setLayout(layout)
         c_data = [
             {'name': 'A', 'value': 10, 'color': 'red'},
@@ -20,6 +19,13 @@ class GraphDemo(QWidget):
         chart_1 = KitGraph(Graph.Histogram, c_data)
         layout.addWidget(chart_1)
 
+
+class LineGraphDemo(QWidget):
+    def __init__(self, parent=None):
+        super(LineGraphDemo, self).__init__(parent=parent)
+        layout = QHBoxLayout()
+        self.setLayout(layout)
+
         l_data = [
             {'x': [1, 2, 3, 4, 5], 'y': [10, 2, 3, 4, 5], 'color': 'red', 'name': 'y1'},
             {'x': [1, 2, 3, 4, 5], 'y': [5, 4, 10, 2, 1], 'color': 'green', 'name': 'y2'},
@@ -27,6 +33,13 @@ class GraphDemo(QWidget):
         ]
         chart_2 = KitGraph(Graph.Line, l_data)
         layout.addWidget(chart_2)
+
+
+class PolarGraphDemo(QWidget):
+    def __init__(self, parent=None):
+        super(PolarGraphDemo, self).__init__(parent=parent)
+        layout = QHBoxLayout()
+        self.setLayout(layout)
 
         p_data = [
             {'a': [0.78, 2, 3, 4, 5], 'r': [10, 2, 3, 4, 5], 'color': 'red', 'name': 'y1'},
@@ -38,6 +51,12 @@ class GraphDemo(QWidget):
         chart_3.chart.setTickCount(5)
         layout.addWidget(chart_3)
 
+class PieGraphDemo(QWidget):
+    def __init__(self, parent=None):
+        super(PieGraphDemo, self).__init__(parent=parent)
+        layout = QHBoxLayout()
+        self.setLayout(layout)
+
         pie_data = [
             {'label': 'A', 'value': 10, 'color': 'red', 'name': 'y1'},
             {'label': 'B', 'value': 20, 'color': 'green', 'offset': 0.5, 'name': 'y2'},
@@ -45,6 +64,12 @@ class GraphDemo(QWidget):
         ]
         chart_4 = KitGraph(Graph.Pie, pie_data)
         layout.addWidget(chart_4)
+
+class ScatterGraphDemo(QWidget):
+    def __init__(self, parent=None):
+        super(ScatterGraphDemo, self).__init__(parent=parent)
+        layout = QHBoxLayout()
+        self.setLayout(layout)
 
         scatter_data = [
             {'x': [1, 2, 3, 4, 5], 'y': [10, 2, 3, 4, 5], 'symbol': {'color': 'red', 'size': 10, 'shape': 't'},
@@ -56,7 +81,6 @@ class GraphDemo(QWidget):
         ]
         chart_5 = KitGraph(Graph.Scatter, scatter_data)
         layout.addWidget(chart_5)
-
 
 if __name__ == "__main__":
 
@@ -73,7 +97,7 @@ if __name__ == "__main__":
     window = KitFramelessWindow()
     # window =  KitWindow()
 
-    demo = GraphDemo()
+    demo = ScatterGraphDemo()
     window.setCentralWidget(demo)
     window.show()
     sys.exit(app.exec_())
