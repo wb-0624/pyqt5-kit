@@ -2,6 +2,7 @@ from PyQt5.QtCore import QSize, QEvent
 from PyQt5.QtWidgets import QListWidget, QListWidgetItem
 
 from .demo_card import DemoCard
+from ... import DrawerDemo, DropDemo
 from ...widgets_demo.checkbox_demo import *
 from ...widgets_demo.collapse_demo import CollapseDemo
 
@@ -22,8 +23,17 @@ class DataWidgetList(QListWidget):
         collapse_demo = CollapseDemo()
         collapse_card.setDemoWidget(collapse_demo)
         collapse_card_item = self.addDemoCard(collapse_card)
-        collapse_card_item.setSizeHint(QSize(collapse_card.sizeHint().width(), 430))
+        collapse_card_item.setSizeHint(QSize(collapse_card.sizeHint().width(), 280))
 
+        drawer_card = DemoCard('抽屉', 'drawer_demo.py', 'DrawerDemo')
+        drawer_demo = DrawerDemo(self)
+        drawer_card.setDemoWidget(drawer_demo)
+        self.addDemoCard(drawer_card)
+
+        drop_card = DemoCard('拖拽文件(.png, .jpg, .jpeg)', 'drop_file_demo.py', 'DropDemo')
+        drop_demo = DropDemo()
+        drop_card.setDemoWidget(drop_demo)
+        self.addDemoCard(drop_card)
 
     def __init_slot(self):
         pass

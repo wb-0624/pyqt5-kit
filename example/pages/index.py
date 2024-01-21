@@ -39,24 +39,24 @@ class Index(QWidget):
         self.navigation.setCurrentIndex(0)
 
         self.navigation.addTab('state', Icons.md_query_stats)
-        state_list = StateWidgetList()
+        state_list = StateWidgetList(self)
         self.stack.addWidget(state_list)
 
         # add data tab
         self.navigation.addTab('data', Icons.md_data_usage)
-        data_list = DataWidgetList()
+        data_list = DataWidgetList(self)
         self.stack.addWidget(data_list)
 
         self.navigation.addTab('dialog', Icons.md_comment)
-        dialog_stack = DialogStack()
+        dialog_stack = DialogStack(self)
         self.stack.addWidget(dialog_stack)
 
         self.navigation.addTab('graph', Icons.md_pie_chart)
-        chart_stack = GraphStack()
+        chart_stack = GraphStack(self)
         self.stack.addWidget(chart_stack)
 
         self.navigation.addTab('table', Icons.md_table_view)
-        table_stack = TableStack()
+        table_stack = TableStack(self)
         self.stack.addWidget(table_stack)
 
         self.navigation.layout.addStretch(1)

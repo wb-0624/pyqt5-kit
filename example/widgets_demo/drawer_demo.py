@@ -1,16 +1,17 @@
 from PyQt5.QtCore import Qt
 
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout
 
 from app_config.constant import Position, ClosePolicy
 from config import config
 from widget import KitDrawer, KitButton, KitFramelessWindow, KitWindow
 
+
 class DrawerDemo(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent=parent)
 
-        main_layout = QVBoxLayout()
+        main_layout = QHBoxLayout()
         self.setLayout(main_layout)
 
         drawer_left = KitDrawer(self.window(), orientation=Position.Left)
@@ -53,17 +54,14 @@ class DrawerDemo(QWidget):
         main_layout.addWidget(btn4)
 
 
-
 if __name__ == '__main__':
     import sys
+
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 
     app = QApplication(sys.argv)
     config.init()
-
-
-
 
     window = KitFramelessWindow()
     # window = KitWindow()

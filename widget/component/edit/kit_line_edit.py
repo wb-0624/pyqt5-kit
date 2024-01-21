@@ -17,6 +17,7 @@ class KitLineEdit(QLineEdit):
         self.__init_qss()
 
     def __init_widget(self):
+        self.setFixedHeight(32)
         self.setTextMargins(4, 0, 24, 0)
 
     def __init_slot(self):
@@ -39,9 +40,6 @@ class KitLineEdit(QLineEdit):
             self.validator_icon.setProperty('type', 'danger')
             self.validator_icon.setIcon(Icons.md_info)
         self.validator_icon.style().polish(self.validator_icon)
-
-    def sizeHint(self):
-        return QSize(100, 40)
 
     def paintEvent(self, event) -> None:
         super().paintEvent(event)

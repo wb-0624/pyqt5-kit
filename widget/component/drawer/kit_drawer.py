@@ -128,8 +128,10 @@ class KitDrawer(QWidget):
             end_value = QRect(0, self.parent().height() - self._height, self._width, self._height)
         self.__show_animation.setStartValue(start_value)
         self.__show_animation.setEndValue(end_value)
+        self.__show_animation.setDuration(200)
         self.__close_animation.setStartValue(end_value)
         self.__close_animation.setEndValue(start_value)
+        self.__close_animation.setDuration(200)
 
     def open(self):
         """

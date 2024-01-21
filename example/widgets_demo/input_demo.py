@@ -14,8 +14,20 @@ class InputDemo(QWidget):
         self.setLayout(layout)
 
         line1 = KitLineEdit()
+        layout.addWidget(line1)
+
+
+class ValidatorDemo(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+
+        line1 = KitLineEdit()
         validator = QIntValidator(1, 10)
         line1.setValidator(validator)
+        line1.setPlaceholderText('只能起到提示的作用，并不能强制限制输入')
         line1.setToolTip("请输入1-10的数字")
         line1.installEventFilter(KitToolTipFilter(line1))
         layout.addWidget(line1)

@@ -27,17 +27,6 @@ class CollapseDemo(QWidget):
         collapse.setTitleAlignment(Qt.AlignHCenter)
         layout.addWidget(collapse)
 
-        content2 = QWidget()
-        content2.setLayout(QVBoxLayout())
-        content2.layout().addWidget(QLabel('content2'))
-        content2.layout().addWidget(QLabel('content2'))
-        content2.layout().addWidget(QLabel('content2'))
-        content2.layout().addWidget(KitButton('button2'))
-        collapse2 = KitCollapse('123', content2)
-        collapse2.setIcon(Icons.md_account_circle)
-        collapse2.setTitleAlignment(Qt.AlignRight)
-        layout.addWidget(collapse2)
-
         layout.addStretch(1)
 
 

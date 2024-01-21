@@ -22,7 +22,7 @@ def main():
     window = KitFramelessWindow()
     window.resize(800, 600)
 
-    index = Index()
+    index = Index(window)
     window.setCentralWidget(index)
 
     window.show()
