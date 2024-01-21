@@ -129,6 +129,20 @@ $progress-bg: $gray300;
 $progress-chunk: $green700;
 $progress-border: transparent;
 
+//scroll-bar
+$scroll-bar-bg: transparent;
+$scroll-bar-handle-bg: transparentize($gray900, 0.8);
+$scroll-bar-handle-bg-hover: transparentize($gray900, 0.5);
+//滚动条滑槽的粗细
+$scroll-bar-size: 8px;
+//滚动条的粗细
+$scroll-bar-handle-size: 6px;
+$scroll-bar-handle-radius: $scroll-bar-handle-size/2;
+$scroll-bar-handle-size-hover: $scroll-bar-size;
+$scroll-bar-handle-radius-hover: $scroll-bar-size/2;
+//如果是横向的滚动条，则分别为左右边距
+$scroll-bar-top-margin: 4px;
+$scroll-bar-bottom-margin: 4px;
 
 //spin-box
 $spin-box-bg: $gray100;

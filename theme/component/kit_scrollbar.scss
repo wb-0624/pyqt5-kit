@@ -1,0 +1,120 @@
+/*QScrollBar Style*/
+
+/*纵向滚动条*/
+QScrollBar:vertical {
+    background: transparent; /*背景透明*/
+    width: $scroll-bar-size; /*宽度*/
+    margin: 1px;
+    padding-top: $scroll-bar-top-margin; /*距离上面12px*/
+    padding-bottom: $scroll-bar-bottom-margin; /*距离底部12px*/
+    &:hover{
+        margin: 0px;
+    }
+}
+/*横向滚动条*/
+QScrollBar:horizontal {
+    background: transparent;
+    height: $scroll-bar-size; /*高度*/
+    margin: 1px;
+    padding-left: $scroll-bar-top-margin; /*距离左边12px*/
+    padding-right: $scroll-bar-bottom-margin; /*距离右边12px*/
+    &:hover{
+        margin: 0px;
+    }
+}
+
+
+/*纵向滚动条上面的滑块*/
+QScrollBar::handle:vertical {
+    background: $scroll-bar-handle-bg;
+    width: $scroll-bar-handle-size;
+    border-radius: $scroll-bar-handle-radius;
+    border: none;
+}
+/*横向滚动条上面的滑块*/
+QScrollBar::handle:horizontal {
+    background: $scroll-bar-handle-bg;
+    height: $scroll-bar-handle-size;
+    border-radius: $scroll-bar-handle-radius;
+    border: none;
+}
+
+/*当鼠标放到滚动条滑块上面时改变透明度实现颜色的深浅变化*/
+QScrollBar::handle:vertical:hover{
+    background: $scroll-bar-handle-bg-hover;
+    width: $scroll-bar-handle-size-hover;
+    border-radius: $scroll-bar-handle-radius-hover;
+
+}
+QScrollBar::handle:horizontal:hover {
+    background: $scroll-bar-handle-bg-hover;
+    height: $scroll-bar-handle-size-hover;
+    border-radius: $scroll-bar-handle-radius-hover;
+}
+
+/*纵向滚动条下部分块*/
+QScrollBar::add-page:vertical {
+    width: $scroll-bar-size;
+    background: transparent;
+}
+/*横向滚动条后面部分块*/
+QScrollBar::add-page:horizontal {
+    height: $scroll-bar-size;
+    background: transparent;
+}
+/*纵向滚动条上面部分块*/
+QScrollBar::sub-page:vertical {
+    width: $scroll-bar-size;
+    background: transparent;
+}
+/*横向滚动条左部分块*/
+QScrollBar::sub-page:horizontal {
+    height: $scroll-bar-size;
+    background: transparent;
+}
+/*纵向滚动条顶部三角形位置*/
+QScrollBar::sub-line:vertical {
+    height: $scroll-bar-top-margin;
+    width: $scroll-bar-size;
+    background: transparent;
+    subcontrol-position: top;
+}
+/*纵向滚动条向上的三角形小图标*/
+QScrollBar::up-arrow:vertical {
+    image: none;
+}
+/*纵向滚动条下面三角形部分*/
+QScrollBar::add-line:vertical {
+  height: $scroll-bar-bottom-margin;
+  width: $scroll-bar-size;
+  background: transparent;
+  subcontrol-position: bottom;
+}
+/*纵向滚动条下面三角形图标*/
+QScrollBar::down-arrow:vertical {
+  image:none;
+}
+
+
+/*横向滚动条左侧三角形位置*/
+QScrollBar::sub-line:horizontal {
+    height: $scroll-bar-size;
+    width: $scroll-bar-top-margin;
+    background: transparent;
+    subcontrol-position: left;
+}
+/*横向滚动条左边的三角形小图标*/
+QScrollBar::left-arrow:horizontal {
+    image: none;
+}
+/*横向滚动条右边的三角形部分*/
+QScrollBar::add-line:horizontal {
+    height: $scroll-bar-size;
+    width: $scroll-bar-bottom-margin;
+    background: transparent;
+    subcontrol-position: right;
+}
+/*横向滚动条右侧三角形图标*/
+QScrollBar::right-arrow:horizontal {
+    image: none;
+}
