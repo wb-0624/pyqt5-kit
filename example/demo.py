@@ -16,6 +16,7 @@ def main():
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 
     app = QApplication(sys.argv)
+    config.addThemeDir('custom')
     config.init()
 
     window = KitFramelessWindow()

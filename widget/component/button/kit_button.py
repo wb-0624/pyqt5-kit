@@ -133,17 +133,17 @@ class KitIconButton(KitButton):
 
 class KitToolButton(KitButton):
 
-    def __init__(self, text: str = "", icon: str = None, parent=None):
+    def __init__(self, text: str = None, icon: str = None, parent=None):
         super(KitToolButton, self).__init__(text, icon, parent)
-
-        self.state = Button.UnChecked
+        if text is None:
+            self.setFixedWidth(32)
 
         self.__init_widget()
         self.__init_slot()
         self.__init_qss()
 
     def __init_widget(self):
-        pass
+        self.setCheckState(Button.UnChecked)
 
     def __init_slot(self):
         self.clicked.connect(self.toggledCheck)

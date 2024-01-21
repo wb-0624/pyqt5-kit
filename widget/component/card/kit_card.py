@@ -32,9 +32,6 @@ class KitCard(QWidget):
     def setHoverAnimation(self, enable: bool):
         self._hover_animation = enable
 
-    def sizeHint(self):
-        return QSize(240, 140)
-
     def enterEvent(self, a0):
         if not self._hover_animation:
             return

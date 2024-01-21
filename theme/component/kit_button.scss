@@ -78,16 +78,14 @@ KitButton[type='danger']{
   }
 }
 
-
-
 KitButton[style='text']{
   background-color: transparent;
   border: none;
   &:hover{
-    background-color: transparentize($zinc600, 0.8);
+    background-color: transparentize($zinc400, 0.8);
   }
   &:pressed{
-      background-color: transparentize(darken($zinc600, 5%), 0.6);
+      background-color: transparentize(darken($zinc400, 5%), 0.6);
   }
 }
 
@@ -108,6 +106,8 @@ KitButton[style='text'][type='danger']{
 }
 
 KitToolButton[state='unchecked']{
+  background-color: $tool-button-color;
+  border: 1px solid $gray500;
   &:hover{
       background-color: darken($tool-button-color, 10%);
   }
@@ -117,6 +117,16 @@ KitToolButton[state='unchecked']{
   &:disabled{
       background-color: lighten($tool-button-color, 10%);
   }
+}
+
+KitToolButton[state='unchecked'][type='success']{
+  background-color: $tool-button-color;
+}
+KitToolButton[state='unchecked'][type='warning']{
+  background-color: $tool-button-color;
+}
+KitToolButton[state='unchecked'][type='danger']{
+  background-color: $tool-button-color;
 }
 
 KitToolButton[state='checked']{
@@ -129,5 +139,41 @@ KitToolButton[state='checked']{
   }
   &:disabled{
       background-color: lighten($primary, 10%);
+  }
+}
+KitToolButton[state='checked'][type='success']{
+  background-color: $success;
+  &:hover{
+      background-color: darken($success, 10%);
+  }
+  &:pressed{
+      background-color: darken($success, 5%);
+  }
+  &:disabled{
+      background-color: lighten($success, 10%);
+  }
+}
+KitToolButton[state='checked'][type='warning']{
+  background-color: $warning;
+  &:hover{
+      background-color: darken($warning, 10%);
+  }
+  &:pressed{
+      background-color: darken($warning, 5%);
+  }
+  &:disabled{
+      background-color: lighten($warning, 10%);
+  }
+}
+KitToolButton[state='checked'][type='danger']{
+  background-color: $danger;
+  &:hover{
+      background-color: darken($danger, 10%);
+  }
+  &:pressed{
+      background-color: darken($danger, 5%);
+  }
+  &:disabled{
+      background-color: lighten($danger, 10%);
   }
 }

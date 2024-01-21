@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QWidget, QStackedWidget, QHBoxLayout
 from app_config.md_icons import Icons
 from widget import KitTabBar
 
-from .stack import DialogStack, BasicStack
+from .stack import DialogStack, BasicWidgetList
 from .stack.graph_stack import GraphStack
 from .stack.table_stack import TableStack
 
@@ -32,7 +32,7 @@ class Index(QWidget):
 
     def __init_tab(self):
         self.navigation.addTab('basic', Icons.md_widgets)
-        basic_stack = BasicStack()
+        basic_stack = BasicWidgetList()
         self.stack.addWidget(basic_stack)
         self.navigation.setCurrentIndex(0)
 

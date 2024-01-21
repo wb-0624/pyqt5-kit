@@ -1,3 +1,3 @@
 from .dialog_stack import DialogStack
-from .basic_stack import BasicStack
-from .stack_card import StackCard
+from .basic_widget_list import BasicWidgetList
+from .demo_card import DemoCard

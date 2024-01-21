@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout
 
 from app_config.constant import Button
 from app_config.md_icons import Icons
@@ -9,51 +9,104 @@ from widget import KitButton, KitIconButton, KitToolButton, KitFramelessWindow
 class ButtonDemo(QWidget):
     def __init__(self, parent=None):
         super(ButtonDemo, self).__init__(parent=parent)
-        layout = QVBoxLayout()
+        layout = QHBoxLayout()
         self.setLayout(layout)
 
-        btn1 = KitButton("Button", Icons.md_home)
-        btn1.setType(Button.Primary)
-        btn2 = KitButton("Button", Icons.md_home)
-        btn2.setType(Button.Success)
-        btn4 = KitButton("Button", Icons.md_home)
-        btn4.setType(Button.Warning)
-        btn5 = KitButton("Button", Icons.md_home)
-        btn5.setType(Button.Danger)
-        btn8 = KitButton("Button", Icons.md_home)
-        btn8.setType(Button.Danger)
-        btn8.setDisabled(True)
+        btn = KitButton("Button")
+        layout.addWidget(btn)
 
-        btn6 = KitButton("Button", Icons.md_home)
-        btn6.setStyle(Button.Text)
-        btn6.setType(Button.Primary)
-        btn7 = KitButton("Button", Icons.md_home)
-        btn7.setStyle(Button.Text)
-        btn7.setType(Button.Success)
+        btn_round = KitButton("圆角", Icons.md_home)
+        btn_round.setShape(Button.Round)
+        layout.addWidget(btn_round)
 
-        icon_btn = KitIconButton(Icons.md_home)
-        icon_btn.setShape(Button.Round)
+        btn_square = KitButton("方形")
+        btn_square.setShape(Button.Square)
+        layout.addWidget(btn_square)
 
-        icon_btn2 = KitIconButton(Icons.md_home)
-        icon_btn2.setShape(Button.Round)
-        icon_btn2.setStyle(Button.Text)
 
-        tool_btn = KitToolButton("", Icons.md_home)
-        tool_btn.setShape(Button.Round)
-        tool_btn.setStyle(Button.Text)
+class ThemeButtonDemo(QWidget):
+    def __init__(self, parent=None):
+        super(ThemeButtonDemo, self).__init__(parent=parent)
+        layout = QHBoxLayout()
+        self.setLayout(layout)
 
-        layout.addWidget(btn1)
-        layout.addWidget(btn2)
-        layout.addWidget(btn4)
-        layout.addWidget(btn5)
-        layout.addWidget(btn8)
-        layout.addWidget(btn6)
-        layout.addWidget(btn7)
+        primary_button = KitButton("Primary", Icons.md_settings)
+        primary_button.setType(Button.Primary)
 
-        layout.addWidget(icon_btn)
-        layout.addWidget(icon_btn2)
+        success_button = KitButton("Success")
+        success_button.setType(Button.Success)
 
+        warning_button = KitButton("Warning")
+        warning_button.setType(Button.Warning)
+
+        danger_button = KitButton("Danger")
+        danger_button.setType(Button.Danger)
+
+        layout.addWidget(primary_button)
+        layout.addWidget(success_button)
+        layout.addWidget(warning_button)
+        layout.addWidget(danger_button)
+
+
+class TextButtonDemo(QWidget):
+    def __init__(self, parent=None):
+        super(TextButtonDemo, self).__init__(parent=parent)
+        layout = QHBoxLayout()
+        self.setLayout(layout)
+
+        btn = KitButton("文字按钮")
+        btn.setStyle(Button.Text)
+        layout.addWidget(btn)
+
+        primary_text_btn = KitButton("文字按钮带主题色")
+        primary_text_btn.setStyle(Button.Text)
+        primary_text_btn.setType(Button.Primary)
+        layout.addWidget(primary_text_btn)
+
+
+class IconButtonDemo(QWidget):
+    def __init__(self, parent=None):
+        super(IconButtonDemo, self).__init__(parent=parent)
+        layout = QHBoxLayout()
+        self.setLayout(layout)
+
+        btn = KitIconButton(Icons.md_home)
+        layout.addWidget(btn)
+
+        btn_square = KitIconButton(Icons.md_square)
+        btn_square.setShape(Button.Square)
+        layout.addWidget(btn_square)
+
+        btn_round = KitIconButton(Icons.md_rounded_corner)
+        btn_round.setShape(Button.Round)
+        layout.addWidget(btn_round)
+
+        primary_icon_btn = KitIconButton(Icons.md_settings)
+        primary_icon_btn.setType(Button.Primary)
+        layout.addWidget(primary_icon_btn)
+
+        success_icon_btn = KitIconButton(Icons.md_check_circle)
+        success_icon_btn.setType(Button.Success)
+        layout.addWidget(success_icon_btn)
+
+        text_icon_btn = KitIconButton(Icons.md_text_fields)
+        text_icon_btn.setStyle(Button.Text)
+        layout.addWidget(text_icon_btn)
+
+
+class ToolButtonDemo(QWidget):
+    def __init__(self, parent=None):
+        super(ToolButtonDemo, self).__init__(parent=parent)
+        layout = QHBoxLayout()
+        self.setLayout(layout)
+
+        tool_btn = KitToolButton('工具按钮', Icons.md_home)
         layout.addWidget(tool_btn)
+
+        tool_icon_btn = KitToolButton(None, Icons.md_home)
+        tool_icon_btn.setType(Button.Success)
+        layout.addWidget(tool_icon_btn)
+
 
 
 if __name__ == "__main__":
@@ -66,8 +119,6 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     config.init()
-
-
 
     window = KitFramelessWindow()
     # window = KitWindow()

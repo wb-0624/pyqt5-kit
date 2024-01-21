@@ -1,0 +1,17 @@
+DemoCard{
+  background-color: white;
+  #demo-card-info{
+    background-color: $demo-card-info-bg;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+}
+Index > QStackedWidget{
+  background-color: $stone300;
+  border-radius: 10px;
+  border:none;
+}
+QListWidget{
+  background-color: transparent;
+  border:none;
+}
