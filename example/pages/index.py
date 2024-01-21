@@ -2,7 +2,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QStackedWidget, QHBoxLayout
 
 from app_config.md_icons import Icons
-from widget import KitTabBar
+from widget import KitTabBar, KitIcon, KitMenu
 
 from .stack import DialogWidgetList, BasicWidgetList
 from .stack.data_widget_list import DataWidgetList
@@ -72,3 +72,9 @@ class Index(QWidget):
 
     def __init_qss(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
+
+    def contextMenuEvent(self, a0) -> None:
+        menu = KitMenu(self)
+        menu.addAction(KitIcon(Icons.md_add).toQIcon(), '添加')
+        menu.addAction('删除')
+        menu.exec_(a0.globalPos())

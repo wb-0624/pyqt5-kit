@@ -78,11 +78,6 @@ class BasicWidgetList(QListWidget):
     def __init_qss(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
 
-    def contextMenuEvent(self, a0) -> None:
-        menu = KitMenu(self)
-        menu.addAction(KitIcon(Icons.md_add).toQIcon(), '添加')
-        menu.addAction('删除')
-        menu.exec_(a0.globalPos())
 
     def addDemoCard(self, card: DemoCard):
         demo_item = QListWidgetItem(self)

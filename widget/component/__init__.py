@@ -8,9 +8,10 @@ from .combobox import *
 from .divider import *
 from .drawer import *
 from .drop import *
+from .edit import *
 from .icon import *
 from .image import *
-from .edit import *
+from .menu import *
 from .overlay import *
 from .popup import *
 from .progress import *
