@@ -5,6 +5,7 @@ from app_config.md_icons import Icons
 from widget import KitTabBar
 
 from .stack import DialogStack, BasicWidgetList
+from .stack.data_widget_list import DataWidgetList
 from .stack.graph_stack import GraphStack
 from .stack.state_widget_list import StateWidgetList
 from .stack.table_stack import TableStack
@@ -40,6 +41,11 @@ class Index(QWidget):
         self.navigation.addTab('state', Icons.md_query_stats)
         state_list = StateWidgetList()
         self.stack.addWidget(state_list)
+
+        # add data tab
+        self.navigation.addTab('data', Icons.md_data_usage)
+        data_list = DataWidgetList()
+        self.stack.addWidget(data_list)
 
         self.navigation.addTab('dialog', Icons.md_comment)
         dialog_stack = DialogStack()

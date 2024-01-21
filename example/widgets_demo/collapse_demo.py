@@ -9,9 +9,9 @@ from widget import KitButton, KitFramelessWindow
 from widget.component.collapse.kit_collapse import KitCollapse
 
 
-class ComboBoxDemo(QWidget):
+class CollapseDemo(QWidget):
     def __init__(self, parent=None):
-        super(ComboBoxDemo, self).__init__(parent=parent)
+        super(CollapseDemo, self).__init__(parent=parent)
         layout = QVBoxLayout()
         self.setLayout(layout)
         layout.setSpacing(0)
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     window = KitFramelessWindow()
     # window = KitWindow()
 
-    demo = ComboBoxDemo()
+    demo = CollapseDemo()
     window.setCentralWidget(demo)
     window.show()
     sys.exit(app.exec_())
