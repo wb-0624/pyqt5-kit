@@ -9,6 +9,7 @@ from app_config import Theme
 
 
 class Config(QObject):
+    theme_dir_list = ["component"]
 
     def __init__(self):
         super().__init__()
@@ -30,20 +31,30 @@ class Config(QObject):
         self.init_qss()
         self.init_font()
 
+    def addThemeDir(self, theme_dir: str):
+        """
+        添加主题文件夹
+        :param theme_dir: 主题文件夹名称，例如：custom
+        :return: 主题目录列表
+        """
+        self.theme_dir_list.append(theme_dir)
+        return self.theme_dir_list
+
     def init_qss(self):
         app = QApplication.instance()
         # 读取主题文件下的组件样式部分
-        theme_component_dir = self.app_root_path + "\\theme\\component\\"
-        theme_component_list = os.listdir(theme_component_dir)
         css = ""
         qss = ""
-        for file in theme_component_list:
-            if file.endswith(".scss"):
-                with open(theme_component_dir + file, "r", encoding="utf-8") as f:
-                    css += f.read()
-            elif file.endswith(".qss"):
-                with open(theme_component_dir + file, "r", encoding="utf-8") as f:
-                    qss += f.read()
+        for theme_dir in self.theme_dir_list:
+            theme_component_dir = self.app_root_path + "\\theme\\" + theme_dir + "\\"
+            theme_component_list = os.listdir(theme_component_dir)
+            for file in theme_component_list:
+                if file.endswith(".scss"):
+                    with open(theme_component_dir + file, "r", encoding="utf-8") as f:
+                        css += f.read()
+                elif file.endswith(".qss"):
+                    with open(theme_component_dir + file, "r", encoding="utf-8") as f:
+                        qss += f.read()
 
         # 读取主题文件下的通用样式变量 例如：颜色，字体
         theme_common_dir = self.app_root_path + "\\theme\\common\\"
@@ -62,8 +73,8 @@ class Config(QObject):
         app.setStyleSheet(css + qss)
 
     def init_font(self):
-        QFontDatabase.addApplicationFont(self.app_root_path+"\\assets\\font\\Ubuntu-Regular.ttf")
-        QFontDatabase.addApplicationFont(self.app_root_path+"\\assets\\font\\Material-Icons.ttf")
+        QFontDatabase.addApplicationFont(self.app_root_path + "\\assets\\font\\Ubuntu-Regular.ttf")
+        QFontDatabase.addApplicationFont(self.app_root_path + "\\assets\\font\\Material-Icons.ttf")
 
 
 config = Config()
