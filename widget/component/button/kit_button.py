@@ -29,6 +29,7 @@ class KitButton(QPushButton):
 
     def __init_widget(self):
         self.setMouseTracking(True)
+        self.setFixedHeight(32)
         self.setContentsMargins(4, 0, 4, 0)
 
     def __init_slot(self):
@@ -105,9 +106,6 @@ class KitButton(QPushButton):
         else:
             raise TypeError("Icon must be a QIcon or a str")
         super().setIcon(new_icon)
-
-    def sizeHint(self):
-        return QSize(52, 32)
 
 
 class KitIconButton(KitButton):
