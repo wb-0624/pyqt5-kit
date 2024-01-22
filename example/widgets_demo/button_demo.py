@@ -58,7 +58,7 @@ class TextButtonDemo(QWidget):
         btn.setStyle(Button.Text)
         layout.addWidget(btn)
 
-        primary_text_btn = KitButton("文字按钮带主题色")
+        primary_text_btn = KitButton("文字按钮带主题色", Icons.md_set_meal)
         primary_text_btn.setStyle(Button.Text)
         primary_text_btn.setType(Button.Primary)
         layout.addWidget(primary_text_btn)

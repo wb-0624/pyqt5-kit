@@ -1,3 +1,17 @@
 KitOverlay{
   background-color: $overlay-bg;
 }
+
+
+KitLoading KitIconButton[shape='round'][style='text']{
+  background-color: $overlay-button-bg;
+  &:hover{
+      background-color: darken($overlay-button-bg, 10%);
+  }
+  &:pressed{
+      background-color: darken($overlay-button-bg, 5%);
+  }
+  &:disabled{
+      background-color: lighten($overlay-button-bg, 10%);
+  }
+}
