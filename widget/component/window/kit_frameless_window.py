@@ -14,6 +14,30 @@ from .kit_title_bar import KitTitleBar
 from .kit_status_bar import KitStatusBar
 
 
+class KitWindowShadow(QWidget):
+
+    def __init__(self, parent=None):
+        super(KitWindowShadow, self).__init__(parent=parent)
+
+        self.__init_widget()
+        self.__init_slot()
+        self.__init_qss()
+
+    def __init_widget(self):
+        pass
+
+    def __init_slot(self):
+        pass
+
+    def __init_qss(self):
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        shadow = QGraphicsDropShadowEffect(self)
+        shadow.setOffset(0, 0)
+        shadow.setBlurRadius(10)
+        shadow.setColor(QColor('#808080'))
+        self.setGraphicsEffect(shadow)
+
+
 class KitWindowBody(QWidget):
     resized = pyqtSignal(QSize)
 
@@ -52,11 +76,11 @@ class KitWindowBody(QWidget):
     def __init_qss(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
         # 设置阴影
-        shadow = QGraphicsDropShadowEffect(self)
-        shadow.setOffset(0, 0)
-        shadow.setBlurRadius(10)
-        shadow.setColor(QColor('#b4b4b4'))
-        self.setGraphicsEffect(shadow)
+        # shadow = QGraphicsDropShadowEffect(self)
+        # shadow.setOffset(0, 0)
+        # shadow.setBlurRadius(10)
+        # shadow.setColor(QColor('#b4b4b4'))
+        # self.setGraphicsEffect(shadow)
 
     def resizeEvent(self, a0) -> None:
         if self.title_bar is not None:
@@ -97,6 +121,7 @@ class KitFramelessWindow(KitWindow):
 
         self.window_body = None
         self.title_bar = None
+        self.shadow = KitWindowShadow(self)
 
         self.window_status = Window.Normal
         self.resizable = True
@@ -123,20 +148,23 @@ class KitFramelessWindow(KitWindow):
         pass
 
     def setCentralWidget(self, widget: QWidget):
-        self.window_body.setCentralWidget(widget)
+        self.windowBody().setCentralWidget(widget)
 
     def setTitle(self, title):
         self.title_bar.setTitle(title)
 
     def setTitleBar(self, title_bar):
-        self.window_body.setTitleBar(title_bar)
+        self.windowBody().setTitleBar(title_bar)
 
     def setStatusBar(self, status_bar) -> None:
-        self.window_body.setStatusBar(status_bar)
+        self.windowBody().setStatusBar(status_bar)
 
     def setWindowBody(self, window_body):
         self.window_body = window_body
         super().setCentralWidget(window_body)
+
+    def windowBody(self):
+        return self.window_body
 
     def setResizeable(self, resizeable: bool):
         self.resizable = resizeable
@@ -155,9 +183,6 @@ class KitFramelessWindow(KitWindow):
 
     def centralWidget(self):
         return self.window_body.central_widget
-
-    def windowBody(self):
-        return self.window_body
 
     # 鼠标边界判断
     def __fresh_mouse_edge(self, pos: QPoint):
@@ -180,7 +205,6 @@ class KitFramelessWindow(KitWindow):
 
     # 根据边界判断鼠标样式
     def __fresh_mouse_cursor(self):
-
         if self.__drag_position in (Position.Top, Position.Bottom):
             cursor = Qt.SizeVerCursor
         elif self.__drag_position in (Position.Left, Position.Right):
@@ -260,23 +284,28 @@ class KitFramelessWindow(KitWindow):
     def showNormal(self) -> None:
         self.setContentsMargins(self.resize_margin, self.resize_margin, self.resize_margin, self.resize_margin)
         self.window_status = Window.Normal
-        self.window_body.setProperty('type', 'normal')
-        self.window_body.style().polish(self.window_body)
+        self.windowBody().setProperty('type', 'normal')
+        self.windowBody().style().polish(self.windowBody())
         super().showNormal()
 
     def showMaximized(self) -> None:
         self.window_status = Window.Maximized
         self.setContentsMargins(0, 0, 0, 0)
-        self.window_body.setProperty('type', 'max')
-        self.window_body.style().polish(self.window_body)
+        self.windowBody().setProperty('type', 'max')
+        self.windowBody().style().polish(self.windowBody())
         super().showMaximized()
 
     def showFullScreen(self) -> None:
         self.window_status = Window.FullScreen
         self.setContentsMargins(0, 0, 0, 0)
-        self.window_body.setProperty('type', 'max')
-        self.window_body.style().polish(self.window_body)
+        self.windowBody().setProperty('type', 'max')
+        self.windowBody().style().polish(self.windowBody())
         super().showFullScreen()
+
+    def resizeEvent(self, a0) -> None:
+        self.shadow.resize(self.windowBody().size())
+        self.shadow.move((self.width() - self.shadow.width()) // 2, (self.height() - self.shadow.height()) // 2)
+        super().resizeEvent(a0)
 
 
 if __name__ == "__main__":
@@ -285,8 +314,6 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     config.init()
-
-
 
     window = KitFramelessWindow()
     main = QWidget()
