@@ -2,7 +2,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QListWidget, QListWidgetItem
 
 from .demo_card import DemoCard
-from ... import LineEchartsDemo
+from ... import LineEchartsDemo, TemperatureEchartsDemo
 
 
 class EchartsWidgetList(QListWidget):
@@ -22,6 +22,12 @@ class EchartsWidgetList(QListWidget):
         line_echarts_demo = LineEchartsDemo()
         line_echarts_card.setDemoWidget(line_echarts_demo)
         self.addDemoCard(line_echarts_card)
+
+        temperature_echarts_card = DemoCard('温度变化', 'echarts_demo.py', 'TemperatureEchartsDemo')
+        temperature_echarts_card.setGraphicsEffect(None)
+        temperature_echarts_demo = TemperatureEchartsDemo()
+        temperature_echarts_card.setDemoWidget(temperature_echarts_demo)
+        self.addDemoCard(temperature_echarts_card)
 
     def __init_slot(self):
         pass

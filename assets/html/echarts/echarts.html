@@ -13,44 +13,10 @@
         <div id="main"></div>
         <script type="text/javascript">
             let myChart = echarts.init(document.getElementById("main"))
-
-            let option = {
-                radar: {
-                    shape: 'circle',
-                    indicator: [
-                        { name: 'A', max: 100},
-                        { name: 'B', max: 100},
-                        { name: 'C', max: 100},
-                        { name: 'D', max: 100}
-                    ]
-                },
-                series: [{
-                    type: 'radar',
-                    data: [
-                        {
-                            value: [0, 0, 0, 0],
-                            areaColor: "rgba(151,181,215,0.6)",
-                            areaStyle: "color",
-                            label: {
-                                show: true,
-                                formatter: function (params) {
-                                	// 可自定义显示内容
-                                    return params.value
-                                }
-                            }
-                        }
-                    ]
-                }]
-            };
-
-            // myChart.setOption(option)
+            let option = {};
             window.onresize = myChart.resize
 
-			// 修改雷达图的值
-            function setValue(vals) {
-                option.series[0].data[0].value = vals
-                myChart.setOption(option)
-            }
+
             function setOptions(opts) {
                 myChart.setOption(opts)
             }
