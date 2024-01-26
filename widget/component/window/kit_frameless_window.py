@@ -1,41 +1,17 @@
 import sys
 
+from PyQt5.QtGui import QCursor
 from PyQt5.QtCore import Qt, QSize, QPoint, pyqtSignal
-from PyQt5.QtGui import QCursor, QColor
-
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QGraphicsDropShadowEffect
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
 from config import config
 from app_config.constant import Position, Window
 
-from ..button import KitButton
 from .kit_window import KitWindow
 from .kit_title_bar import KitTitleBar
 from .kit_status_bar import KitStatusBar
-
-
-class KitWindowShadow(QWidget):
-
-    def __init__(self, parent=None):
-        super(KitWindowShadow, self).__init__(parent=parent)
-
-        self.__init_widget()
-        self.__init_slot()
-        self.__init_qss()
-
-    def __init_widget(self):
-        pass
-
-    def __init_slot(self):
-        pass
-
-    def __init_qss(self):
-        self.setAttribute(Qt.WA_StyledBackground, True)
-        shadow = QGraphicsDropShadowEffect(self)
-        shadow.setOffset(0, 0)
-        shadow.setBlurRadius(10)
-        shadow.setColor(QColor('#808080'))
-        self.setGraphicsEffect(shadow)
+from ..button import KitButton
+from ..shadow import KitShadow
 
 
 class KitWindowBody(QWidget):
@@ -75,12 +51,6 @@ class KitWindowBody(QWidget):
 
     def __init_qss(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
-        # 设置阴影
-        # shadow = QGraphicsDropShadowEffect(self)
-        # shadow.setOffset(0, 0)
-        # shadow.setBlurRadius(10)
-        # shadow.setColor(QColor('#b4b4b4'))
-        # self.setGraphicsEffect(shadow)
 
     def resizeEvent(self, a0) -> None:
         if self.title_bar is not None:
@@ -121,7 +91,7 @@ class KitFramelessWindow(KitWindow):
 
         self.window_body = None
         self.title_bar = None
-        self.shadow = KitWindowShadow(self)
+        self.shadow = None
 
         self.window_status = Window.Normal
         self.resizable = True
@@ -140,6 +110,7 @@ class KitFramelessWindow(KitWindow):
         self.setContentsMargins(self.resize_margin, self.resize_margin, self.resize_margin, self.resize_margin)
 
         self.window_body = KitWindowBody()
+        self.shadow = KitShadow(self, self.window_body)
         self.title_bar = self.window_body.title_bar
 
         self.setWindowBody(self.window_body)
@@ -301,11 +272,6 @@ class KitFramelessWindow(KitWindow):
         self.windowBody().setProperty('type', 'max')
         self.windowBody().style().polish(self.windowBody())
         super().showFullScreen()
-
-    def resizeEvent(self, a0) -> None:
-        self.shadow.resize(self.windowBody().size())
-        self.shadow.move((self.width() - self.shadow.width()) // 2, (self.height() - self.shadow.height()) // 2)
-        super().resizeEvent(a0)
 
 
 if __name__ == "__main__":

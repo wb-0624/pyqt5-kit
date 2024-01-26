@@ -1,14 +1,14 @@
 /* window */
+KitFramelessWindow>KitWindow{
+    border-radius: $frameless-window-radius;
+}
 
 KitWindowBody{
     background-color: $frameless-window-bg;
     padding: $frameless-window-padding;
     border-radius: $frameless-window-radius;
 }
-KitWindowShadow{
-    background-color: $frameless-window-bg;
-    border-radius: $frameless-window-radius;
-}
+
 
 KitWindowBody[type='max']{
     border:none;
