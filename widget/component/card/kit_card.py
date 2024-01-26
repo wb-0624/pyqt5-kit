@@ -1,4 +1,4 @@
-from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect, QSizePolicy
 
@@ -21,7 +21,6 @@ class KitCard(QWidget):
         self.shadow.setBlurRadius(10)
         self.shadow.setColor(QColor('#b4b4b4'))
         self.setGraphicsEffect(self.shadow)
-        self.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
 
     def __init_slot(self):
         pass
@@ -33,13 +32,13 @@ class KitCard(QWidget):
         self._hover_animation = enable
 
     def enterEvent(self, a0):
-        if not self._hover_animation:
+        if not self._hover_animation or self.graphicsEffect() is None:
             return
         self.shadow.setBlurRadius(30)
         self.setGraphicsEffect(self.shadow)
 
     def leaveEvent(self, a0):
-        if not self._hover_animation:
+        if not self._hover_animation or self.graphicsEffect() is None:
             return
         self.shadow.setBlurRadius(10)
         self.setGraphicsEffect(self.shadow)

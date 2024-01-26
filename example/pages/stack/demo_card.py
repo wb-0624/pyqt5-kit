@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QSizePolicy, QVBoxLayout, QWidget, QApplication, QHBoxLayout, QLabel
 
-from widget import KitCard, KitFramelessWindow, KitTag, KitHDivider, KitButton, KitToolTip, KitToolTipFilter
+from widget import KitCard, KitFramelessWindow, KitTag, KitButton, KitToolTipFilter
 
 
 class DemoCard(KitCard):
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     main = QWidget()
     layout = QVBoxLayout()
     main.setLayout(layout)
-    card = DemoCard('简单的按钮', 'example/widgets_demo/demo.py')
+    card = DemoCard('简单的按钮', 'example/widgets_demo/demo.py', 'DemoButton')
     card.setDemoWidget(KitButton('132'))
     layout.addWidget(card)
     layout.addStretch(1)

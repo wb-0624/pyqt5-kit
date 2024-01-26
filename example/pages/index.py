@@ -4,12 +4,8 @@ from PyQt5.QtWidgets import QWidget, QStackedWidget, QHBoxLayout
 from app_config.md_icons import Icons
 from widget import KitTabBar, KitIcon, KitMenu
 
-from .stack import DialogWidgetList, BasicWidgetList
-from .stack.data_widget_list import DataWidgetList
-from .stack.graph_widget_list import GraphWidgetList
-from .stack.input_widget_list import InputWidgetList
-from .stack.state_widget_list import StateWidgetList
-from .stack.table_widget_list import TableWidgetList
+from .stack import DialogWidgetList, BasicWidgetList, StateWidgetList, DataWidgetList, InputWidgetList, GraphWidgetList, \
+    TableWidgetList, EchartsWidgetList
 
 
 class Index(QWidget):
@@ -59,6 +55,10 @@ class Index(QWidget):
 
         self.navigation.addTab('graph', Icons.md_pie_chart)
         chart_stack = GraphWidgetList(self)
+        self.stack.addWidget(chart_stack)
+
+        self.navigation.addTab('echarts', Icons.md_pie_chart)
+        chart_stack = EchartsWidgetList(self)
         self.stack.addWidget(chart_stack)
 
         self.navigation.addTab('table', Icons.md_table_view)

@@ -4,6 +4,7 @@ from .checkbox_demo import *
 from .combobox_demo import *
 from .drawer_demo import *
 from .drop_demo import *
+from .echarts_demo import *
 from .graph_demo import *
 from .icon_demo import *
 from .image_demo import *

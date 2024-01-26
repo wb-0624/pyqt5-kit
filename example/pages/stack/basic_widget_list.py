@@ -1,7 +1,5 @@
 from PyQt5.QtWidgets import QListWidget, QListWidgetItem
 
-from widget import KitIcon
-from widget.component.menu.kit_menu import KitMenu
 from .demo_card import DemoCard
 from ... import ProgressDemo, SwitchDemo, SliderDemo
 from ...widgets_demo.combobox_demo import ComboBoxDemo

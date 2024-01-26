@@ -2,11 +2,12 @@ from PyQt5.QtCore import Qt
 
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
-from widget import KitCard, KitFramelessWindow
+from widget import KitCard, KitFramelessWindow, KitWindow
+
 
 class CardDemo(QWidget):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent=None):
+        super().__init__(parent=parent)
 
         layout = QVBoxLayout()
         self.setLayout(layout)
@@ -18,6 +19,7 @@ class CardDemo(QWidget):
         card_3 = KitCard()
         layout.addWidget(card_3)
 
+
 if __name__ == "__main__":
     from config import config
     import sys
@@ -28,13 +30,10 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     config.init()
 
+    # window = KitFramelessWindow()
+    window = KitWindow()
 
-
-
-    window = KitFramelessWindow()
-    # window = KitWindow()
-
-    demo = CardDemo()
+    demo = CardDemo(window)
     window.setCentralWidget(demo)
     window.show()
     sys.exit(app.exec_())

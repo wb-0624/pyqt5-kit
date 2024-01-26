@@ -8,6 +8,7 @@ from .combobox import *
 from .divider import *
 from .drawer import *
 from .drop import *
+from .echarts import *
 from .edit import *
 from .icon import *
 from .image import *
@@ -15,6 +16,7 @@ from .menu import *
 from .overlay import *
 from .popup import *
 from .progress import *
+from .shadow import *
 from .spinbox import *
 from .splashscreen import *
 from .switch import *
