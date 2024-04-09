@@ -1,3 +1,4 @@
+from typing import Union
 from PyQt5.QtCore import QPropertyAnimation, Qt, QRect
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect
@@ -13,7 +14,7 @@ class KitDrawer(QWidget):
     侧边栏抽屉
     """
 
-    def __init__(self, window: KitFramelessWindow, orientation: Position = Position.Left):
+    def __init__(self, window: Union[KitFramelessWindow, KitWindow], orientation: Position = Position.Left):
         if isinstance(window, KitFramelessWindow):
             super(KitDrawer, self).__init__(parent=window.windowBody())
         elif isinstance(window, KitWindow):

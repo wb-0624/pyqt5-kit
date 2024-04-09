@@ -20,7 +20,7 @@ def main():
 
     window = KitFramelessWindow()
     window.resize(800, 600)
-    window.setCentralWidget(Index())
+    window.setCentralWidget(Index(window))
 
     window.show()
     sys.exit(app.exec_())
