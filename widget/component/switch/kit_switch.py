@@ -1,4 +1,4 @@
-from PyQt5.QtCore import Qt, QPropertyAnimation, pyqtSignal
+from PyQt5.QtCore import Qt, QPropertyAnimation, pyqtSignal, QPoint
 from PyQt5.QtWidgets import QWidget, QVBoxLayout
 
 from app_config.md_icons import Icons
@@ -70,11 +70,11 @@ class KitSwitch(QWidget):
         self.setMouseTracking(True)
         self.setFixedSize(56, 32)
 
-        self._animate = QPropertyAnimation(self.indicator, b"x", self)
+        self._animate = QPropertyAnimation(self.indicator, b"pos", self)
         self._animate.setDuration(100)
-        self._animate.setStartValue(0)
-        self._animate.setEndValue(24)
-        self._animate.valueChanged.connect(lambda value: self.indicator.move(value, self.indicator.y()))
+        self._animate.setStartValue(QPoint(0, self.indicator.y()))
+        self._animate.setEndValue(QPoint(24,self.indicator.y()))
+        self._animate.valueChanged.connect(lambda value: self.indicator.move(value))
         self.setChecked(self.checked)
 
     def __init_slot(self):
