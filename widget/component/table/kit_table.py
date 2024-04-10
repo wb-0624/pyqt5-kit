@@ -358,7 +358,7 @@ class TableBody(TableBase):
             cell.setText('暂无数据')
             cell.setAlignment(Qt.AlignCenter)
             self.setCellWidget(0, 0, cell)
-            self.setSpan(0, 0, 2, column)
+            self.setSpan(0, 0, 3, column+1)
             return
 
         self.clearSpans()
