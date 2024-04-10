@@ -89,6 +89,7 @@ class KitSliderStyle(QProxyStyle):
         y = handleRect.y() + (handleRect.height() - innerWidth)//2
         painter.setBrush(self.config['handle.inner-color'])
         painter.drawEllipse(x, y, innerWidth, innerWidth)
+        painter.restore()
 
 
 class KitSlider(QSlider):
