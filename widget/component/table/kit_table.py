@@ -1,3 +1,4 @@
+from typing import Dict, List
 from PyQt5.QtCore import Qt, QSize, pyqtSignal, QEvent
 from PyQt5.QtGui import QResizeEvent
 from PyQt5.QtWidgets import QLabel, QTableWidget, QAbstractItemView, QWidget, QVBoxLayout
@@ -149,7 +150,7 @@ class TableBase(QTableWidget):
         self.row_height = 40
         self.check_cell_width = 40
         self.column_hint_width = 100
-        self.table_data: [dict] = []
+        self.table_data: List[Dict] = []
         self.show_check = False
 
         self.if_fit_width = True
