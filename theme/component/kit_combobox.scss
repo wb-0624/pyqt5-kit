@@ -18,7 +18,6 @@ KitComboBox{
     border-radius: 4px;
     color: black;
     background-color: $gray100;   /* 整个下拉窗体的背景色 */
-    box-shadow: none;
     &:item{
       height: 32px;
       margin:$margin;
