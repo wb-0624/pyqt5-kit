@@ -1,9 +1,8 @@
-from PyQt5.QtCore import QSize, QEvent
+from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtWidgets import QListWidget, QListWidgetItem
 
 from .demo_card import DemoCard
 from ... import DrawerDemo, DropDemo
-from ...widgets_demo.checkbox_demo import *
 from ...widgets_demo.collapse_demo import CollapseDemo
 
 

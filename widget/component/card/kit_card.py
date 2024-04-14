@@ -1,6 +1,6 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect, QSizePolicy
+from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect
 
 """
 如果卡片组件的内容是需要频繁刷新的，则将卡片组件的阴影去掉，否则会导致卡顿。 card.setGraphicsEffect(None)
