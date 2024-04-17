@@ -5,7 +5,6 @@ from widget import KitEcharts, KitFramelessWindow
 
 
 class LineEchartsDemo(KitEcharts):
-
     def __init__(self, parent=None):
         super(LineEchartsDemo, self).__init__(parent=parent)
 
@@ -15,19 +14,50 @@ class LineEchartsDemo(KitEcharts):
 
     def __init_widget(self):
         option = {
-            'xAxis': {
-                'type': 'category',
-                'data': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            "title": {"text": "Stacked Line"},
+            "tooltip": {"trigger": "axis"},
+            "legend": {
+                "data": ["Email", "Union Ads", "Video Ads", "Direct", "Search Engine"]
             },
-            'yAxis': {
-                'type': 'value'
+            "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": "true"},
+            "xAxis": {
+                "type": "category",
+                "boundaryGap": "false",
+                "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
             },
-            'series': [
+            "yAxis": {"type": "value"},
+            "series": [
                 {
-                    'data': [150, 230, 224, 218, 135, 147, 260],
-                    'type': 'line'
-                }
-            ]
+                    "name": "Email",
+                    "type": "line",
+                    "stack": "Total",
+                    "data": [120, 132, 101, 134, 90, 230, 210],
+                },
+                {
+                    "name": "Union Ads",
+                    "type": "line",
+                    "stack": "Total",
+                    "data": [220, 182, 191, 234, 290, 330, 310],
+                },
+                {
+                    "name": "Video Ads",
+                    "type": "line",
+                    "stack": "Total",
+                    "data": [150, 232, 201, 154, 190, 330, 410],
+                },
+                {
+                    "name": "Direct",
+                    "type": "line",
+                    "stack": "Total",
+                    "data": [320, 332, 301, 334, 390, 330, 320],
+                },
+                {
+                    "name": "Search Engine",
+                    "type": "line",
+                    "stack": "Total",
+                    "data": [820, 932, 901, 934, 1290, 1330, 1320],
+                },
+            ],
         }
         self.loadFinished.connect(lambda: self.setOptions(option))
 
@@ -39,7 +69,6 @@ class LineEchartsDemo(KitEcharts):
 
 
 class TemperatureEchartsDemo(KitEcharts):
-
     def __init__(self, parent=None):
         super(TemperatureEchartsDemo, self).__init__(parent=parent)
 
@@ -49,81 +78,63 @@ class TemperatureEchartsDemo(KitEcharts):
 
     def __init_widget(self):
         options = {
-            'title': {
-                'text': 'Temperature Change in the Coming Week'
+            "title": {"text": "Temperature Change in the Coming Week"},
+            "tooltip": {"trigger": "axis"},
+            "legend": {},
+            "toolbox": {
+                "show": True,
+                "feature": {
+                    "dataZoom": {"yAxisIndex": "none"},
+                    "dataView": {"readOnly": False},
+                    "magicType": {"type": ["line", "bar"]},
+                    "restore": {},
+                    "saveAsImage": {},
+                },
             },
-            'tooltip': {
-                'trigger': 'axis'
+            "xAxis": {
+                "type": "category",
+                "boundaryGap": False,
+                "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
             },
-            'legend': {},
-            'toolbox': {
-                'show': True,
-                'feature': {
-                    'dataZoom': {
-                        'yAxisIndex': 'none'
-                    },
-                    'dataView': {'readOnly': False},
-                    'magicType': {'type': ['line', 'bar']},
-                    'restore': {},
-                    'saveAsImage': {}
-                }
-            },
-            'xAxis': {
-                'type': 'category',
-                'boundaryGap': False,
-                'data': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-            },
-            'yAxis': {
-                'type': 'value',
-                'axisLabel': {
-                    'formatter': '{value} °C'
-                }
-            },
-            'series': [
+            "yAxis": {"type": "value", "axisLabel": {"formatter": "{value} °C"}},
+            "series": [
                 {
-                    'name': 'Highest',
-                    'type': 'line',
-                    'data': [10, 11, 13, 11, 12, 12, 9],
-                    'markPoint': {
-                        'data': [
-                            {'type': 'max', 'name': 'Max'},
-                            {'type': 'min', 'name': 'Min'}
+                    "name": "Highest",
+                    "type": "line",
+                    "data": [10, 11, 13, 11, 12, 12, 9],
+                    "markPoint": {
+                        "data": [
+                            {"type": "max", "name": "Max"},
+                            {"type": "min", "name": "Min"},
                         ]
                     },
-                    'markLine': {
-                        'data': [{'type': 'average', 'name': 'Avg'}]
-                    }
+                    "markLine": {"data": [{"type": "average", "name": "Avg"}]},
                 },
                 {
-                    'name': 'Lowest',
-                    'type': 'line',
-                    'data': [1, -2, 2, 5, 3, 2, 0],
-                    'markPoint': {
-                        'data': [{'name': '周最低', 'value': -2, 'xAxis': 1, 'yAxis': -1.5}]
-                    },
-                    'markLine': {
-                        'data': [
-                            {'type': 'average', 'name': 'Avg'},
-                            [
-                                {
-                                    'symbol': 'none',
-                                    'x': '90%',
-                                    'Axis': 'max'
-                                },
-                                {
-                                    'symbol': 'circle',
-                                    'label': {
-                                        'position': 'start',
-                                        'formatter': 'Max'
-                                    },
-                                    'type': 'max',
-                                    'name': '最高点'
-                                }
-                            ]
+                    "name": "Lowest",
+                    "type": "line",
+                    "data": [1, -2, 2, 5, 3, 2, 0],
+                    "markPoint": {
+                        "data": [
+                            {"name": "周最低", "value": -2, "xAxis": 1, "yAxis": -1.5}
                         ]
-                    }
-                }
-            ]
+                    },
+                    "markLine": {
+                        "data": [
+                            {"type": "average", "name": "Avg"},
+                            [
+                                {"symbol": "none", "x": "90%", "Axis": "max"},
+                                {
+                                    "symbol": "circle",
+                                    "label": {"position": "start", "formatter": "Max"},
+                                    "type": "max",
+                                    "name": "最高点",
+                                },
+                            ],
+                        ]
+                    },
+                },
+            ],
         }
         self.loadFinished.connect(lambda: self.setOptions(options))
 
@@ -135,7 +146,6 @@ class TemperatureEchartsDemo(KitEcharts):
 
 
 class BarEchartsDemo(KitEcharts):
-
     def __init__(self, parent=None):
         super(BarEchartsDemo, self).__init__(parent=parent)
 

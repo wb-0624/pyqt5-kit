@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QSizePolicy, QVBoxLayout, QWidget, QApplication, QHBoxLayout, QLabel
 
-from widget import KitCard, KitFramelessWindow, KitTag, KitButton, KitToolTipFilter
+from widget import KitCard, KitFramelessWindow, KitTag, KitButton, KitToolTipFilter, KitHDivider
 
 
 class DemoCard(KitCard):
@@ -41,6 +41,7 @@ class DemoCard(KitCard):
         self.info_layout.addLayout(self.tag_layout)
 
         self.layout.addWidget(self.info_widget)
+        self.layout.addWidget(KitHDivider())
         self.layout.addWidget(QWidget(), stretch=1)
 
     def __init_slot(self):
