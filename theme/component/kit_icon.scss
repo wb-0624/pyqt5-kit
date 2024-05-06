@@ -19,3 +19,21 @@ KitIcon[type='warning']{
 KitIcon[type='danger']{
   color: $danger;
 }
+
+KitMdIcon{
+  font-family: $icon;
+  font-size: $icon-size;
+  background-color: $icon-bg;
+}
+
+KitFtIcon{
+  font-size: $icon-size;
+  background-color: $icon-bg;
+  font-family: $ft-icon;
+}
+
+KitFtFilledIcon{
+  font-size: $icon-size;
+  background-color: $icon-bg;
+  font-family: $ft-icon-filled;
+}

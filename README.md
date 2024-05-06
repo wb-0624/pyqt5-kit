@@ -4,7 +4,7 @@
 
 # 启动
 
-运行前，要把运行目录改为工程根目录。
+如果使用Pycharm的话，运行前，要把运行目录改为工程根目录。
 
 ![img.png](assets/doc/run_dir.png)
 
@@ -16,7 +16,7 @@ PyQt动画相关类，用于直接生成动画效果，还在完善中。
 
 ## app_config
 
-应用配置。包括应用常量 和 图标常量。
+应用配置。包括 应用常量 和 图标常量(图标字体，采用Material风格)。
 
 ## assets
 
@@ -34,7 +34,10 @@ PyQt动画相关类，用于直接生成动画效果，还在完善中。
 ## example
 
 示例。
-run `example/demo.py`
+
+PyCharm 直接运行 `example/demo.py`
+
+或者通过命令 `python -m example.demo`
 
 ## script
 

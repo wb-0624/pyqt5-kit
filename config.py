@@ -75,6 +75,8 @@ class Config(QObject):
     def init_font(self):
         QFontDatabase.addApplicationFont(self.app_root_path + "\\assets\\font\\Ubuntu-Regular.ttf")
         QFontDatabase.addApplicationFont(self.app_root_path + "\\assets\\font\\Material-Icons.ttf")
+        QFontDatabase.addApplicationFont(self.app_root_path + "\\assets\\font\\FluentSystemIcons-Regular.ttf")
+        QFontDatabase.addApplicationFont(self.app_root_path + "\\assets\\font\\FluentSystemIcons-Filled.ttf")
 
 
 config = Config()

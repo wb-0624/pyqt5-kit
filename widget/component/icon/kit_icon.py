@@ -47,5 +47,15 @@ class KitIcon(QLabel):
 
         return pixmap
 
+class KitMdIcon(KitIcon):
+    def __init__(self, icon_str=None, parent=None):
+        super().__init__(icon_str, parent)
 
+class KitFtIcon(KitIcon):
+    def __init__(self, icon_str=None, parent=None):
+        super().__init__(icon_str, parent)
+
+class KitFtFilledIcon(KitIcon):
+    def __init__(self, icon_str=None, parent=None):
+        super().__init__(icon_str, parent)
 
