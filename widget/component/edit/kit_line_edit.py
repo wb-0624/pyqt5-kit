@@ -2,7 +2,7 @@ from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtWidgets import QLineEdit
 
 from ..icon import KitIcon
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 
 
 class KitLineEdit(QLineEdit):
@@ -35,10 +35,10 @@ class KitLineEdit(QLineEdit):
         self.validator_icon.setVisible(True)
         if self.hasAcceptableInput():
             self.validator_icon.setProperty('type', 'success')
-            self.validator_icon.setIcon(Icons.md_check_circle)
+            self.validator_icon.setIcon(MdIcons.md_check_circle)
         else:
             self.validator_icon.setProperty('type', 'danger')
-            self.validator_icon.setIcon(Icons.md_info)
+            self.validator_icon.setIcon(MdIcons.md_info)
         self.validator_icon.style().polish(self.validator_icon)
 
     def paintEvent(self, event) -> None:

@@ -1,4 +1,4 @@
-class Icons:
+class MdIcons:
     md_10k = "\ue951"
     md_10mp = "\ue952"
     md_11mp = "\ue953"

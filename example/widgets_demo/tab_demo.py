@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QStackedWidget
 
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 from widget import KitTabBar, KitButton, KitFramelessWindow, KitWindow
 
 
@@ -12,9 +12,9 @@ class TabDemo(QWidget):
         self.setLayout(layout)
 
         tab_bar = KitTabBar()
-        tab_bar.addTab('Tab 1', Icons.md_home)
-        tab_bar.addTab('Tab 2', Icons.md_home)
-        tab_bar.addTab('Tab 312341235123', Icons.md_home)
+        tab_bar.addTab('Tab 1', MdIcons.md_home)
+        tab_bar.addTab('Tab 2', MdIcons.md_home)
+        tab_bar.addTab('Tab 312341235123', MdIcons.md_home)
 
         stacked = QStackedWidget()
         stacked.addWidget(KitButton('1'))

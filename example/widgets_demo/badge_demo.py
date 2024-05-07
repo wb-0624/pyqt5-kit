@@ -2,7 +2,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout
 
 from app_config.constant import Button, Badge
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 from widget import KitButton, KitFramelessWindow, KitBadge, KitDotBadge, KitIconButton
 
 
@@ -12,24 +12,24 @@ class BadgeDemo(QWidget):
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        btn1 = KitButton("Button", Icons.md_home)
+        btn1 = KitButton("Button", MdIcons.md_home)
         btn1.setStyle(Button.Text)
         badge1 = KitBadge(btn1)
         badge1.setType(Badge.Danger)
         badge1.setNum(10)
 
-        btn2 = KitButton("Button", Icons.md_home)
+        btn2 = KitButton("Button", MdIcons.md_home)
         btn2.setShape(Button.Round)
         badge2 = KitBadge(btn2)
         badge2.setType(Badge.Primary)
         badge2.setNum(100)
 
-        btn4 = KitButton("Button", Icons.md_home)
+        btn4 = KitButton("Button", MdIcons.md_home)
         badge4 = KitBadge(btn4)
         badge4.setType(Badge.Success)
         badge4.setNum(1000)
 
-        btn5 = KitIconButton(Icons.md_home)
+        btn5 = KitIconButton(MdIcons.md_home)
         btn5.setStyle(Button.Text)
         badge5 = KitDotBadge(btn5)
         badge5.setType(Badge.Danger)
@@ -52,7 +52,7 @@ class DotBadgeDemo(QWidget):
         label_dot_badge.setType(Badge.Primary)
         self.layout.addWidget(button)
 
-        button2 = KitIconButton(Icons.md_person)
+        button2 = KitIconButton(MdIcons.md_person)
         label2_dot_badge = KitDotBadge(button2)
         label2_dot_badge.setType(Badge.Success)
         self.layout.addWidget(button2)

@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QSpinBox, QStyleOptionSpinBox, QStyle, QDoubleSpinBo
     QAbstractSpinBox, QWidget
 
 from ..icon import KitIcon
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 
 
 class SpinBoxEventFilter(QObject):
@@ -30,14 +30,14 @@ class SpinBoxEventFilter(QObject):
                                  arrow_up_rect.center().y() - self.target.indicator_size // 2,
                                  self.target.indicator_size,
                                  self.target.indicator_size)
-                icon = KitIcon(Icons.md_expand_less)
+                icon = KitIcon(MdIcons.md_expand_less)
                 icon.setObjectName('spinbox_icon')
                 painter.drawPixmap(opt.rect, icon.toPixmap())
                 opt.rect = QRect(arrow_down_rect.center().x() - self.target.indicator_size // 2,
                                  arrow_down_rect.center().y() - self.target.indicator_size // 2,
                                  self.target.indicator_size,
                                  self.target.indicator_size)
-                icon = KitIcon(Icons.md_expand_more)
+                icon = KitIcon(MdIcons.md_expand_more)
                 icon.setObjectName('spinbox_icon')
                 painter.drawPixmap(opt.rect, icon.toPixmap())
                 return True

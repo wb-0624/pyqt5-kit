@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QApplication
 
 from config import config
 from example.pages.index import Index
-from widget import KitFramelessWindow
+from widget import KitFramelessWindow, KitWindow
 
 
 def main():

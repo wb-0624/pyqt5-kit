@@ -2,7 +2,7 @@ from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QPainter, QPixmap
 from PyQt5.QtWidgets import QCheckBox, QVBoxLayout, QWidget, QStyleOptionButton, QStyle
 
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 
 from ..icon import KitIcon
 
@@ -42,13 +42,13 @@ class CheckBoxIcon(QWidget):
     def setCheckState(self, check_state: int):
         if check_state == CheckBoxIcon.Checked:
             self.setProperty('state', 'checked')
-            self.icon.setIcon(Icons.md_check)
+            self.icon.setIcon(MdIcons.md_check)
         elif check_state == CheckBoxIcon.UnChecked:
             self.setProperty('state', 'unchecked')
             self.icon.setIcon("")
         elif check_state == CheckBoxIcon.PartialChecked:
             self.setProperty('state', 'partial_checked')
-            self.icon.setIcon(Icons.md_horizontal_rule)
+            self.icon.setIcon(MdIcons.md_horizontal_rule)
         self.style().polish(self)
 
     def sizeHint(self):

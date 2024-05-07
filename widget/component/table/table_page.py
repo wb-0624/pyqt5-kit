@@ -7,7 +7,7 @@ from ..button import KitIconButton
 from ..edit import KitLineEdit
 from config import config
 from app_config import Button
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 
 
 class TablePagination(QWidget):
@@ -38,11 +38,11 @@ class TablePagination(QWidget):
         self.page_input.setAlignment(Qt.AlignCenter)
         self.page_input.setTextMargins(0, 0, 0, 0)
         self.page_input.setFixedSize(40, 20)
-        self.previous_btn = KitIconButton(Icons.md_chevron_left)
+        self.previous_btn = KitIconButton(MdIcons.md_chevron_left)
         self.previous_btn.setObjectName('page_icon')
         self.previous_btn.setFixedSize(20, 20)
         self.previous_btn.setType(Button.Text)
-        self.next_btn = KitIconButton(Icons.md_chevron_right)
+        self.next_btn = KitIconButton(MdIcons.md_chevron_right)
         self.next_btn.setObjectName('page_icon')
         self.next_btn.setFixedSize(20, 20)
         self.next_btn.setType(Button.Text)

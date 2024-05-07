@@ -2,7 +2,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout
 
 from app_config.constant import Button
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 from widget import KitButton, KitIconButton, KitToolButton, KitFramelessWindow
 
 
@@ -15,7 +15,7 @@ class ButtonDemo(QWidget):
         btn = KitButton("Button")
         layout.addWidget(btn)
 
-        btn_round = KitButton("圆角", Icons.md_home)
+        btn_round = KitButton("圆角", MdIcons.md_home)
         btn_round.setShape(Button.Round)
         layout.addWidget(btn_round)
 
@@ -30,7 +30,7 @@ class ThemeButtonDemo(QWidget):
         layout = QHBoxLayout()
         self.setLayout(layout)
 
-        primary_button = KitButton("Primary", Icons.md_settings)
+        primary_button = KitButton("Primary", MdIcons.md_settings)
         primary_button.setType(Button.Primary)
 
         success_button = KitButton("Success")
@@ -58,7 +58,7 @@ class TextButtonDemo(QWidget):
         btn.setStyle(Button.Text)
         layout.addWidget(btn)
 
-        primary_text_btn = KitButton("文字按钮带主题色", Icons.md_set_meal)
+        primary_text_btn = KitButton("文字按钮带主题色", MdIcons.md_set_meal)
         primary_text_btn.setStyle(Button.Text)
         primary_text_btn.setType(Button.Primary)
         layout.addWidget(primary_text_btn)
@@ -70,26 +70,26 @@ class IconButtonDemo(QWidget):
         layout = QHBoxLayout()
         self.setLayout(layout)
 
-        btn = KitIconButton(Icons.md_home)
+        btn = KitIconButton(MdIcons.md_home)
         layout.addWidget(btn)
 
-        btn_square = KitIconButton(Icons.md_square)
+        btn_square = KitIconButton(MdIcons.md_square)
         btn_square.setShape(Button.Square)
         layout.addWidget(btn_square)
 
-        btn_round = KitIconButton(Icons.md_rounded_corner)
+        btn_round = KitIconButton(MdIcons.md_rounded_corner)
         btn_round.setShape(Button.Round)
         layout.addWidget(btn_round)
 
-        primary_icon_btn = KitIconButton(Icons.md_settings)
+        primary_icon_btn = KitIconButton(MdIcons.md_settings)
         primary_icon_btn.setType(Button.Primary)
         layout.addWidget(primary_icon_btn)
 
-        success_icon_btn = KitIconButton(Icons.md_check_circle)
+        success_icon_btn = KitIconButton(MdIcons.md_check_circle)
         success_icon_btn.setType(Button.Success)
         layout.addWidget(success_icon_btn)
 
-        text_icon_btn = KitIconButton(Icons.md_text_fields)
+        text_icon_btn = KitIconButton(MdIcons.md_text_fields)
         text_icon_btn.setStyle(Button.Text)
         layout.addWidget(text_icon_btn)
 
@@ -100,10 +100,10 @@ class ToolButtonDemo(QWidget):
         layout = QHBoxLayout()
         self.setLayout(layout)
 
-        tool_btn = KitToolButton('工具按钮', Icons.md_home)
+        tool_btn = KitToolButton('工具按钮', MdIcons.md_home)
         layout.addWidget(tool_btn)
 
-        tool_icon_btn = KitToolButton(None, Icons.md_home)
+        tool_icon_btn = KitToolButton(None, MdIcons.md_home)
         tool_icon_btn.setType(Button.Success)
         layout.addWidget(tool_icon_btn)
 

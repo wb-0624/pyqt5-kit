@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel
 
 from PyQt5.QtCore import Qt
 
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 from config import config
 from widget import KitButton, KitFramelessWindow
 from widget.component.collapse.kit_collapse import KitCollapse
@@ -23,7 +23,7 @@ class CollapseDemo(QWidget):
         content.layout().addWidget(QLabel('content'))
         content.layout().addWidget(KitButton('button'))
         collapse = KitCollapse('321', content)
-        collapse.setIcon(Icons.md_account_circle)
+        collapse.setIcon(MdIcons.md_account_circle)
         collapse.setTitleAlignment(Qt.AlignHCenter)
         layout.addWidget(collapse)
 

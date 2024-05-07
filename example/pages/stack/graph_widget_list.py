@@ -4,7 +4,6 @@ from widget import KitIcon
 from widget.component.menu.kit_menu import KitMenu
 from .demo_card import DemoCard
 from ... import HistogramGraphDemo, LineGraphDemo, PolarGraphDemo, PieGraphDemo, ScatterGraphDemo
-from ...widgets_demo.combobox_demo import ComboBoxDemo
 from ...widgets_demo.button_demo import *
 from ...widgets_demo.checkbox_demo import *
 
@@ -55,7 +54,7 @@ class GraphWidgetList(QListWidget):
 
     def contextMenuEvent(self, a0) -> None:
         menu = KitMenu(self)
-        menu.addAction(KitIcon(Icons.md_add).toQIcon(), '添加')
+        menu.addAction(KitIcon(MdIcons.md_add).toQIcon(), '添加')
         menu.addAction('删除')
         menu.exec_(a0.globalPos())
 

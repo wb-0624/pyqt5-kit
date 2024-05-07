@@ -6,7 +6,7 @@ from ..button import KitIconButton
 from ..icon import KitIcon
 from ..overlay import KitOverlay
 from app_config.constant import ClosePolicy, Button
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 
 
 class KitLoading(KitOverlay):
@@ -30,7 +30,7 @@ class KitLoading(KitOverlay):
         self.loading_icon.setFixedSize(60, 60)
         self.loading.setScaledSize(self.loading_icon.size())
 
-        self.close_btn = KitIconButton(Icons.md_close, self)
+        self.close_btn = KitIconButton(MdIcons.md_close, self)
         self.close_btn.setStyle(Button.Text)
         self.close_btn.setShape(Button.Round)
         self.close_btn.setVisible(False)

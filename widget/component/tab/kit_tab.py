@@ -4,13 +4,13 @@ from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QRadioButton, QStackedWidget
 
 from app_config.constant import Orientation
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 from ..icon import KitIcon
 
 
 class KitTab(QRadioButton):
 
-    def __init__(self, text: str, icon: Icons, orientation: Orientation = Orientation.Vertical, parent=None):
+    def __init__(self, text: str, icon: MdIcons, orientation: Orientation = Orientation.Vertical, parent=None):
         super(KitTab, self).__init__(text=text, parent=parent)
 
         self._orientation = orientation
@@ -93,7 +93,7 @@ class KitTabBar(QWidget):
     def __init_qss(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
 
-    def addTab(self, text: str = '', icon: Icons = ''):
+    def addTab(self, text: str = '', icon: MdIcons = ''):
         tab = KitTab('  '+text, icon, self._orientation)
         tab.toggled.connect(lambda checked: self.setCurrentIndex(self.tab_list.index(tab)))
         self.tab_list.append(tab)

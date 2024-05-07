@@ -5,7 +5,7 @@ from ..button import KitIconButton, KitButton
 from ..overlay import KitOverlay
 from ..popup import KitPopup
 from app_config.constant import ClosePolicy, Button
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 
 
 class KitModal(KitPopup):
@@ -20,7 +20,7 @@ class KitModal(KitPopup):
 
         self.header_layout = QHBoxLayout()
         self.content = QVBoxLayout()
-        self.close_btn = KitIconButton(Icons.md_close)
+        self.close_btn = KitIconButton(MdIcons.md_close)
         self.close_btn.setStyle(Button.Text)
         self.close_btn.setShape(Button.Round)
 

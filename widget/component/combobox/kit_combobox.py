@@ -2,7 +2,7 @@ from PyQt5.QtCore import Qt, QSize, QVariant, QRect
 from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import QComboBox, QListView, QStyle, QStyleOptionComboBox
 
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 from utils.kit_property import KitNotifyProperty
 from ..icon import KitIcon
 
@@ -75,11 +75,11 @@ class KitComboBox(QComboBox):
         opt.rect = rect
 
         if self.view().isVisible():
-            icon = KitIcon(Icons.md_expand_more)
+            icon = KitIcon(MdIcons.md_expand_more)
             icon.setObjectName('combobox_icon')
             painter.drawPixmap(rect, icon.toPixmap())
         else:
-            icon = KitIcon(Icons.md_chevron_right)
+            icon = KitIcon(MdIcons.md_chevron_right)
             icon.setObjectName('combobox_icon')
             painter.drawPixmap(rect, icon.toPixmap())
 

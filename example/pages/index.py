@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QStackedWidget, QHBoxLayout
 
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 from widget import KitTabBar, KitIcon, KitMenu
 
 from .stack import DialogWidgetList, BasicWidgetList, StateWidgetList, DataWidgetList, InputWidgetList, GraphWidgetList, \
@@ -30,38 +30,38 @@ class Index(QWidget):
         self.navigation.connectStackedWidget(self.stack)
 
     def __init_tab(self):
-        self.navigation.addTab('basic', Icons.md_widgets)
+        self.navigation.addTab('basic', MdIcons.md_widgets)
         basic_list = BasicWidgetList()
         self.stack.addWidget(basic_list)
         self.navigation.setCurrentIndex(0)
 
-        self.navigation.addTab('state', Icons.md_query_stats)
+        self.navigation.addTab('state', MdIcons.md_query_stats)
         state_list = StateWidgetList(self)
         self.stack.addWidget(state_list)
 
         # add data tab
-        self.navigation.addTab('data', Icons.md_data_usage)
+        self.navigation.addTab('data', MdIcons.md_data_usage)
         data_list = DataWidgetList(self)
         self.stack.addWidget(data_list)
 
         # add input tab
-        self.navigation.addTab('input', Icons.md_input)
+        self.navigation.addTab('input', MdIcons.md_input)
         input_list = InputWidgetList(self)
         self.stack.addWidget(input_list)
 
-        self.navigation.addTab('dialog', Icons.md_comment)
+        self.navigation.addTab('dialog', MdIcons.md_comment)
         dialog_stack = DialogWidgetList(self)
         self.stack.addWidget(dialog_stack)
 
-        self.navigation.addTab('graph', Icons.md_pie_chart)
+        self.navigation.addTab('graph', MdIcons.md_pie_chart)
         chart_stack = GraphWidgetList(self)
         self.stack.addWidget(chart_stack)
 
-        self.navigation.addTab('echarts', Icons.md_pie_chart)
+        self.navigation.addTab('echarts', MdIcons.md_pie_chart)
         chart_stack = EchartsWidgetList(self)
         self.stack.addWidget(chart_stack)
 
-        self.navigation.addTab('table', Icons.md_table_view)
+        self.navigation.addTab('table', MdIcons.md_table_view)
         table_stack = TableWidgetList(self)
         self.stack.addWidget(table_stack)
 
@@ -75,6 +75,6 @@ class Index(QWidget):
 
     def contextMenuEvent(self, a0) -> None:
         menu = KitMenu(self)
-        menu.addAction(KitIcon(Icons.md_add).toQIcon(), '添加')
+        menu.addAction(KitIcon(MdIcons.md_add).toQIcon(), '添加')
         menu.addAction('删除')
         menu.exec_(a0.globalPos())

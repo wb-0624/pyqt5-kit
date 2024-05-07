@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
-from app_config import Icons, FluentIcons
+from app_config import MdIcons, FluentIcons
 from config import config
 from widget import KitIcon, KitFramelessWindow, KitMovieIcon, KitFtIcon, KitFtFilledIcon
 
@@ -16,7 +16,7 @@ class IconDemo(QWidget):
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        icon = KitIcon(Icons.md_add, self)
+        icon = KitIcon(MdIcons.md_add, self)
         icon.setProperty('type', 'success')
         layout.addWidget(icon)
 

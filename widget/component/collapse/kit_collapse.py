@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QLabel, QVBoxLayout, QHBoxLayout
 
-from app_config.md_icons import Icons
+from app_config.md_icons import MdIcons
 from ..icon import KitIcon
 
 
@@ -65,8 +65,8 @@ class KitCollapseItem(QWidget):
         self._title = QLabel(title, self)
         self._icon = KitIcon(None)
         self._state = False
-        self._indicator_icon_show = Icons.md_expand_more
-        self._indicator_icon_hide = Icons.md_chevron_right
+        self._indicator_icon_show = MdIcons.md_expand_more
+        self._indicator_icon_hide = MdIcons.md_chevron_right
         self._indicator_icon = KitIcon(self._indicator_icon_hide)
 
         self.__init_widget()
