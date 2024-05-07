@@ -17,7 +17,7 @@ class IconDemo(QWidget):
         self.setLayout(layout)
 
         icon = KitIcon(Icons.md_add, self)
-        icon.setText(Icons.md_home)
+        icon.setProperty('type', 'success')
         layout.addWidget(icon)
 
         move_icon = KitMovieIcon(parent=self)
@@ -28,6 +28,7 @@ class IconDemo(QWidget):
         layout.addWidget(ft_icon)
 
         ft_fill_icon = KitFtFilledIcon(FluentIcons.ft_home_add_filled, self)
+        ft_fill_icon.setProperty('type', 'success')
         layout.addWidget(ft_fill_icon)
         
 
